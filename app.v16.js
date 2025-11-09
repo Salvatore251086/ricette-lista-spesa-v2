@@ -28,6 +28,7 @@
   const recipeMetaEl = document.getElementById('recipe-meta')
   const recipeIngredientsEl = document.getElementById('recipe-ingredients')
   const recipeStepsEl = document.getElementById('recipe-steps')
+  const recipeTagsEl = document.getElementById('recipe-tags')
   const recipeSourceLinkEl = document.getElementById('recipe-source-link')
   const closeRecipeModalBtn = document.getElementById('close-recipe-modal')
 
@@ -289,7 +290,6 @@
 
     list.forEach(recipe => {
       const node = tpl.content.cloneNode(true)
-      const card = node.querySelector('.recipe-card')
       const titleEl = node.querySelector('.recipe-title')
       const diffEl = node.querySelector('.recipe-diff')
       const servEl = node.querySelector('.recipe-servings')
@@ -336,16 +336,10 @@
   }
 
   function resolveVideoId (recipe) {
-    if (recipe.youtubeId) {
-      return recipe.youtubeId
-    }
-    if (recipe.videoId) {
-      return recipe.videoId
-    }
+    if (recipe.youtubeId) return recipe.youtubeId
+    if (recipe.videoId) return recipe.videoId
     const key = normalizeKey(recipe.title || '')
-    if (key && videoIndex[key]) {
-      return videoIndex[key]
-    }
+    if (key && videoIndex[key]) return videoIndex[key]
     return ''
   }
 
@@ -395,26 +389,18 @@
   }
 
   function closeVideoModal () {
-    if (videoFrameEl) {
-      videoFrameEl.src = ''
-    }
-    if (videoErrorEl) {
-      videoErrorEl.classList.add('hidden')
-    }
-    if (modalBackdrop) {
-      modalBackdrop.classList.add('hidden')
-    }
-    if (videoModal) {
-      videoModal.classList.add('hidden')
-    }
+    if (videoFrameEl) videoFrameEl.src = ''
+    if (videoErrorEl) videoErrorEl.classList.add('hidden')
+    if (modalBackdrop) modalBackdrop.classList.add('hidden')
+    if (videoModal) videoModal.classList.add('hidden')
   }
 
   function openRecipeModal (recipe) {
-    if (!recipeModalBackdrop || !recipeModal || !recipe) {
-      const url = recipe && (recipe.url || recipe.link)
-      if (url) {
-        window.open(url, '_blank', 'noopener')
-      }
+    if (!recipe) return
+
+    if (!recipeModalBackdrop || !recipeModal) {
+      const url = recipe.url || recipe.link
+      if (url) window.open(url, '_blank', 'noopener')
       return
     }
 
@@ -422,23 +408,83 @@
     const diff = recipe.difficulty || recipe.diff || ''
     const servings =
       recipe.servings || recipe.portions || recipe.porzioni || ''
+    const prepTime =
+      recipe.prepTime ||
+      recipe.prep_time ||
+      recipe.tempoPreparazione ||
+      recipe.tempo_preparazione ||
+      ''
+    const cookTime =
+      recipe.cookTime ||
+      recipe.cook_time ||
+      recipe.tempoCottura ||
+      recipe.tempo_cottura ||
+      ''
+    const totalTime =
+      recipe.totalTime ||
+      recipe.total_time ||
+      recipe.tempoTotale ||
+      recipe.tempo_totale ||
+      ''
+    const cost =
+      recipe.cost ||
+      recipe.costo ||
+      ''
+    const difficultyAlt = recipe.level || recipe.livello || ''
     const url = recipe.url || recipe.link || ''
+    const category =
+      recipe.category || recipe.categoria || recipe.portata || ''
+    const cuisine =
+      recipe.cuisine || recipe.cucina || ''
+    const author =
+      recipe.author || recipe.autore || ''
 
     recipeTitleEl.textContent = title
 
     const metaParts = []
-    if (diff) metaParts.push('Difficoltà: ' + diff)
+    const diffVal = diff || difficultyAlt
+    if (diffVal) metaParts.push('Difficoltà: ' + diffVal)
     if (servings) metaParts.push('Porzioni: ' + servings)
+    if (prepTime) metaParts.push('Prep: ' + prepTime)
+    if (cookTime) metaParts.push('Cottura: ' + cookTime)
+    if (totalTime) metaParts.push('Totale: ' + totalTime)
+    if (cost) metaParts.push('Costo: ' + cost)
+    if (category) metaParts.push('Portata: ' + category)
+    if (cuisine) metaParts.push('Cucina: ' + cuisine)
+    if (author) metaParts.push('Autore: ' + author)
+
     recipeMetaEl.textContent = metaParts.join('  •  ')
 
-    fillList(recipeIngredientsEl, recipe.ingredients || recipe.ingredienti)
+    fillList(
+      recipeIngredientsEl,
+      recipe.ingredients || recipe.ingredienti,
+      'Ingredienti non disponibili.'
+    )
+
+    const stepsData =
+      recipe.steps ||
+      recipe.preparazione ||
+      recipe.directions ||
+      recipe.istruzioni
+
     fillList(
       recipeStepsEl,
-      recipe.steps ||
-        recipe.preparazione ||
-        recipe.directions ||
-        recipe.istruzioni
+      stepsData,
+      url
+        ? 'Consulta la preparazione sulla ricetta originale.'
+        : 'Preparazione non disponibile.'
     )
+
+    const tags = Array.isArray(recipe.tags)
+      ? recipe.tags.filter(Boolean)
+      : []
+    if (tags.length) {
+      recipeTagsEl.textContent = 'Tag: ' + tags.join(', ')
+      recipeTagsEl.classList.remove('hidden')
+    } else {
+      recipeTagsEl.textContent = ''
+      recipeTagsEl.classList.add('hidden')
+    }
 
     if (url) {
       recipeSourceLinkEl.href = url
@@ -451,12 +497,12 @@
     recipeModal.classList.remove('hidden')
   }
 
-  function fillList (container, data) {
+  function fillList (container, data, fallbackText) {
     container.innerHTML = ''
     const items = toArray(data)
     if (!items.length) {
-      const li = document.createElement(container.tagName === 'OL' ? 'li' : 'li')
-      li.textContent = 'Dato non disponibile.'
+      const li = document.createElement('li')
+      li.textContent = fallbackText || 'Dato non disponibile.'
       container.appendChild(li)
       return
     }
@@ -486,11 +532,7 @@
   }
 
   function closeRecipeModal () {
-    if (recipeModalBackdrop) {
-      recipeModalBackdrop.classList.add('hidden')
-    }
-    if (recipeModal) {
-      recipeModal.classList.add('hidden')
-    }
+    if (recipeModalBackdrop) recipeModalBackdrop.classList.add('hidden')
+    if (recipeModal) recipeModal.classList.add('hidden')
   }
 })()
