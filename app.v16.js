@@ -1,439 +1,407 @@
 // app.v16.js
-// Ricette & Lista Spesa v2 - rendering griglia, modale ricetta, modale video, ricerca
+// Ricette & Lista Spesa v2
+// Caricamento ricette, mapping video, azioni bottoni
 
-const RECIPES_URL = 'assets/json/recipes-it.json';
-const VIDEO_INDEX_URL = 'assets/json/video_index.resolved.json';
+const RECIPES_URL = "recipes-it.json";
+const VIDEO_INDEX_URL = "video_index.resolved.json";
+const SOURCES_URL = "assets/json/sources.json"; // best effort: se manca, ignoriamo
 
 let ALL_RECIPES = [];
-let VIDEO_MAP = {}; // slug -> { youtubeId, title, source, confidence }
+let VIDEO_MAP = {};
+let SOURCES_MAP = {};
 
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener("DOMContentLoaded", init);
 
 async function init() {
-  const searchInput = document.getElementById('search-input');
-  const visibleCountEl = document.getElementById('visible-count');
-  const container = document.getElementById('recipes-container');
-  const template = document.getElementById('recipe-card-template');
-
-  if (!container || !template) {
-    console.error('Mancano container o template per le ricette');
-    return;
-  }
-
-  // Modale ricetta
-  const recipeModal = document.getElementById('recipe-modal');
-  const recipeModalRefs = getRecipeModalRefs();
-
-  // Modale video
-  const videoModal = document.getElementById('video-modal');
-  const videoFrame = document.getElementById('video-frame');
-  const videoSourceEl = document.getElementById('video-source');
-
-  // Chiudi modali con backdrop / X / ESC
-  setupModalClose(recipeModal);
-  setupModalClose(videoModal);
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      if (recipeModal && !recipeModal.hidden) closeRecipeModal(recipeModal);
-      if (videoModal && !videoModal.hidden) closeVideoModal(videoModal, videoFrame);
-    }
-  });
-
   try {
-    const [recipesJson, videoJson] = await Promise.all([
-      fetchJSON(RECIPES_URL),
-      fetchJSON(VIDEO_INDEX_URL),
+    const [
+      recipesData,
+      videoIndexData,
+      sourcesData
+    ] = await Promise.all([
+      fetchJSONSafe(RECIPES_URL),
+      fetchJSONSafe(VIDEO_INDEX_URL),
+      fetchJSONSafe(SOURCES_URL, true) // opzionale
     ]);
 
-    ALL_RECIPES = normalizeRecipes(recipesJson);
-    VIDEO_MAP = buildVideoMap(videoJson);
-
-    console.log(`Caricate ricette: ${ALL_RECIPES.length}`);
-    console.log(`Video indicizzati: ${Object.keys(VIDEO_MAP).length}`);
-
-    renderRecipes(ALL_RECIPES, {
-      container,
-      template,
-      visibleCountEl,
-      recipeModal,
-      recipeModalRefs,
-      videoModal,
-      videoFrame,
-      videoSourceEl,
-    });
-
-    if (searchInput) {
-      searchInput.addEventListener('input', () => {
-        const term = searchInput.value.trim().toLowerCase();
-        const filtered = filterRecipes(ALL_RECIPES, term);
-        renderRecipes(filtered, {
-          container,
-          template,
-          visibleCountEl,
-          recipeModal,
-          recipeModalRefs,
-          videoModal,
-          videoFrame,
-          videoSourceEl,
-        });
-      });
+    // Normalizza ricette
+    if (Array.isArray(recipesData)) {
+      ALL_RECIPES = recipesData;
+    } else if (recipesData && Array.isArray(recipesData.recipes)) {
+      ALL_RECIPES = recipesData.recipes;
+    } else {
+      console.error("Formato recipes-it.json non valido", recipesData);
+      showFatalMessage("Errore caricamento dati ricette.");
+      return;
     }
+
+    // Normalizza mappa sorgenti (se presente)
+    if (sourcesData) {
+      // accetto sia array che oggetto
+      if (Array.isArray(sourcesData)) {
+        SOURCES_MAP = {};
+        for (const entry of sourcesData) {
+          const key =
+            entry.slug ||
+            entry.id ||
+            (entry.title ? slugify(entry.title) : null);
+          if (key && entry.url) {
+            SOURCES_MAP[key] = entry.url;
+          }
+        }
+      } else if (typeof sourcesData === "object") {
+        SOURCES_MAP = sourcesData;
+      }
+    }
+
+    // Costruisci mappa video
+    VIDEO_MAP = buildVideoMap(videoIndexData || []);
+
+    console.log("Caricate ricette:", ALL_RECIPES.length);
+    console.log("Video indicizzati:", Object.keys(VIDEO_MAP).length);
+
+    setupUI();
+    renderRecipes(ALL_RECIPES);
   } catch (err) {
-    console.error('Errore durante init():', err);
-    if (visibleCountEl) visibleCountEl.textContent = 'errore';
+    console.error("Errore durante init():", err);
+    showFatalMessage("Errore caricamento dati.");
   }
 }
 
-// ---------------------------------------------------------------------------
-// Fetch & normalizzazione
-// ---------------------------------------------------------------------------
+// ---------- Utils fetch ----------
 
-async function fetchJSON(url) {
-  const res = await fetch(url, { cache: 'no-store' });
-  if (!res.ok) {
-    throw new Error(`Fetch fallita per ${url}: ${res.status}`);
+async function fetchJSONSafe(url, optional = false) {
+  try {
+    const res = await fetch(url, { cache: "no-store" });
+    if (!res.ok) {
+      if (optional) return null;
+      throw new Error(`HTTP ${res.status} per ${url}`);
+    }
+    return await res.json();
+  } catch (err) {
+    if (optional) {
+      console.warn(`Impossibile caricare opzionale ${url}:`, err.message);
+      return null;
+    }
+    throw err;
   }
-  return res.json();
 }
 
-function normalizeRecipes(data) {
-  // Accetta {recipes:[...]} o [...]
-  const list = Array.isArray(data) ? data : Array.isArray(data.recipes) ? data.recipes : [];
+// ---------- Video map ----------
 
-  return list.map((r, i) => {
-    const title = r.title || r.name || `Ricetta ${i + 1}`;
-    const slug = r.slug || (typeof r.urlSlug === 'string' && r.urlSlug) || safeSlug(title);
-
-    // Ingredienti & preparazione: proviamo vari nomi
-    const ingredients =
-      r.ingredients ||
-      r.ingredienti ||
-      r.ingredienti_lista ||
-      [];
-
-    const steps =
-      r.steps ||
-      r.metodo ||
-      r.preparazione ||
-      r.istruzioni ||
-      '';
-
-    return {
-      id: r.id || i,
-      title,
-      slug,
-      source: r.source || r.autore || r.origin || '',
-      url: r.url || r.link || r.permalink || '',
-      servings: r.servings || r.porzioni || '',
-      prepTime: r.prepTime || r.tempoPrep || '',
-      cookTime: r.cookTime || r.tempoCottura || '',
-      difficulty: r.difficulty || r.difficolta || '',
-      ingredients: Array.isArray(ingredients) ? ingredients : (ingredients ? [ingredients] : []),
-      steps,
-    };
-  });
-}
-
-function buildVideoMap(videoData) {
+function buildVideoMap(data) {
   const map = {};
-  const list = Array.isArray(videoData) ? videoData : videoData.videos || [];
+  if (!data) return map;
 
-  for (const v of list) {
-    if (!v) continue;
-    const slug = v.slug || (v.title ? safeSlug(v.title) : null);
-    const youtubeId = v.youtubeId || v.youtubeID || v.id;
-    if (!slug || !youtubeId) continue;
-
-    map[slug] = {
-      youtubeId,
-      title: v.title || '',
-      source: v.source || 'YouTube',
-      confidence: typeof v.confidence === 'number' ? v.confidence : null,
-    };
+  if (Array.isArray(data)) {
+    for (const item of data) {
+      if (!item) continue;
+      const slug =
+        item.slug ||
+        (item.title ? slugify(item.title) : null);
+      const yt =
+        item.youtubeId ||
+        item.youtube_id ||
+        item.ytId;
+      if (slug && yt) {
+        map[slug] = {
+          youtubeId: yt,
+          title: item.title || slug
+        };
+      }
+    }
+  } else if (typeof data === "object") {
+    // già mappato
+    for (const [slug, val] of Object.entries(data)) {
+      const yt =
+        val.youtubeId ||
+        val.youtube_id ||
+        val.ytId;
+      if (yt) {
+        map[slug] = {
+          youtubeId: yt,
+          title: val.title || slug
+        };
+      }
+    }
   }
 
   return map;
 }
 
-// ---------------------------------------------------------------------------
-// Rendering & interazioni
-// ---------------------------------------------------------------------------
+// ---------- UI setup ----------
 
-function filterRecipes(recipes, term) {
-  if (!term) return recipes;
-  return recipes.filter((r) => {
-    const haystack = [
-      r.title,
-      r.slug,
-      r.source,
-      Array.isArray(r.ingredients) ? r.ingredients.join(' ') : '',
-      typeof r.steps === 'string' ? r.steps : '',
-    ]
-      .join(' ')
-      .toLowerCase();
-    return haystack.includes(term);
-  });
+function setupUI() {
+  const searchInput = document.getElementById("search-input");
+  if (searchInput) {
+    searchInput.addEventListener("input", handleSearch);
+  }
+
+  // modal
+  const backdrop = document.getElementById("modal-backdrop");
+  const closeBtn = document.getElementById("modal-close");
+  if (backdrop && closeBtn) {
+    closeBtn.addEventListener("click", closeModal);
+    backdrop.addEventListener("click", (e) => {
+      if (e.target === backdrop) closeModal();
+    });
+  }
 }
 
-function renderRecipes(recipes, ctx) {
-  const {
-    container,
-    template,
-    visibleCountEl,
-    recipeModal,
-    recipeModalRefs,
-    videoModal,
-    videoFrame,
-    videoSourceEl,
-  } = ctx;
+// ---------- Rendering ricette ----------
 
-  container.innerHTML = '';
+function renderRecipes(list) {
+  const container = document.getElementById("recipes-container");
+  const template = document.getElementById("recipe-card-template");
 
-  if (!recipes || recipes.length === 0) {
-    const empty = document.createElement('p');
-    empty.className = 'empty-state';
-    empty.textContent = 'Nessuna ricetta trovata.';
-    container.appendChild(empty);
-    if (visibleCountEl) visibleCountEl.textContent = '0';
+  if (!container || !template) {
+    console.error("Mancano container o template per le ricette");
     return;
   }
 
-  const frag = document.createDocumentFragment();
+  container.innerHTML = "";
 
-  recipes.forEach((recipe) => {
-    const card = template.content.firstElementChild.cloneNode(true);
+  list.forEach((recipe, index) => {
+    const node = template.content.cloneNode(true);
+    const card = node.querySelector(".recipe-card");
 
-    card.dataset.id = recipe.id;
-    card.dataset.slug = recipe.slug;
+    const titleEl = node.querySelector(".recipe-title");
+    const metaEl = node.querySelector(".recipe-meta");
+    const statsEl = node.querySelector(".recipe-stats");
+    const btnRecipe = node.querySelector(".btn-open-recipe");
+    const btnVideo = node.querySelector(".btn-open-video");
+    const btnAdd = node.querySelector(".btn-add-list");
 
-    // Titolo & fonte
-    const titleEl = card.querySelector('.recipe-title');
-    if (titleEl) titleEl.textContent = recipe.title;
+    const title = recipe.title || `Ricetta ${index + 1}`;
+    const slug = (recipe.slug || slugify(title)).trim();
 
-    const sourceEl = card.querySelector('.recipe-source');
-    if (sourceEl) {
-      const s =
-        recipe.source ||
-        (recipe.url
-          ? new URL(recipe.url, location.href).hostname.replace('www.', '')
-          : '');
-      sourceEl.textContent = s || '';
-    }
+    card.dataset.index = index;
+    card.dataset.slug = slug;
 
-    // Meta
-    setText(card, '.recipe-servings', recipe.servings || '-');
-    setText(card, '.recipe-prep', recipe.prepTime || '-');
-    setText(card, '.recipe-cook', recipe.cookTime || '-');
-    setText(card, '.recipe-diff', recipe.difficulty || '-');
+    // Titolo
+    if (titleEl) titleEl.textContent = title;
 
-    // Apri ricetta -> se c'è URL lo apre, altrimenti modale interna
-    const openBtn = card.querySelector('.btn-open-recipe');
-    if (openBtn) {
-      openBtn.addEventListener('click', () => {
-        if (recipe.url) {
-          window.open(recipe.url, '_blank', 'noopener');
-        } else {
-          openRecipeModal(recipeModal, recipeModalRefs, recipe);
-        }
-      });
-    }
+    // Meta: sorgente se presente
+    const src = recipe.source || recipe.sourceName || "";
+    if (metaEl) metaEl.textContent = src ? `Fonte: ${src}` : "";
 
-    // Video
-    const videoBtn = card.querySelector('.btn-open-video');
-    const videoInfo = VIDEO_MAP[recipe.slug];
+    // Stats basiche
+    if (statsEl) {
+      statsEl.innerHTML = "";
+      const parts = [];
 
-    if (videoBtn) {
-      if (videoInfo && videoInfo.youtubeId) {
-        videoBtn.disabled = false;
-        videoBtn.textContent = 'Guarda video';
-        videoBtn.addEventListener('click', () => {
-          openVideoModal({
-            modal: videoModal,
-            frame: videoFrame,
-            sourceEl: videoSourceEl,
-            video: videoInfo,
-            recipeTitle: recipe.title,
-          });
-        });
-      } else {
-        videoBtn.disabled = true;
-        videoBtn.textContent = 'Video n/d';
+      if (recipe.portions || recipe.porzioni) {
+        parts.push(`Porzioni: ${recipe.portions || recipe.porzioni}`);
+      }
+      if (recipe.difficulty || recipe.difficolta) {
+        parts.push(`Diff.: ${recipe.difficulty || recipe.difficolta}`);
+      }
+
+      // Prep / cottura se presenti
+      if (recipe.prepTime || recipe.prep_time) {
+        parts.push(`Prep.: ${recipe.prepTime || recipe.prep_time}`);
+      }
+      if (recipe.cookTime || recipe.cook_time) {
+        parts.push(`Cottura: ${recipe.cookTime || recipe.cook_time}`);
+      }
+
+      if (!parts.length) {
+        parts.push("Dettagli ricetta disponibili nella pagina sorgente.");
+      }
+
+      for (const txt of parts) {
+        const li = document.createElement("li");
+        li.textContent = txt;
+        statsEl.appendChild(li);
       }
     }
 
-    // Lista spesa (hook futuro)
-    const addBtn = card.querySelector('.btn-add-list');
-    if (addBtn) {
-      addBtn.addEventListener('click', () => {
-        console.log('TODO lista spesa ->', recipe.title);
-        addBtn.textContent = 'Aggiunta ✔';
-        addBtn.disabled = true;
+    // Bottone ricetta
+    if (btnRecipe) {
+      btnRecipe.addEventListener("click", () => handleOpenRecipe(index));
+    }
+
+    // Bottone video
+    if (btnVideo) {
+      btnVideo.dataset.slug = slug;
+      const hasVideo = !!findVideoForSlug(slug, recipe);
+      btnVideo.textContent = hasVideo ? "Guarda video" : "Video n/d";
+      btnVideo.disabled = !hasVideo;
+      btnVideo.addEventListener("click", () =>
+        handleOpenVideo(slug, recipe)
+      );
+    }
+
+    // Bottone lista spesa (placeholder)
+    if (btnAdd) {
+      btnAdd.addEventListener("click", () => {
+        alert("Funzione lista spesa: in sviluppo. (Dati ricetta già pronti)");
+        // qui in futuro: salvataggio in localStorage o backend
       });
     }
 
-    frag.appendChild(card);
+    container.appendChild(node);
   });
 
-  container.appendChild(frag);
-  if (visibleCountEl) visibleCountEl.textContent = String(recipes.length);
+  updateVisibleCount(list.length);
 }
 
-function setText(root, selector, value) {
-  const el = root.querySelector(selector);
-  if (el) el.textContent = value;
+function updateVisibleCount(n) {
+  const el = document.getElementById("visible-count");
+  if (el) el.textContent = String(n);
 }
 
-// ---------------------------------------------------------------------------
-// Modale ricetta
-// ---------------------------------------------------------------------------
+// ---------- Search ----------
 
-function getRecipeModalRefs() {
-  return {
-    title: document.getElementById('recipe-modal-title'),
-    source: document.getElementById('recipe-modal-source'),
-    servings: document.getElementById('recipe-modal-servings'),
-    prep: document.getElementById('recipe-modal-prep'),
-    cook: document.getElementById('recipe-modal-cook'),
-    diff: document.getElementById('recipe-modal-diff'),
-    ingredients: document.getElementById('recipe-modal-ingredients'),
-    steps: document.getElementById('recipe-modal-steps'),
-    linkWrap: document.getElementById('recipe-modal-link-wrap'),
-    link: document.getElementById('recipe-modal-link'),
-  };
-}
-
-function openRecipeModal(modal, refs, recipe) {
-  if (!modal || !refs) return;
-
-  if (refs.title) refs.title.textContent = recipe.title || 'Dettaglio ricetta';
-  if (refs.source) refs.source.textContent = recipe.source || 'N/D';
-  if (refs.servings) refs.servings.textContent = recipe.servings || '-';
-  if (refs.prep) refs.prep.textContent = recipe.prepTime || '-';
-  if (refs.cook) refs.cook.textContent = recipe.cookTime || '-';
-  if (refs.diff) refs.diff.textContent = recipe.difficulty || '-';
-
-  // Ingredienti
-  if (refs.ingredients) {
-    refs.ingredients.innerHTML = '';
-    const list = Array.isArray(recipe.ingredients)
-      ? recipe.ingredients
-      : recipe.ingredients
-      ? [recipe.ingredients]
-      : [];
-    if (list.length) {
-      list.forEach((ing) => {
-        const li = document.createElement('li');
-        li.textContent = ing;
-        refs.ingredients.appendChild(li);
-      });
-    } else {
-      const li = document.createElement('li');
-      li.textContent = 'Ingredienti non disponibili in questo dataset.';
-      refs.ingredients.appendChild(li);
-    }
+function handleSearch(e) {
+  const q = (e.target.value || "").toLowerCase().trim();
+  if (!q) {
+    renderRecipes(ALL_RECIPES);
+    return;
   }
 
-  // Preparazione / step
-  if (refs.steps) {
-    refs.steps.innerHTML = '';
-    if (typeof recipe.steps === 'string' && recipe.steps.trim()) {
-      const p = document.createElement('p');
-      p.textContent = recipe.steps;
-      refs.steps.appendChild(p);
-    } else if (Array.isArray(recipe.steps) && recipe.steps.length) {
-      recipe.steps.forEach((step, idx) => {
-        const p = document.createElement('p');
-        p.textContent = `${idx + 1}. ${step}`;
-        refs.steps.appendChild(p);
-      });
-    } else {
-      const p = document.createElement('p');
-      p.textContent =
-        'Testo della preparazione non disponibile in questo dataset.';
-      refs.steps.appendChild(p);
-    }
-  }
-
-  // Link originale se presente
-  if (refs.linkWrap && refs.link) {
-    if (recipe.url) {
-      refs.linkWrap.hidden = false;
-      refs.link.textContent = recipe.url;
-      refs.link.href = recipe.url;
-    } else {
-      refs.linkWrap.hidden = true;
-      refs.link.textContent = '';
-      refs.link.href = '#';
-    }
-  }
-
-  modal.hidden = false;
-  document.body.classList.add('modal-open');
-}
-
-function closeRecipeModal(modal) {
-  if (!modal) return;
-  modal.hidden = true;
-  document.body.classList.remove('modal-open');
-}
-
-// ---------------------------------------------------------------------------
-// Modale video
-// ---------------------------------------------------------------------------
-
-function openVideoModal({ modal, frame, sourceEl, video, recipeTitle }) {
-  if (!modal || !frame || !video) return;
-
-  const url = `https://www.youtube.com/embed/${video.youtubeId}`;
-  frame.src = url;
-
-  const titleEl = document.getElementById('video-modal-title');
-  if (titleEl) {
-    titleEl.textContent = recipeTitle || video.title || 'Video ricetta';
-  }
-
-  if (sourceEl) {
-    const conf =
-      typeof video.confidence === 'number'
-        ? ` (match ${(video.confidence * 100).toFixed(0)}%)`
-        : '';
-    sourceEl.textContent = `${video.source || 'YouTube'}${conf}`;
-  }
-
-  modal.hidden = false;
-  document.body.classList.add('modal-open');
-}
-
-function closeVideoModal(modal, frame) {
-  if (!modal) return;
-  modal.hidden = true;
-  document.body.classList.remove('modal-open');
-  if (frame) frame.src = '';
-}
-
-// ---------------------------------------------------------------------------
-// Util
-// ---------------------------------------------------------------------------
-
-function setupModalClose(modal) {
-  if (!modal) return;
-  modal.addEventListener('click', (e) => {
-    if (e.target.dataset.close === '1') {
-      if (modal.id === 'video-modal') {
-        const frame = document.getElementById('video-frame');
-        closeVideoModal(modal, frame);
-      } else {
-        closeRecipeModal(modal);
-      }
-    }
+  const filtered = ALL_RECIPES.filter((r) => {
+    const haystack =
+      [
+        r.title,
+        r.slug,
+        r.source,
+        r.sourceName,
+        r.ingredients && r.ingredients.join(" ")
+      ]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+    return haystack.includes(q);
   });
+
+  renderRecipes(filtered);
 }
 
-function safeSlug(str) {
-  return String(str || '')
+// ---------- Azioni bottoni ----------
+
+function handleOpenRecipe(index) {
+  const recipe = ALL_RECIPES[index];
+  if (!recipe) {
+    alert("Ricetta non trovata.");
+    return;
+  }
+
+  const title = recipe.title || "Ricetta";
+
+  // 1) campi diretti nella ricetta
+  const directKeys = ["sourceUrl", "url", "href", "link"];
+  for (const k of directKeys) {
+    if (recipe[k]) {
+      window.open(recipe[k], "_blank", "noopener");
+      return;
+    }
+  }
+
+  // 2) lookup tramite slug / id in SOURCES_MAP
+  const slug = (recipe.slug || slugify(title)).trim();
+  if (SOURCES_MAP && typeof SOURCES_MAP === "object") {
+    if (SOURCES_MAP[slug]) {
+      window.open(SOURCES_MAP[slug], "_blank", "noopener");
+      return;
+    }
+    if (recipe.id && SOURCES_MAP[recipe.id]) {
+      window.open(SOURCES_MAP[recipe.id], "_blank", "noopener");
+      return;
+    }
+    // alcuni sources.json hanno oggetti nidificati
+    if (SOURCES_MAP.sources && SOURCES_MAP.sources[slug]) {
+      window.open(SOURCES_MAP.sources[slug], "_blank", "noopener");
+      return;
+    }
+  }
+
+  // 3) fallback intelligente: cerca la ricetta sul web
+  const query = encodeURIComponent(`${title} ricetta`);
+  const url = `https://www.google.com/search?q=${query}`;
+  window.open(url, "_blank", "noopener");
+}
+
+function handleOpenVideo(slug, recipe) {
+  const match = findVideoForSlug(slug, recipe);
+  if (!match) {
+    alert("Video non disponibile per questa voce.");
+    return;
+  }
+
+  const { youtubeId, title } = match;
+  const embedUrl = `https://www.youtube.com/embed/${youtubeId}?autoplay=1`;
+
+  const html = `
+    <h2>${escapeHtml(title || (recipe && recipe.title) || "Video ricetta")}</h2>
+    <div class="video-wrapper">
+      <iframe
+        src="${embedUrl}"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+  `;
+
+  openModal(html);
+}
+
+function findVideoForSlug(slug, recipe) {
+  if (VIDEO_MAP[slug]) return VIDEO_MAP[slug];
+
+  // tenta varianti: slugify titolo se non combacia
+  if (recipe && recipe.title) {
+    const alt = slugify(recipe.title);
+    if (VIDEO_MAP[alt]) return VIDEO_MAP[alt];
+  }
+
+  // se la voce del video index aveva lo slug diverso ma stesso titolo,
+  // l'algoritmo di arricchimento dovrebbe già averlo gestito.
+  return null;
+}
+
+// ---------- Modal ----------
+
+function openModal(html) {
+  const backdrop = document.getElementById("modal-backdrop");
+  const content = document.getElementById("modal-content");
+  if (!backdrop || !content) return;
+
+  content.innerHTML = html;
+  backdrop.classList.remove("hidden");
+}
+
+function closeModal() {
+  const backdrop = document.getElementById("modal-backdrop");
+  const content = document.getElementById("modal-content");
+  if (backdrop) backdrop.classList.add("hidden");
+  if (content) content.innerHTML = "";
+}
+
+// ---------- Helpers ----------
+
+function slugify(str) {
+  return (str || "")
+    .toString()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/(^-|-$)+/g, '');
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function escapeHtml(str) {
+  return (str || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function showFatalMessage(msg) {
+  const container = document.getElementById("recipes-container");
+  if (container) {
+    container.innerHTML = `<p class="error">${msg}</p>`;
+  }
 }

@@ -2,12 +2,8 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
-  <title>Ricette &amp; Lista Spesa</title>
+  <title>Ricette & Lista Spesa</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta
-    name="description"
-    content="Raccolta ricette con ricerca veloce, lista spesa integrata e video YouTube proposti."
-  />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -19,117 +15,44 @@
   </header>
 
   <main class="app-main">
-    <section class="search-bar-wrap">
+    <section class="toolbar">
       <input
         id="search-input"
         type="search"
         placeholder="Cerca per titolo o ingrediente"
         autocomplete="off"
       />
-      <div class="search-meta">
-        <span>Ricette visibili: <span id="visible-count">-</span></span>
+      <div class="toolbar-right">
+        <span id="visible-count-label">Ricette visibili: <strong id="visible-count">-</strong></span>
       </div>
     </section>
 
-    <!-- Griglia ricette -->
-    <section id="recipes-container" class="recipes-grid"></section>
+    <section id="recipes-container" class="recipes-grid">
+      <!-- cards generate via JS -->
+    </section>
   </main>
 
   <!-- Template card ricetta -->
   <template id="recipe-card-template">
-    <article class="recipe-card" data-id="" data-slug="">
-      <div class="recipe-header">
+    <article class="recipe-card">
+      <div class="recipe-card-body">
         <h3 class="recipe-title"></h3>
-        <p class="recipe-source"></p>
+        <p class="recipe-meta"></p>
+        <ul class="recipe-stats"></ul>
       </div>
-
-      <ul class="recipe-meta">
-        <li>
-          <span class="label">Porzioni:</span>
-          <span class="value recipe-servings"></span>
-        </li>
-        <li>
-          <span class="label">Prep:</span>
-          <span class="value recipe-prep"></span>
-        </li>
-        <li>
-          <span class="label">Cottura:</span>
-          <span class="value recipe-cook"></span>
-        </li>
-        <li>
-          <span class="label">Diff.:</span>
-          <span class="value recipe-diff"></span>
-        </li>
-      </ul>
-
       <div class="recipe-actions">
         <button class="btn btn-primary btn-open-recipe">Apri ricetta</button>
-        <button class="btn btn-secondary btn-open-video" disabled>Video n/d</button>
-        <button class="btn btn-ghost btn-add-list">Aggiungi alla lista spesa</button>
+        <button class="btn btn-secondary btn-open-video">Video n/d</button>
       </div>
+      <button class="btn-add-list">Aggiungi alla lista spesa</button>
     </article>
   </template>
 
-  <!-- Modale dettagli ricetta -->
-  <div id="recipe-modal" class="modal" hidden>
-    <div class="modal-backdrop" data-close="1"></div>
-    <div class="modal-dialog">
-      <header class="modal-header">
-        <h2 id="recipe-modal-title">Dettaglio ricetta</h2>
-        <button class="modal-close" aria-label="Chiudi" data-close="1">&times;</button>
-      </header>
-      <div class="modal-body">
-        <p class="recipe-modal-source">
-          Fonte: <span id="recipe-modal-source"></span>
-        </p>
-
-        <ul class="recipe-modal-meta">
-          <li><strong>Porzioni:</strong> <span id="recipe-modal-servings"></span></li>
-          <li><strong>Prep:</strong> <span id="recipe-modal-prep"></span></li>
-          <li><strong>Cottura:</strong> <span id="recipe-modal-cook"></span></li>
-          <li><strong>Difficoltà:</strong> <span id="recipe-modal-diff"></span></li>
-        </ul>
-
-        <div class="recipe-modal-section">
-          <h3>Ingredienti</h3>
-          <ul id="recipe-modal-ingredients"></ul>
-        </div>
-
-        <div class="recipe-modal-section">
-          <h3>Preparazione</h3>
-          <div id="recipe-modal-steps" class="recipe-modal-steps"></div>
-        </div>
-
-        <p id="recipe-modal-link-wrap" class="recipe-modal-link" hidden>
-          Link originale:
-          <a id="recipe-modal-link" href="#" target="_blank" rel="noopener"></a>
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modale video YouTube -->
-  <div id="video-modal" class="modal" hidden>
-    <div class="modal-backdrop" data-close="1"></div>
-    <div class="modal-dialog">
-      <header class="modal-header">
-        <h2 id="video-modal-title">Video ricetta</h2>
-        <button class="modal-close" aria-label="Chiudi" data-close="1">&times;</button>
-      </header>
-      <div class="modal-body">
-        <div class="video-frame-wrap">
-          <iframe
-            id="video-frame"
-            src=""
-            loading="lazy"
-            allowfullscreen
-            referrerpolicy="no-referrer"
-          ></iframe>
-        </div>
-        <p class="video-meta">
-          Fonte: <span id="video-source"></span>
-        </p>
-      </div>
+  <!-- Modal generico -->
+  <div id="modal-backdrop" class="modal-backdrop hidden">
+    <div class="modal">
+      <button id="modal-close" class="modal-close" aria-label="Chiudi">&times;</button>
+      <div id="modal-content" class="modal-content"></div>
     </div>
   </div>
 
