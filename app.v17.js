@@ -216,17 +216,13 @@
     if (activeTags.size > 0) {
       const tags = Array.isArray(recipe.tags) ? recipe.tags : []
       if (!tags.length) return false
-      const hasAll = Array.from(activeTags).every(t =>
-        tags.includes(t)
-      )
+      const hasAll = Array.from(activeTags).every(t => tags.includes(t))
       if (!hasAll) return false
     }
 
     if (term) {
       const titleKey = normalizeKey(recipe.title)
-      const ingredientsKey = normalizeKey(
-        (recipe.ingredients || []).join(' ')
-      )
+      const ingredientsKey = normalizeKey((recipe.ingredients || []).join(' '))
       if (!titleKey.includes(term) && !ingredientsKey.includes(term)) {
         return false
       }
@@ -262,9 +258,7 @@
       if (servEl) servEl.textContent = servings ? 'Porzioni: ' + servings : ''
 
       if (btnOpen) {
-        btnOpen.addEventListener('click', () => {
-          openRecipeModal(recipe)
-        })
+        btnOpen.addEventListener('click', () => openRecipeModal(recipe))
       }
 
       if (linkAdd) {
@@ -277,9 +271,7 @@
           btnVideo.disabled = false
           btnVideo.classList.add('enabled')
           btnVideo.textContent = 'Guarda video'
-          btnVideo.addEventListener('click', () => {
-            openVideoModal(vid, title)
-          })
+          btnVideo.addEventListener('click', () => openVideoModal(vid, title))
         } else {
           btnVideo.disabled = true
           btnVideo.classList.remove('enabled')
@@ -355,6 +347,7 @@
     const cuisine = recipe.cuisine || ''
     const url = recipe.url || ''
     const tags = Array.isArray(recipe.tags) ? recipe.tags : []
+    const steps = Array.isArray(recipe.steps) ? recipe.steps.filter(Boolean) : []
 
     if (recipeTitleEl) recipeTitleEl.textContent = title
 
@@ -367,20 +360,30 @@
     if (cost) meta.push('Costo: ' + cost)
     if (category) meta.push('Portata: ' + category)
     if (cuisine) meta.push('Cucina: ' + cuisine)
+    if (recipeMetaEl) recipeMetaEl.textContent = meta.join('  •  ')
 
-    if (recipeMetaEl) {
-      recipeMetaEl.textContent = meta.join('  •  ')
+    // Ingredienti
+    fillList(recipeIngredientsEl, recipe.ingredients, 'Ingredienti non disponibili.')
+
+    // Preparazione, logica professionale
+    recipeStepsEl.innerHTML = ''
+    if (steps.length > 0) {
+      steps.forEach(text => {
+        const li = document.createElement('li')
+        li.textContent = String(text).trim()
+        recipeStepsEl.appendChild(li)
+      })
+    } else if (url) {
+      const li = document.createElement('li')
+      li.textContent = 'Consulta la preparazione sulla ricetta originale.'
+      recipeStepsEl.appendChild(li)
+    } else {
+      const li = document.createElement('li')
+      li.textContent = 'Preparazione non disponibile.'
+      recipeStepsEl.appendChild(li)
     }
 
-    fillList(recipeIngredientsEl, recipe.ingredients, 'Ingredienti non disponibili.')
-    fillList(
-      recipeStepsEl,
-      recipe.steps,
-      url
-        ? 'Consulta la preparazione sulla ricetta originale.'
-        : 'Preparazione non disponibile.'
-    )
-
+    // Tag
     if (tags.length && recipeTagsEl) {
       recipeTagsEl.textContent = 'Tag: ' + tags.join(', ')
       recipeTagsEl.classList.remove('hidden')
@@ -389,6 +392,7 @@
       recipeTagsEl.classList.add('hidden')
     }
 
+    // Link fonte
     if (url) {
       recipeSourceLinkEl.href = url
       recipeSourceLinkEl.classList.remove('hidden')
