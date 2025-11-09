@@ -2,9 +2,10 @@
 // Ricette & Lista Spesa v2
 // Caricamento ricette, mapping video, azioni bottoni
 
-const RECIPES_URL = "recipes-it.json";
-const VIDEO_INDEX_URL = "video_index.resolved.json";
-const SOURCES_URL = "assets/json/sources.json"; // best effort: se manca, ignoriamo
+// === PATH CORRETTI AI JSON ===
+const RECIPES_URL = "assets/json/recipes-it.json";
+const VIDEO_INDEX_URL = "assets/json/video_index.resolved.json";
+const SOURCES_URL = "assets/json/sources.json"; // opzionale: se non c'è lo ignoriamo
 
 let ALL_RECIPES = [];
 let VIDEO_MAP = {};
@@ -14,17 +15,13 @@ document.addEventListener("DOMContentLoaded", init);
 
 async function init() {
   try {
-    const [
-      recipesData,
-      videoIndexData,
-      sourcesData
-    ] = await Promise.all([
+    const [recipesData, videoIndexData, sourcesData] = await Promise.all([
       fetchJSONSafe(RECIPES_URL),
       fetchJSONSafe(VIDEO_INDEX_URL),
       fetchJSONSafe(SOURCES_URL, true) // opzionale
     ]);
 
-    // Normalizza ricette
+    // --- Normalizza ricette ---
     if (Array.isArray(recipesData)) {
       ALL_RECIPES = recipesData;
     } else if (recipesData && Array.isArray(recipesData.recipes)) {
@@ -35,9 +32,8 @@ async function init() {
       return;
     }
 
-    // Normalizza mappa sorgenti (se presente)
+    // --- Normalizza mappa sorgenti (se presente) ---
     if (sourcesData) {
-      // accetto sia array che oggetto
       if (Array.isArray(sourcesData)) {
         SOURCES_MAP = {};
         for (const entry of sourcesData) {
@@ -54,7 +50,7 @@ async function init() {
       }
     }
 
-    // Costruisci mappa video
+    // --- Costruisci mappa video ---
     VIDEO_MAP = buildVideoMap(videoIndexData || []);
 
     console.log("Caricate ricette:", ALL_RECIPES.length);
@@ -111,7 +107,6 @@ function buildVideoMap(data) {
       }
     }
   } else if (typeof data === "object") {
-    // già mappato
     for (const [slug, val] of Object.entries(data)) {
       const yt =
         val.youtubeId ||
@@ -137,7 +132,6 @@ function setupUI() {
     searchInput.addEventListener("input", handleSearch);
   }
 
-  // modal
   const backdrop = document.getElementById("modal-backdrop");
   const closeBtn = document.getElementById("modal-close");
   if (backdrop && closeBtn) {
@@ -178,14 +172,11 @@ function renderRecipes(list) {
     card.dataset.index = index;
     card.dataset.slug = slug;
 
-    // Titolo
     if (titleEl) titleEl.textContent = title;
 
-    // Meta: sorgente se presente
     const src = recipe.source || recipe.sourceName || "";
     if (metaEl) metaEl.textContent = src ? `Fonte: ${src}` : "";
 
-    // Stats basiche
     if (statsEl) {
       statsEl.innerHTML = "";
       const parts = [];
@@ -196,8 +187,6 @@ function renderRecipes(list) {
       if (recipe.difficulty || recipe.difficolta) {
         parts.push(`Diff.: ${recipe.difficulty || recipe.difficolta}`);
       }
-
-      // Prep / cottura se presenti
       if (recipe.prepTime || recipe.prep_time) {
         parts.push(`Prep.: ${recipe.prepTime || recipe.prep_time}`);
       }
@@ -216,12 +205,12 @@ function renderRecipes(list) {
       }
     }
 
-    // Bottone ricetta
+    // Apri ricetta
     if (btnRecipe) {
       btnRecipe.addEventListener("click", () => handleOpenRecipe(index));
     }
 
-    // Bottone video
+    // Video
     if (btnVideo) {
       btnVideo.dataset.slug = slug;
       const hasVideo = !!findVideoForSlug(slug, recipe);
@@ -232,11 +221,10 @@ function renderRecipes(list) {
       );
     }
 
-    // Bottone lista spesa (placeholder)
+    // Lista spesa (placeholder)
     if (btnAdd) {
       btnAdd.addEventListener("click", () => {
         alert("Funzione lista spesa: in sviluppo. (Dati ricetta già pronti)");
-        // qui in futuro: salvataggio in localStorage o backend
       });
     }
 
@@ -261,17 +249,16 @@ function handleSearch(e) {
   }
 
   const filtered = ALL_RECIPES.filter((r) => {
-    const haystack =
-      [
-        r.title,
-        r.slug,
-        r.source,
-        r.sourceName,
-        r.ingredients && r.ingredients.join(" ")
-      ]
-        .filter(Boolean)
-        .join(" ")
-        .toLowerCase();
+    const haystack = [
+      r.title,
+      r.slug,
+      r.source,
+      r.sourceName,
+      r.ingredients && r.ingredients.join(" ")
+    ]
+      .filter(Boolean)
+      .join(" ")
+      .toLowerCase();
     return haystack.includes(q);
   });
 
@@ -309,14 +296,13 @@ function handleOpenRecipe(index) {
       window.open(SOURCES_MAP[recipe.id], "_blank", "noopener");
       return;
     }
-    // alcuni sources.json hanno oggetti nidificati
     if (SOURCES_MAP.sources && SOURCES_MAP.sources[slug]) {
       window.open(SOURCES_MAP.sources[slug], "_blank", "noopener");
       return;
     }
   }
 
-  // 3) fallback intelligente: cerca la ricetta sul web
+  // 3) fallback: ricerca Google
   const query = encodeURIComponent(`${title} ricetta`);
   const url = `https://www.google.com/search?q=${query}`;
   window.open(url, "_blank", "noopener");
@@ -350,14 +336,11 @@ function handleOpenVideo(slug, recipe) {
 function findVideoForSlug(slug, recipe) {
   if (VIDEO_MAP[slug]) return VIDEO_MAP[slug];
 
-  // tenta varianti: slugify titolo se non combacia
   if (recipe && recipe.title) {
     const alt = slugify(recipe.title);
     if (VIDEO_MAP[alt]) return VIDEO_MAP[alt];
   }
 
-  // se la voce del video index aveva lo slug diverso ma stesso titolo,
-  // l'algoritmo di arricchimento dovrebbe già averlo gestito.
   return null;
 }
 
