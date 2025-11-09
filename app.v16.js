@@ -38,7 +38,7 @@
       fetch(videoUrl).then(r => (r.ok ? r.json() : []))
     ])
       .then(([recipesData, videoData]) => {
-        recipes = Array.isArray(recipesData) ? recipesData : []
+        recipes = normalizeRecipes(recipesData)
         videoIndex = buildVideoIndex(videoData)
         console.log('Caricate ricette:', recipes.length)
         console.log('Video indicizzati:', Object.keys(videoIndex).length)
@@ -55,6 +55,41 @@
       return url + '&v=' + stamp
     }
     return url + '?v=' + stamp
+  }
+
+  // Rende compatibile qualsiasi formato ragionevole di recipes-it.json
+  function normalizeRecipes (data) {
+    if (Array.isArray(data)) {
+      return data
+    }
+
+    if (!data || typeof data !== 'object') {
+      console.warn('recipes-it.json non è un oggetto valido')
+      return []
+    }
+
+    if (Array.isArray(data.recipes)) {
+      return data.recipes
+    }
+
+    if (Array.isArray(data.items)) {
+      return data.items
+    }
+
+    // Cerca automaticamente il primo array "sensato"
+    const keys = Object.keys(data)
+    for (const k of keys) {
+      const v = data[k]
+      if (Array.isArray(v) && v.length > 0 && typeof v[0] === 'object') {
+        if ('title' in v[0] || 'name' in v[0] || 'url' in v[0]) {
+          console.log('Usata chiave array per ricette:', k)
+          return v
+        }
+      }
+    }
+
+    console.warn('Formato recipes-it.json non riconosciuto, nessuna ricetta estratta')
+    return []
   }
 
   function buildVideoIndex (raw) {
