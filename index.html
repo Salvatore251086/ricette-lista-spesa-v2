@@ -4,12 +4,10 @@
   <meta charset="UTF-8" />
   <title>Ricette &amp; Lista Spesa</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <meta
     name="description"
     content="Raccolta ricette con ricerca veloce, lista spesa integrata e video YouTube proposti."
   />
-
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -33,11 +31,11 @@
       </div>
     </section>
 
-    <!-- Container dove verranno inserite le card -->
+    <!-- Griglia ricette -->
     <section id="recipes-container" class="recipes-grid"></section>
   </main>
 
-  <!-- Template invisibile per la card di una ricetta -->
+  <!-- Template card ricetta -->
   <template id="recipe-card-template">
     <article class="recipe-card" data-id="" data-slug="">
       <div class="recipe-header">
@@ -72,7 +70,45 @@
     </article>
   </template>
 
-  <!-- Modale per video YouTube -->
+  <!-- Modale dettagli ricetta -->
+  <div id="recipe-modal" class="modal" hidden>
+    <div class="modal-backdrop" data-close="1"></div>
+    <div class="modal-dialog">
+      <header class="modal-header">
+        <h2 id="recipe-modal-title">Dettaglio ricetta</h2>
+        <button class="modal-close" aria-label="Chiudi" data-close="1">&times;</button>
+      </header>
+      <div class="modal-body">
+        <p class="recipe-modal-source">
+          Fonte: <span id="recipe-modal-source"></span>
+        </p>
+
+        <ul class="recipe-modal-meta">
+          <li><strong>Porzioni:</strong> <span id="recipe-modal-servings"></span></li>
+          <li><strong>Prep:</strong> <span id="recipe-modal-prep"></span></li>
+          <li><strong>Cottura:</strong> <span id="recipe-modal-cook"></span></li>
+          <li><strong>Difficoltà:</strong> <span id="recipe-modal-diff"></span></li>
+        </ul>
+
+        <div class="recipe-modal-section">
+          <h3>Ingredienti</h3>
+          <ul id="recipe-modal-ingredients"></ul>
+        </div>
+
+        <div class="recipe-modal-section">
+          <h3>Preparazione</h3>
+          <div id="recipe-modal-steps" class="recipe-modal-steps"></div>
+        </div>
+
+        <p id="recipe-modal-link-wrap" class="recipe-modal-link" hidden>
+          Link originale:
+          <a id="recipe-modal-link" href="#" target="_blank" rel="noopener"></a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modale video YouTube -->
   <div id="video-modal" class="modal" hidden>
     <div class="modal-backdrop" data-close="1"></div>
     <div class="modal-dialog">
