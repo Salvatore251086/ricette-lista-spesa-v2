@@ -1,0 +1,25 @@
+{
+  "sources": [
+    {
+      "type": "sitemap",
+      "url": "https://www.cucchiaio.it/sitemap.xml",
+      "country": "IT",
+      "include": ["/ricette/"],
+      "exclude": ["/news/", "/scuola-di-cucina/"]
+    },
+    {
+      "type": "sitemap",
+      "url": "https://www.fattoincasadabenedetta.it/post-sitemap.xml",
+      "country": "IT",
+      "include": ["/ricetta/"],
+      "exclude": []
+    },
+    {
+      "type": "sitemap",
+      "url": "https://www.giallozafferano.it/sitemap.xml",
+      "country": "IT",
+      "include": ["/ricette/"],
+      "exclude": ["/video-ricette/", "/scuola-di-cucina/"]
+    }
+  ]
+}

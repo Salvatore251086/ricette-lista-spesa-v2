@@ -1,0 +1,593 @@
+{
+  "ts": "2025-11-03T19:03:12.380Z",
+  "processed": 400,
+  "ok": 254,
+  "skipped": 0,
+  "failed": 146,
+  "errors": [
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-ribollita-semplice/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-calamarata-bottarga-tonno-zucchine-calamari/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-lesso-dossa/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-lardiata-bucatini-setaro/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-carbonara-pesce/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-ziti-calamari/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/pate-di-fegato-di-coniglio-rognone-e-gelatina-al-limone/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-linguine-cernia-fiori-zucca/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-penne-candele-faella-lorata-zucchine-pomodori-datterini/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/tonno-di-coniglio-cavolo-cappuccio-e-patate-sferificate/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-maccheroni-tosca-zucchine-fiori-bottarga-pecorino/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-mezzemaniche-broccoli-bottarga-tonno-pecorino/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/maccheroni-con-sgombro-e-pomodorini/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-crudo-tonno-cipollotti-pralina-olive-taggiasche/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-cannelloni-broccoli-vellutata-gorgonzola/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-bresaola-limone/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-insalata-russa/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-olive-ripiene-allascolana/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-carpaccio-pesce/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-stuzzichini-salvia/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-bruschetta-pomodoro/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-bagna-cauda/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-ragu-bolognese/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-sugo-carciofi/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-salsa-tonnata/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-sformato-zucca/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-torta-rustica/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-torta-cipolle-allantica/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-pure-cavolfiore/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-spaghettini-salsa-d-uova-mozzarella/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-spaghetti-tonno/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-passatelli-brodo/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/fave-cicoria/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-stracciatella/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-gnocchi-bava/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-pasta-alluovo/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-pasta-al-forno-peperoni/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-orecchiette-broccoli/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-tagliatelle-bolognese/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-orecchiette-cime-rapa/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-risotto-milanese-salto/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-zuppa-pesce-misto/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-pasta-fagioli/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-insalata-farfalle-caprese/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-cappelle-porcini-impanate-fritte/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-abbacchio-romana/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-cotechino-lenticchie/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-coniglio-cacciatora/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-arrosto-maiale-senape/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-spaghetti-carbonara/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-arancini-riso/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-pollo-diavola/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-minestra-orzo-legumi/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-pasta-ceci-toscana/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-vellutata-lenticchie/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-bucatini-salsa-peperoni/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-tagliatelle-funghi/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-risotto-punte-asparagi/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-risotto-salsiccia/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-trota-salmonata-cartoccio-zenzero/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-mozzarelline-fritte/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-filetti-zucchine-fritti-romana/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-polenta/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-focaccia-recco/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-fegato-veneziana/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-gnocco-fritto/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-polpettone-vitello/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-saltimbocca/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-baccala-acciughe/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-carciofi-giudia/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-seppie-piselli/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-crocchette-patate/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-fiori-zucca-fritti-pastella/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-funghi-trifolati/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-frittata-zucchine/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-insalata-arance/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-mozzarella-carrozza/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-insalata-puntarelle/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-peperoni-ammollicati/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-arista-forno/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-spinaci-genovese/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-cipolline-glassate/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-fagiolini-crema-duova/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-pomodori-ripieni-dinsalata-russa/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-pomodori-ripieni-tonno/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-peperoni-arrosto/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/pomodori-ripieni-vegetariani/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-ciambellone-marmorizzato/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-torta-al-cioccolato/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-zabaione/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-arrosto-vitello-latte/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-crema-mascarpone/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-panna-cotta/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-sorbetto-limone-senza-gelatiera/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-fusilli-integrali-seitan-funghi-tofu/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-maccheroncini-wurstel-panna-uova/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-penne-zucca/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-calamarata-crema-ceci/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-pasta-gratinata-lattuga/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-spaghetti-luovo-fritto/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-insalata-penne-tonno-fagiolini/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-penne-con-cavolfiore-viola/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-fileja-allnduja/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-tubetti-caponata-fredda/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-penne-provola/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-penne-melanzane/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-minestra-maritata/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-conchiglie-insalata-olive-nere-verdi/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-orecchiette-cavolfiore-acciughe/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-cannelloni-ortaggi-sorrentina/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-lasagne-carciofi/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-tortellini-pomodoro/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-polpette-melanzane/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-tagliatelle-con-polpette/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-pappardelle-cavolfiori-crema-gorgonzola/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-tagliatelle-fave-calamaretti/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-tagliatelle-mozzarella/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-radicchio-treviso-gratella/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-taglierini-mascarpone-peperoni/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-caponata-classica/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-paglia-fieno/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-polenta-pasticciata-valdostana/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-zuppa-canavese/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-risotto-alla-milanese/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-cozze-gratinate/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-peperonata/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-pasta-fredda-con-zucchine/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-maionese/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-besciamella/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-lasagne-bolognese/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-frittelle-san-giuseppe/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-pastiera-napoletana/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-tiramisu/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-crema-pasticciera/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-carpaccio/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-manzo-pizzaiola/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-pollo-birra/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-pollo-cacciatora/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-pollo-arrosto/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-salsicce-rape/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-baccala-fritto/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-branzino-cartoccio/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-calamari-fritti/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-insalata-di-polpo-con-patate/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-sardine-ripiene/",
+      "error": "VALIDATION_MIN_FAIL"
+    },
+    {
+      "url": "https://www.cucchiaio.it/ricetta/ricetta-triglie-livornese/",
+      "error": "VALIDATION_MIN_FAIL"
+    }
+  ]
+}

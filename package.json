@@ -1,0 +1,47 @@
+{
+  "name": "ricette-lista-spesa",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "main": "app.v16.js",
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "lint:js": "eslint **/*.js --max-warnings=0",
+    "format": "prettier -w .",
+    "validate:html": "html-validate \"**/*.html\"",
+    "check:sw": "node script/check-sw.js",
+    "check:urls": "node script/check-urls.js",
+    "crawl": "node script/crawl_recipes.mjs",
+    "merge": "node script/merge_recipes.mjs",
+    "ci": "npm ci || npm i",
+    "resolve:yt": "node script/resolve-youtube-ids.mjs"
+  },
+  "devDependencies": {
+    "@lhci/cli": "^0.13.0",
+    "eslint": "^8.57.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.1.1",
+    "html-validate": "^8.7.3",
+    "prettier": "^3.3.3"
+  },
+  "dependencies": {
+    "cheerio": "^1.1.2",
+    "cheerio-select": "^2.1.0",
+    "encoding-sniffer": "^0.2.1",
+    "entities": "^4.5.0",
+    "htmlparser2": "^9.1.0",
+    "iconv-lite": "^0.6.3",
+    "node-fetch": "^3.3.2",
+    "parse5": "^7.3.0",
+    "parse5-htmlparser2-tree-adapter": "^7.1.0",
+    "parse5-parser-stream": "^7.1.2",
+    "undici": "^6.22.0",
+    "whatwg-encoding": "^3.1.1",
+    "whatwg-mimetype": "^4.0.0"
+  }
+}

@@ -1,0 +1,65 @@
+name: Manual Backup
+
+on:
+  workflow_dispatch: {}   # esecuzione solo manuale
+
+permissions:
+  contents: write         # necessario per creare/aggiornare il branch "backups"
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Compute snapshot name
+        id: snap
+        shell: bash
+        run: |
+          SNAP="snapshot-$(date -u +'%Y-%m-%dT%H-%M-%SZ').zip"
+          echo "SNAP=$SNAP" >> "$GITHUB_ENV"
+          echo "SNAP=$SNAP"   # visibile nei log
+
+      - name: Package snapshot
+        shell: bash
+        run: |
+          # Crea lo zip nella root della workspace
+          zip -qr "$SNAP" . \
+            -x ".git/*" \
+               ".github/workflows/*" \
+               "node_modules/*"
+
+          # Verifica che esista davvero
+          ls -lh "$SNAP"
+
+      - name: Prepare backups branch
+        shell: bash
+        run: |
+          # Recupera (o crea) il branch "backups"
+          if git ls-remote --exit-code --heads origin backups; then
+            git fetch origin backups:backups
+            git checkout backups
+          else
+            git checkout --orphan backups
+            git rm -rf .
+          fi
+          mkdir -p archives
+
+      - name: Move archive
+        shell: bash
+        run: |
+          mv "$SNAP" archives/
+          ls -lh archives/
+
+      - name: Commit & push
+        shell: bash
+        run: |
+          git add archives/"$SNAP"
+          git -c user.name="github-actions" \
+              -c user.email="actions@github.com" \
+              commit -m "Backup $SNAP" || echo "Nessuna modifica da committare"
+          git push origin backups
