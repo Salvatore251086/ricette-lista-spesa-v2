@@ -2,80 +2,101 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
+  <title>Ricette &amp; Lista Spesa</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ricette & Lista Spesa</title>
 
-  <meta name="description" content="Raccolta di ricette con lista della spesa integrata e video collegati." />
+  <meta
+    name="description"
+    content="Raccolta ricette con ricerca veloce, lista spesa integrata e video YouTube proposti."
+  />
+
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
+  <header class="app-header">
+    <div class="app-header-inner">
       <h1>Ricette &amp; Lista Spesa</h1>
-      <p class="subtitle">
-        Raccolta ricette con ricerca veloce, lista spesa integrata e video proposti.
-      </p>
-
-      <div class="controls">
-        <input
-          id="search-input"
-          type="search"
-          placeholder="Cerca per titolo o ingrediente"
-          aria-label="Cerca per titolo o ingrediente"
-        />
-        <span id="recipes-count" class="recipes-count">
-          Ricette visibili: -
-        </span>
-      </div>
+      <p>Raccolta ricette con ricerca veloce, lista spesa integrata e video proposti.</p>
     </div>
   </header>
 
-  <main class="site-main">
-    <div class="container">
-      <section id="recipes-container" class="recipes-grid" aria-live="polite">
-        <!-- Le card ricetta vengono inserite via JS -->
-      </section>
-    </div>
+  <main class="app-main">
+    <section class="search-bar-wrap">
+      <input
+        id="search-input"
+        type="search"
+        placeholder="Cerca per titolo o ingrediente"
+        autocomplete="off"
+      />
+      <div class="search-meta">
+        <span>Ricette visibili: <span id="visible-count">-</span></span>
+      </div>
+    </section>
+
+    <!-- Container dove verranno inserite le card -->
+    <section id="recipes-container" class="recipes-grid"></section>
   </main>
 
-  <!-- Template card ricetta -->
+  <!-- Template invisibile per la card di una ricetta -->
   <template id="recipe-card-template">
-    <article class="recipe-card">
-      <div class="recipe-card__body">
+    <article class="recipe-card" data-id="" data-slug="">
+      <div class="recipe-header">
         <h3 class="recipe-title"></h3>
         <p class="recipe-source"></p>
       </div>
-      <div class="recipe-card__actions">
-        <button class="btn btn-primary btn-open-recipe" type="button">
-          Apri ricetta
-        </button>
-        <button class="btn btn-video btn-open-video" type="button">
-          Video
-        </button>
-        <button class="btn btn-ghost btn-add-list" type="button">
-          Aggiungi alla lista spesa
-        </button>
+
+      <ul class="recipe-meta">
+        <li>
+          <span class="label">Porzioni:</span>
+          <span class="value recipe-servings"></span>
+        </li>
+        <li>
+          <span class="label">Prep:</span>
+          <span class="value recipe-prep"></span>
+        </li>
+        <li>
+          <span class="label">Cottura:</span>
+          <span class="value recipe-cook"></span>
+        </li>
+        <li>
+          <span class="label">Diff.:</span>
+          <span class="value recipe-diff"></span>
+        </li>
+      </ul>
+
+      <div class="recipe-actions">
+        <button class="btn btn-primary btn-open-recipe">Apri ricetta</button>
+        <button class="btn btn-secondary btn-open-video" disabled>Video n/d</button>
+        <button class="btn btn-ghost btn-add-list">Aggiungi alla lista spesa</button>
       </div>
     </article>
   </template>
 
-  <!-- Modale generica -->
-  <div id="modal" class="modal" aria-hidden="true">
-    <div class="modal__backdrop" data-close-modal></div>
-    <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-      <header class="modal__header">
-        <h2 id="modal-title" class="modal__title"></h2>
-        <button id="modal-close" class="modal__close" type="button" aria-label="Chiudi">
-          ✕
-        </button>
+  <!-- Modale per video YouTube -->
+  <div id="video-modal" class="modal" hidden>
+    <div class="modal-backdrop" data-close="1"></div>
+    <div class="modal-dialog">
+      <header class="modal-header">
+        <h2 id="video-modal-title">Video ricetta</h2>
+        <button class="modal-close" aria-label="Chiudi" data-close="1">&times;</button>
       </header>
-      <div id="modal-body" class="modal__body">
-        <!-- Contenuto dinamico -->
+      <div class="modal-body">
+        <div class="video-frame-wrap">
+          <iframe
+            id="video-frame"
+            src=""
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer"
+          ></iframe>
+        </div>
+        <p class="video-meta">
+          Fonte: <span id="video-source"></span>
+        </p>
       </div>
     </div>
   </div>
 
-  <!-- Script logica -->
   <script src="app.v16.js"></script>
 </body>
 </html>
