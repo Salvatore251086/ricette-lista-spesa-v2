@@ -1,130 +1,68 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ricette & Lista Spesa</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#ffffff">
-  <link rel="manifest" href="manifest.webmanifest">
-  <link rel="icon" href="favicon.ico">
-  <link rel="apple-touch-icon" href="favicon.ico">
-  <link rel="preload" href="styles.css" as="style">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="app-header">
-    <div class="logo-title">
-      <div class="logo-circle">R</div>
-      <div class="title-wrap">
-        <h1>Ricette & Lista Spesa</h1>
-        <p class="subtitle">Trova ricette affidabili e prepara la spesa in pochi secondi</p>
-      </div>
-    </div>
-    <button id="open-demo" class="btn-primary">Apri App Demo</button>
+  <header class="site-header">
+    <h1>Ricette &amp; Lista Spesa</h1>
+    <p class="site-subtitle">
+      Ricettario con lista della spesa integrata e video collegati.
+    </p>
   </header>
 
-  <main id="app" class="app-layout">
-    <section class="panel search-panel">
-      <label for="search-input" class="label">Cerca ricette</label>
-      <input id="search-input" type="search" placeholder="Inserisci ingrediente o nome ricetta">
-      <div id="tag-chips" class="chips-row">
-        <button class="chip chip-active" data-tag="all">Tutte</button>
-        <button class="chip" data-tag="primo">Primi</button>
-        <button class="chip" data-tag="secondo">Secondi</button>
-        <button class="chip" data-tag="dolce">Dolci</button>
-        <button class="chip" data-tag="veloce">Veloci</button>
-        <button class="chip" data-tag="light">Light</button>
+  <main class="site-main">
+    <section class="recipes-section">
+      <div class="recipes-toolbar">
+        <input
+          id="search-input"
+          type="search"
+          placeholder="Cerca per titolo o ingrediente..."
+          class="search-input"
+        />
+        <span id="recipes-count" class="recipes-count"></span>
       </div>
-      <div class="search-actions">
-        <button id="btn-suggest" class="btn-secondary">Suggerisci ricette dai miei ingredienti</button>
-        <button id="btn-camera" class="btn-ghost">Apri OCR / Fotocamera</button>
-        <button id="btn-refresh-data" class="btn-ghost">Aggiorna dati</button>
-      </div>
-      <textarea id="ingredients-input" class="ingredients-box" placeholder="Incolla qui la lista ingredienti o lo scontrino"></textarea>
-    </section>
 
-    <section class="panel recipes-panel">
-      <div class="panel-header">
-        <h2>Ricette verificate</h2>
-        <span id="recipes-count" class="meta"></span>
-      </div>
-      <div id="recipes-list" class="recipes-list"></div>
-    </section>
-
-    <section class="panel suggest-panel">
-      <div class="panel-header">
-        <h2>Risultati suggeriti</h2>
-        <span id="suggest-count" class="meta"></span>
-      </div>
-      <div id="suggest-list" class="recipes-list"></div>
+      <div id="recipes-container" class="recipes-grid"></div>
     </section>
   </main>
 
-  <section id="camera-panel" class="camera-panel hidden">
-    <div class="camera-header">
-      <h2>OCR / Fotocamera</h2>
-      <button id="btn-close-camera" class="btn-ghost">Chiudi</button>
-    </div>
-    <div class="camera-body">
-      <video id="camera-stream" autoplay playsinline class="camera-view"></video>
-      <canvas id="camera-canvas" class="hidden"></canvas>
-      <div class="camera-actions">
-        <button id="btn-capture" class="btn-primary">Scatta</button>
-        <label class="btn-secondary">
-          Carica immagine
-          <input id="file-upload" type="file" accept="image/*" hidden>
-        </label>
-      </div>
-      <p id="ocr-output" class="ocr-output"></p>
-    </div>
-  </section>
-
-  <div id="video-modal" class="modal hidden">
-    <div class="modal-backdrop" id="video-modal-backdrop"></div>
-    <div class="modal-content">
-      <button id="video-modal-close" class="modal-close">×</button>
-      <div id="video-modal-body"></div>
-      <p id="video-fallback-msg" class="meta hidden">
-        Se il video non parte entro 2 secondi si aprirà in una nuova scheda.
-      </p>
-    </div>
-  </div>
-
+  <!-- Template card ricetta -->
   <template id="recipe-card-template">
     <article class="recipe-card">
       <div class="recipe-img-wrap">
-        <img class="recipe-img" alt="">
+        <img class="recipe-img" alt="" loading="lazy" />
       </div>
       <div class="recipe-body">
         <h3 class="recipe-title"></h3>
         <p class="recipe-source"></p>
-        <p class="recipe-tags"></p>
+        <div class="recipe-tags"></div>
         <div class="recipe-actions">
-          <button class="btn-primary btn-open-recipe">Apri ricetta</button>
-          <button class="btn-secondary btn-open-video">Video</button>
-          <button class="btn-ghost btn-add-list">Aggiungi alla lista spesa</button>
+          <button class="btn btn-primary btn-open-recipe">
+            Apri ricetta
+          </button>
+          <button class="btn btn-secondary btn-open-video">
+            Video
+          </button>
+          <button class="btn btn-ghost btn-add-list">
+            Aggiungi alla lista spesa
+          </button>
         </div>
       </div>
     </article>
   </template>
 
+  <!-- Modale generica -->
+  <div id="modal-overlay" class="modal-overlay hidden">
+    <div class="modal">
+      <button class="modal-close" aria-label="Chiudi">&times;</button>
+      <div id="modal-content" class="modal-content"></div>
+    </div>
+  </div>
+
   <script src="app.v16.js"></script>
-  <script>
-    if (location.search.indexOf('nocache=1') !== -1 && 'serviceWorker' in navigator) {
-      navigator.serviceWorker.getRegistrations().then(function (list) {
-        list.forEach(function (r) { r.unregister() })
-      })
-      if (window.caches && caches.keys) {
-        caches.keys().then(function (keys) {
-          keys.forEach(function (k) { caches.delete(k) })
-        })
-      }
-    }
-    if ('serviceWorker' in navigator && location.search.indexOf('nosw=1') === -1) {
-      window.addEventListener('load', function () {
-        navigator.serviceWorker.register('service-worker.js').catch(function () {})
-      })
-    }
-  </script>
 </body>
 </html>
