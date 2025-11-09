@@ -300,7 +300,7 @@
       const title = recipe.title || 'Ricetta senza titolo'
       titleEl.textContent = title
 
-      const diff = recipe.difficulty || recipe.diff || ''
+      const diff = recipe.difficulty || recipe.diff || recipe.level || ''
       diffEl.textContent = diff ? 'Diff: ' + diff : ''
 
       const servings =
@@ -405,45 +405,75 @@
     }
 
     const title = recipe.title || 'Ricetta senza titolo'
-    const diff = recipe.difficulty || recipe.diff || ''
+
+    const diff =
+      recipe.difficulty ||
+      recipe.diff ||
+      recipe.level ||
+      recipe.difficultyName ||
+      ''
+
     const servings =
-      recipe.servings || recipe.portions || recipe.porzioni || ''
+      recipe.servings ||
+      recipe.portions ||
+      recipe.porzioni ||
+      ''
+
     const prepTime =
       recipe.prepTime ||
       recipe.prep_time ||
       recipe.tempoPreparazione ||
       recipe.tempo_preparazione ||
+      recipe.preparationTime ||
       ''
+
     const cookTime =
       recipe.cookTime ||
       recipe.cook_time ||
       recipe.tempoCottura ||
       recipe.tempo_cottura ||
       ''
+
     const totalTime =
       recipe.totalTime ||
       recipe.total_time ||
       recipe.tempoTotale ||
       recipe.tempo_totale ||
+      recipe.readyInMinutes ||
       ''
+
     const cost =
       recipe.cost ||
       recipe.costo ||
+      recipe.priceCategory ||
       ''
-    const difficultyAlt = recipe.level || recipe.livello || ''
-    const url = recipe.url || recipe.link || ''
+
     const category =
-      recipe.category || recipe.categoria || recipe.portata || ''
+      recipe.category ||
+      recipe.categoria ||
+      recipe.portata ||
+      ''
+
     const cuisine =
-      recipe.cuisine || recipe.cucina || ''
+      recipe.cuisine ||
+      recipe.cucina ||
+      ''
+
     const author =
-      recipe.author || recipe.autore || ''
+      recipe.author ||
+      recipe.autore ||
+      ''
+
+    const url =
+      recipe.url ||
+      recipe.link ||
+      recipe.sourceUrl ||
+      ''
 
     recipeTitleEl.textContent = title
 
     const metaParts = []
-    const diffVal = diff || difficultyAlt
-    if (diffVal) metaParts.push('Difficoltà: ' + diffVal)
+    if (diff) metaParts.push('Difficoltà: ' + diff)
     if (servings) metaParts.push('Porzioni: ' + servings)
     if (prepTime) metaParts.push('Prep: ' + prepTime)
     if (cookTime) metaParts.push('Cottura: ' + cookTime)
@@ -465,7 +495,9 @@
       recipe.steps ||
       recipe.preparazione ||
       recipe.directions ||
-      recipe.istruzioni
+      recipe.istruzioni ||
+      recipe.method ||
+      recipe.metodo
 
     fillList(
       recipeStepsEl,
@@ -475,11 +507,12 @@
         : 'Preparazione non disponibile.'
     )
 
-    const tags = Array.isArray(recipe.tags)
+    const tagsArr = Array.isArray(recipe.tags)
       ? recipe.tags.filter(Boolean)
       : []
-    if (tags.length) {
-      recipeTagsEl.textContent = 'Tag: ' + tags.join(', ')
+
+    if (tagsArr.length) {
+      recipeTagsEl.textContent = 'Tag: ' + tagsArr.join(', ')
       recipeTagsEl.classList.remove('hidden')
     } else {
       recipeTagsEl.textContent = ''
