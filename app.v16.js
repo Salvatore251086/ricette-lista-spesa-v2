@@ -22,6 +22,15 @@
   const videoErrorEl = document.getElementById('video-error')
   const closeVideoModalBtn = document.getElementById('close-video-modal')
 
+  const recipeModalBackdrop = document.getElementById('recipe-modal-backdrop')
+  const recipeModal = document.getElementById('recipe-modal')
+  const recipeTitleEl = document.getElementById('recipe-modal-title')
+  const recipeMetaEl = document.getElementById('recipe-meta')
+  const recipeIngredientsEl = document.getElementById('recipe-ingredients')
+  const recipeStepsEl = document.getElementById('recipe-steps')
+  const recipeSourceLinkEl = document.getElementById('recipe-source-link')
+  const closeRecipeModalBtn = document.getElementById('close-recipe-modal')
+
   init()
 
   function init () {
@@ -57,7 +66,6 @@
     return url + '?v=' + stamp
   }
 
-  // Rende compatibile qualsiasi formato ragionevole di recipes-it.json
   function normalizeRecipes (data) {
     if (Array.isArray(data)) {
       return data
@@ -76,7 +84,6 @@
       return data.items
     }
 
-    // Cerca automaticamente il primo array "sensato"
     const keys = Object.keys(data)
     for (const k of keys) {
       const v = data[k]
@@ -214,9 +221,22 @@
       })
     }
 
+    if (closeRecipeModalBtn) {
+      closeRecipeModalBtn.addEventListener('click', closeRecipeModal)
+    }
+
+    if (recipeModalBackdrop) {
+      recipeModalBackdrop.addEventListener('click', e => {
+        if (e.target === recipeModalBackdrop) {
+          closeRecipeModal()
+        }
+      })
+    }
+
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
         closeVideoModal()
+        closeRecipeModal()
       }
     })
   }
@@ -287,11 +307,8 @@
         recipe.servings || recipe.portions || recipe.porzioni
       servEl.textContent = servings ? 'Porzioni: ' + servings : ''
 
-      const url = recipe.url || recipe.link || ''
       btnOpen.addEventListener('click', () => {
-        if (url) {
-          window.open(url, '_blank', 'noopener')
-        }
+        openRecipeModal(recipe)
       })
 
       linkAdd.addEventListener('click', () => {
@@ -378,9 +395,102 @@
   }
 
   function closeVideoModal () {
-    videoFrameEl.src = ''
-    videoErrorEl.classList.add('hidden')
-    modalBackdrop.classList.add('hidden')
-    videoModal.classList.add('hidden')
+    if (videoFrameEl) {
+      videoFrameEl.src = ''
+    }
+    if (videoErrorEl) {
+      videoErrorEl.classList.add('hidden')
+    }
+    if (modalBackdrop) {
+      modalBackdrop.classList.add('hidden')
+    }
+    if (videoModal) {
+      videoModal.classList.add('hidden')
+    }
+  }
+
+  function openRecipeModal (recipe) {
+    if (!recipeModalBackdrop || !recipeModal || !recipe) {
+      const url = recipe && (recipe.url || recipe.link)
+      if (url) {
+        window.open(url, '_blank', 'noopener')
+      }
+      return
+    }
+
+    const title = recipe.title || 'Ricetta senza titolo'
+    const diff = recipe.difficulty || recipe.diff || ''
+    const servings =
+      recipe.servings || recipe.portions || recipe.porzioni || ''
+    const url = recipe.url || recipe.link || ''
+
+    recipeTitleEl.textContent = title
+
+    const metaParts = []
+    if (diff) metaParts.push('Difficoltà: ' + diff)
+    if (servings) metaParts.push('Porzioni: ' + servings)
+    recipeMetaEl.textContent = metaParts.join('  •  ')
+
+    fillList(recipeIngredientsEl, recipe.ingredients || recipe.ingredienti)
+    fillList(
+      recipeStepsEl,
+      recipe.steps ||
+        recipe.preparazione ||
+        recipe.directions ||
+        recipe.istruzioni
+    )
+
+    if (url) {
+      recipeSourceLinkEl.href = url
+      recipeSourceLinkEl.classList.remove('hidden')
+    } else {
+      recipeSourceLinkEl.classList.add('hidden')
+    }
+
+    recipeModalBackdrop.classList.remove('hidden')
+    recipeModal.classList.remove('hidden')
+  }
+
+  function fillList (container, data) {
+    container.innerHTML = ''
+    const items = toArray(data)
+    if (!items.length) {
+      const li = document.createElement(container.tagName === 'OL' ? 'li' : 'li')
+      li.textContent = 'Dato non disponibile.'
+      container.appendChild(li)
+      return
+    }
+    items.forEach(text => {
+      if (!text) return
+      const li = document.createElement('li')
+      li.textContent = String(text).trim()
+      container.appendChild(li)
+    })
+  }
+
+  function toArray (value) {
+    if (!value) return []
+    if (Array.isArray(value)) return value
+    const str = String(value)
+    if (!str.trim()) return []
+    if (str.includes('\n')) {
+      return str.split('\n').map(s => s.trim()).filter(Boolean)
+    }
+    if (str.includes('. ')) {
+      return str.split('. ').map(s => s.trim()).filter(Boolean)
+    }
+    if (str.includes(';')) {
+      return str.split(';').map(s => s.trim()).filter(Boolean)
+    }
+    return [str.trim()]
+  }
+
+  function closeRecipeModal () {
+    if (recipeModalBackdrop) {
+      recipeModalBackdrop.classList.add('hidden')
+    }
+    if (recipeModal) {
+      recipeModal.classList.add('hidden')
+    }
   }
 })()

@@ -196,7 +196,7 @@ body {
   text-align: left;
 }
 
-/* Modale video dedicata, niente conflitti con librerie esterne */
+/* Modale video */
 
 .video-modal-backdrop {
   position: fixed;
@@ -257,6 +257,97 @@ body {
   border: 0;
 }
 
+/* Modale ricetta */
+
+.recipe-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 998;
+}
+
+.recipe-modal {
+  background-color: #ffffff;
+  max-width: 960px;
+  width: 92%;
+  max-height: 92vh;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+}
+
+.recipe-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.recipe-modal-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.recipe-modal-close {
+  border: none;
+  background: none;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  color: #6b7280;
+}
+
+.recipe-modal-close:hover {
+  color: #111827;
+}
+
+.recipe-modal-body {
+  font-size: 14px;
+  color: #374151;
+}
+
+.recipe-meta {
+  margin: 0 0 6px 0;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.recipe-section-title {
+  margin: 8px 0 4px 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.recipe-list {
+  margin: 0 0 4px 16px;
+  padding: 0;
+  font-size: 13px;
+}
+
+.recipe-list li {
+  margin-bottom: 2px;
+}
+
+.recipe-source-link {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 13px;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.recipe-source-link:hover {
+  text-decoration: underline;
+}
+
 .hidden {
   display: none;
 }
@@ -270,5 +361,12 @@ body {
 @media (max-width: 640px) {
   .video-modal iframe {
     height: 240px;
+  }
+
+  .recipe-modal {
+    width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
   }
 }

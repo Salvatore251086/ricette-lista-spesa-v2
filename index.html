@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Ricette & Lista Spesa</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Raccolta ricette con ricerca, lista spesa integrata e video ricetta verificati.">
+  <meta name="description" content="Raccolta ricette con ricerca veloce, lista spesa integrata e video collegati.">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -38,7 +38,7 @@
     </section>
   </main>
 
-  <!-- Modale video dedicata, senza classe "modal" generica -->
+  <!-- Modale video -->
   <div id="modal-backdrop" class="video-modal-backdrop hidden">
     <div id="video-modal" class="video-modal" role="dialog" aria-modal="true" aria-labelledby="video-modal-title">
       <div class="video-modal-header">
@@ -56,6 +56,29 @@
       </div>
       <div id="video-error" class="video-error hidden">
         Problema con il player integrato. Il video si aprirà in una nuova scheda.
+      </div>
+    </div>
+  </div>
+
+  <!-- Modale ricetta -->
+  <div id="recipe-modal-backdrop" class="recipe-modal-backdrop hidden">
+    <div id="recipe-modal" class="recipe-modal" role="dialog" aria-modal="true" aria-labelledby="recipe-modal-title">
+      <div class="recipe-modal-header">
+        <h2 id="recipe-modal-title" class="recipe-modal-title"></h2>
+        <button id="close-recipe-modal" class="recipe-modal-close" aria-label="Chiudi ricetta">×</button>
+      </div>
+      <div class="recipe-modal-body">
+        <p id="recipe-meta" class="recipe-meta"></p>
+
+        <h3 class="recipe-section-title">Ingredienti</h3>
+        <ul id="recipe-ingredients" class="recipe-list"></ul>
+
+        <h3 class="recipe-section-title">Preparazione</h3>
+        <ol id="recipe-steps" class="recipe-list"></ol>
+
+        <a id="recipe-source-link" class="recipe-source-link hidden" href="#" target="_blank" rel="noopener">
+          Vai alla ricetta originale
+        </a>
       </div>
     </div>
   </div>
