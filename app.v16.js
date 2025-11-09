@@ -1,7 +1,7 @@
 (function () {
   // --- Config ---------------------------------------------------------
 
-  const RECIPES_URL = "recipes-it.json"; // già esposto in root
+  const RECIPES_URL = "assets/json/recipes-it.json";
   const VIDEO_INDEX_URL = "assets/json/video_index.resolved.json";
 
   // --- Stato ----------------------------------------------------------
