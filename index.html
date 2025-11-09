@@ -1,82 +1,80 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Ricette & Lista Spesa</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Raccolta ricette con ricerca, lista spesa integrata e video ricetta verificati.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="app-header">
-    <div class="app-header-inner">
-      <h1>Ricette &amp; Lista Spesa</h1>
-      <p>Raccolta ricette con ricerca veloce, lista spesa integrata e video proposti.</p>
-
-      <div class="search-row">
-        <input
-          id="search-input"
-          type="search"
-          class="search-input"
-          placeholder="Cerca per titolo o ingrediente"
-          autocomplete="off"
-        />
-        <div class="stats">
-          Ricette visibili:
-          <span id="visible-count">-</span> / <span id="total-count">-</span>
-        </div>
-      </div>
-
-      <div id="error-label" class="error-label" aria-live="polite"></div>
-    </div>
+    <h1>Ricette & Lista Spesa</h1>
+    <p>Raccolta ricette con ricerca veloce, lista spesa e video collegati.</p>
   </header>
 
   <main class="app-main">
-    <section id="recipes-container" class="recipes-grid" aria-live="polite">
-      <!-- Le card vengono iniettate via JS -->
+    <section class="search-bar">
+      <input
+        id="search-input"
+        type="search"
+        placeholder="Cerca per titolo o ingredienti">
+      <span id="recipes-count" class="recipes-count"></span>
+    </section>
+
+    <section id="chips-container" class="chips-container">
+    </section>
+
+    <section class="toolbar">
+      <button id="refresh-data-btn" class="btn-outline">Aggiorna dati</button>
+      <label class="toggle-favorites">
+        <input type="checkbox" id="filter-favorites">
+        <span>Solo preferiti</span>
+      </label>
+    </section>
+
+    <section id="recipes-container" class="recipes-grid">
     </section>
   </main>
 
-  <!-- Template card ricetta -->
-  <template id="recipe-card-template">
-    <article class="recipe-card">
-      <div class="recipe-card-body">
-        <h3 class="recipe-title"></h3>
-        <p class="recipe-meta"></p>
-        <ul class="recipe-notes"></ul>
+  <!-- Modale video dedicata, senza classe "modal" generica -->
+  <div id="modal-backdrop" class="video-modal-backdrop hidden">
+    <div id="video-modal" class="video-modal" role="dialog" aria-modal="true" aria-labelledby="video-modal-title">
+      <div class="video-modal-header">
+        <h2 id="video-modal-title" class="video-modal-title">Video ricetta</h2>
+        <button id="close-video-modal" class="video-modal-close" aria-label="Chiudi video">×</button>
       </div>
-      <div class="recipe-actions">
-        <button class="btn btn-primary btn-open-recipe">Apri ricetta</button>
-        <button class="btn btn-secondary btn-open-video">Guarda video</button>
-        <button class="btn btn-ghost btn-add-list">Aggiungi alla lista spesa</button>
+      <div class="video-modal-body">
+        <iframe
+          id="video-frame"
+          title="Video ricetta"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
       </div>
-    </article>
-  </template>
-
-  <!-- Backdrop modale -->
-  <div id="modal-backdrop" class="modal-backdrop hidden"></div>
-
-  <!-- Modale video -->
-  <div id="video-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="video-modal-title">
-    <div class="modal-inner">
-      <header class="modal-header">
-        <h2 id="video-modal-title" class="modal-title">Video ricetta</h2>
-        <button id="video-modal-close" class="modal-close" aria-label="Chiudi video">&times;</button>
-      </header>
-      <div class="modal-body">
-        <div class="video-wrapper">
-          <iframe
-            id="video-frame"
-            src=""
-            title="Video ricetta"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
-        </div>
+      <div id="video-error" class="video-error hidden">
+        Problema con il player integrato. Il video si aprirà in una nuova scheda.
       </div>
     </div>
   </div>
 
-  <script src="app.v16.js"></script>
+  <template id="recipe-card-template">
+    <article class="recipe-card">
+      <div class="recipe-card-body">
+        <h3 class="recipe-title"></h3>
+        <p class="recipe-diff"></p>
+        <p class="recipe-servings"></p>
+      </div>
+      <div class="recipe-actions">
+        <button class="btn-primary btn-open-recipe">Apri ricetta</button>
+        <button class="btn-secondary btn-video" disabled>Video n/d</button>
+      </div>
+      <button class="link-add">Aggiungi alla lista spesa</button>
+    </article>
+  </template>
+
+  <script src="app.v16.js" defer></script>
 </body>
 </html>
