@@ -365,19 +365,25 @@
     // Ingredienti
     fillList(recipeIngredientsEl, recipe.ingredients, 'Ingredienti non disponibili.')
 
-    // Preparazione, logica professionale
+    // Preparazione con logica pulita
+    if (!recipeStepsEl) return
+
     recipeStepsEl.innerHTML = ''
+
     if (steps.length > 0) {
+      recipeStepsEl.style.listStyleType = 'decimal'
       steps.forEach(text => {
         const li = document.createElement('li')
         li.textContent = String(text).trim()
         recipeStepsEl.appendChild(li)
       })
     } else if (url) {
+      recipeStepsEl.style.listStyleType = 'none'
       const li = document.createElement('li')
       li.textContent = 'Consulta la preparazione sulla ricetta originale.'
       recipeStepsEl.appendChild(li)
     } else {
+      recipeStepsEl.style.listStyleType = 'none'
       const li = document.createElement('li')
       li.textContent = 'Preparazione non disponibile.'
       recipeStepsEl.appendChild(li)
