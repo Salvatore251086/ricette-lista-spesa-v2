@@ -11,24 +11,28 @@
     <div class="app-header-inner">
       <h1>Ricette &amp; Lista Spesa</h1>
       <p>Raccolta ricette con ricerca veloce, lista spesa integrata e video proposti.</p>
+
+      <div class="search-row">
+        <input
+          id="search-input"
+          type="search"
+          class="search-input"
+          placeholder="Cerca per titolo o ingrediente"
+          autocomplete="off"
+        />
+        <div class="stats">
+          Ricette visibili:
+          <span id="visible-count">-</span> / <span id="total-count">-</span>
+        </div>
+      </div>
+
+      <div id="error-label" class="error-label" aria-live="polite"></div>
     </div>
   </header>
 
   <main class="app-main">
-    <section class="toolbar">
-      <input
-        id="search-input"
-        type="search"
-        placeholder="Cerca per titolo o ingrediente"
-        autocomplete="off"
-      />
-      <div class="toolbar-right">
-        <span id="visible-count-label">Ricette visibili: <strong id="visible-count">-</strong></span>
-      </div>
-    </section>
-
-    <section id="recipes-container" class="recipes-grid">
-      <!-- cards generate via JS -->
+    <section id="recipes-container" class="recipes-grid" aria-live="polite">
+      <!-- Le card vengono iniettate via JS -->
     </section>
   </main>
 
@@ -38,36 +42,41 @@
       <div class="recipe-card-body">
         <h3 class="recipe-title"></h3>
         <p class="recipe-meta"></p>
-        <ul class="recipe-stats"></ul>
+        <ul class="recipe-notes"></ul>
       </div>
       <div class="recipe-actions">
         <button class="btn btn-primary btn-open-recipe">Apri ricetta</button>
-        <button class="btn btn-secondary btn-open-video">Video n/d</button>
+        <button class="btn btn-secondary btn-open-video">Guarda video</button>
+        <button class="btn btn-ghost btn-add-list">Aggiungi alla lista spesa</button>
       </div>
-      <button class="btn-add-list">Aggiungi alla lista spesa</button>
     </article>
   </template>
 
-  <!-- Modal generico -->
-  <div id="modal-backdrop" class="modal-backdrop hidden">
-    <div class="modal">
-      <button id="modal-close" class="modal-close" aria-label="Chiudi">&times;</button>
-      <div id="modal-content" class="modal-content"></div>
-    </div>
-  </div>
+  <!-- Backdrop modale -->
+  <div id="modal-backdrop" class="modal-backdrop hidden"></div>
 
-  <script src="app.v16.js"></script>
-  <!-- Modal video -->
-  <div id="modal-backdrop" class="modal-backdrop hidden">
-    <div class="modal-dialog">
-      <button id="modal-close" class="modal-close" aria-label="Chiudi">
-        ✕
-      </button>
-      <div id="modal-content"></div>
+  <!-- Modale video -->
+  <div id="video-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="video-modal-title">
+    <div class="modal-inner">
+      <header class="modal-header">
+        <h2 id="video-modal-title" class="modal-title">Video ricetta</h2>
+        <button id="video-modal-close" class="modal-close" aria-label="Chiudi video">&times;</button>
+      </header>
+      <div class="modal-body">
+        <div class="video-wrapper">
+          <iframe
+            id="video-frame"
+            src=""
+            title="Video ricetta"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
     </div>
   </div>
 
   <script src="app.v16.js"></script>
 </body>
 </html>
-
