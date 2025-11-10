@@ -1,40 +1,52 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ricette & Lista Spesa</title>
-  <link rel="manifest" href="manifest.webmanifest">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="assets/icons/icon-192.png" type="image/png">
+
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="assets/icons/icon-192.png" type="image/png" />
 </head>
+
 <body>
   <header class="app-header">
-   <div class="logo">
-  <img src="assets/icons/icon-192.png" alt="Ricette & Lista Spesa" />
-  <h1>Ricette & Lista Spesa</h1>
-</div>
+    <div class="logo">
+      <img src="assets/icons/icon-192.png" alt="Ricette & Lista Spesa" />
+      <h1>Ricette & Lista Spesa</h1>
+    </div>
     <p>Raccolta curata di ricette, lista spesa intelligente e video selezionati.</p>
   </header>
 
   <main>
     <div class="search-bar">
-      <input id="search" type="text" placeholder="Cerca per titolo o ingredienti" />
+      <input
+        id="search"
+        type="text"
+        placeholder="Cerca per titolo o ingredienti"
+      />
       <button id="updateDataBtn">Aggiorna dati</button>
       <label>
-        <input type="checkbox" id="favoritesToggle">
-        Solo preferiti
+        <input type="checkbox" id="favoritesToggle" /> Solo preferiti
       </label>
       <span id="recipeCount">Ricette visibili: 0</span>
     </div>
 
-    <section id="recipes" class="recipes-grid"></section>
+    <section id="recipes-grid" class="recipes-grid"></section>
   </main>
 
+  <!-- Modal video -->
   <div id="videoModal" class="modal hidden">
     <div class="modal-content">
       <button id="closeVideo" class="close-btn">×</button>
-      <iframe id="videoFrame" src="" frameborder="0" allowfullscreen></iframe>
+      <iframe
+        id="videoFrame"
+        src=""
+        frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
     </div>
   </div>
 
