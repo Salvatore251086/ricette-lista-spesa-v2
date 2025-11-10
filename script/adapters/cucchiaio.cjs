@@ -1,85 +1,191 @@
-// script/adapters/cucchiaio.cjs
-// Adapter per ricette prese da www.cucchiaio.it
+const { JSDOM } = require('jsdom');
 
-const { loadHtml, textList, cleanText } = require("./shared.cjs");
-
-const HOST = "www.cucchiaio.it";
-
-function matches(url) {
-  try {
-    const u = new URL(url);
-    return u.hostname === HOST && u.pathname.includes("/ricetta/");
-  } catch {
-    return false;
-  }
+/**
+ * Utility: testo pulito
+ */
+function t(node) {
+  if (!node) return '';
+  return node.textContent.replace(/\s+/g, ' ').trim();
 }
 
-async function enrich(recipe) {
-  if (!recipe.url || !matches(recipe.url)) {
-    // l'orchestratore gestisce il caso "nessun arricchimento"
-    return recipe;
-  }
-
-  const $ = await loadHtml(recipe.url);
-
-  // Ingredienti: diversi layout possibili, proviamo in ordine
-  const ingredients =
-    textList($, ".recipe-ingredients__list li") ||
-    textList($, ".ingredients-list li") ||
-    textList($, ".scheda-ingredienti li");
-
-  // Passaggi di preparazione
-  const steps =
-    textList($, ".recipe-preparation__steps li") ||
-    textList($, ".recipe-preparation__steps p") ||
-    textList($, ".preparazione-ricetta li") ||
-    textList($, ".preparazione-ricetta p");
-
-  const difficulty = cleanText(
-    $(
-      ".recipe-infos__difficulty, .scheda-ricetta__difficolta, .difficulty"
-    )
-      .first()
-      .text()
+/**
+ * Prova a leggere eventuale JSON-LD di tipo Recipe.
+ */
+function tryJSONLD(doc) {
+  const scripts = Array.from(
+    doc.querySelectorAll('script[type="application/ld+json"]')
   );
 
-  const prepTime = cleanText(
-    $(".recipe-infos__time, .scheda-ricetta__preparazione, .preptime")
-      .first()
-      .text()
-  );
+  for (const s of scripts) {
+    let data;
+    try {
+      data = JSON.parse(s.textContent);
+    } catch {
+      continue;
+    }
 
-  const servings = cleanText(
-    $(".recipe-infos__people, .scheda-ricetta__persone, .servings")
-      .first()
-      .text()
-  );
+    // gestisci sia singolo oggetto che array
+    const items = Array.isArray(data) ? data : [data];
+    const recipe = items.find(
+      (it) =>
+        it &&
+        (it['@type'] === 'Recipe' ||
+          (Array.isArray(it['@type']) && it['@type'].includes('Recipe')))
+    );
 
-  const updated = { ...recipe };
-
-  if (ingredients && ingredients.length) {
-    updated.ingredients = ingredients;
+    if (recipe) {
+      return {
+        title: recipe.name || null,
+        ingredients: recipe.recipeIngredient || [],
+        steps:
+          (recipe.recipeInstructions || [])
+            .map((step) =>
+              typeof step === 'string'
+                ? step
+                : step.text || step.name || ''
+            )
+            .filter(Boolean) || [],
+      };
+    }
   }
 
-  if (steps && steps.length) {
-    updated.steps = steps;
+  return null;
+}
+
+/**
+ * Estrarre ingredienti dall'HTML (fallback quando manca JSON-LD).
+ */
+function extractIngredients(doc) {
+  const headings = Array.from(doc.querySelectorAll('h2,h3,h4,h5'));
+  const ingHeader = headings.find((h) =>
+    /ingredienti/i.test(h.textContent)
+  );
+  if (!ingHeader) return [];
+
+  const ingredients = [];
+  let node = ingHeader.nextElementSibling;
+
+  while (node) {
+    const text = t(node);
+
+    // stop quando arriviamo alla parte di preparazione o altre sezioni
+    if (
+      /come preparare/i.test(text) ||
+      /scopri altre ricette/i.test(text) ||
+      node.matches('h2,h3,h4,h5')
+    ) {
+      break;
+    }
+
+    if (node.matches('ul,ol')) {
+      for (const li of node.querySelectorAll('li')) {
+        const liText = t(li);
+        if (liText) ingredients.push(liText);
+      }
+    }
+
+    node = node.nextElementSibling;
   }
 
-  if (difficulty) updated.difficulty = difficulty;
-  if (prepTime) updated.prepTime = prepTime;
-  if (servings) updated.servings = servings;
+  return ingredients;
+}
 
-  if (!updated.meta) updated.meta = {};
-  updated.meta.cucchiaio = {
-    used: true,
-    url: recipe.url,
+/**
+ * Estrarre steps dalla sezione "Come preparare".
+ */
+function extractSteps(doc) {
+  const headings = Array.from(doc.querySelectorAll('h2,h3,h4,h5'));
+  const prepHeader = headings.find((h) =>
+    /come preparare/i.test(h.textContent)
+  );
+  if (!prepHeader) return [];
+
+  const steps = [];
+  let node = prepHeader.nextElementSibling;
+  let current = [];
+
+  while (node) {
+    const text = t(node);
+
+    if (
+      node.matches('h2,h3,h4,h5') ||
+      /scopri altre ricette/i.test(text)
+    ) {
+      break;
+    }
+
+    if (!text) {
+      node = node.nextElementSibling;
+      continue;
+    }
+
+    // righe che sono solo "1", "2", "3"... separano i passi
+    if (/^\d+$/.test(text)) {
+      if (current.length) {
+        steps.push(current.join(' '));
+        current = [];
+      }
+    } else {
+      current.push(text);
+    }
+
+    node = node.nextElementSibling;
+  }
+
+  if (current.length) steps.push(current.join(' '));
+
+  return steps;
+}
+
+/**
+ * Adapter principale
+ * Input: { url }
+ * Output:
+ *   - null se l'URL non è del Cucchiaio o non riusciamo a leggere niente
+ *   - oggetto con almeno una di: title / ingredients / steps
+ */
+async function enrich({ url }) {
+  if (!url || !url.includes('cucchiaio.it/ricetta/')) {
+    return null;
+  }
+
+  const res = await fetch(url);
+
+  if (!res.ok) {
+    console.error(
+      `[adapter:cucchiaio] HTTP ${res.status} per ${url}`
+    );
+    return null;
+  }
+
+  const html = await res.text();
+  const dom = new JSDOM(html);
+  const { document } = dom.window;
+
+  // 1) tentativo JSON-LD
+  const fromLD = tryJSONLD(document);
+
+  let title = document.querySelector('h1')
+    ? t(document.querySelector('h1'))
+    : fromLD?.title || null;
+
+  let ingredients = fromLD?.ingredients || extractIngredients(document);
+  let steps = fromLD?.steps || extractSteps(document);
+
+  if (!title && !ingredients.length && !steps.length) {
+    console.warn(
+      `[adapter:cucchiaio] Nessun dato utile estratto per ${url}`
+    );
+    return null;
+  }
+
+  return {
+    source: 'cucchiaio',
+    url,
+    ...(title ? { title } : {}),
+    ...(ingredients.length ? { ingredients } : {}),
+    ...(steps.length ? { steps } : {}),
   };
-
-  return updated;
 }
 
-module.exports = {
-  id: "cucchiaio",
-  matches,
-  enrich,
-};
+module.exports = { enrich };
