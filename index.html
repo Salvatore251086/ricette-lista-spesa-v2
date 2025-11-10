@@ -1,105 +1,40 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ricette & Lista Spesa</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Raccolta ricette con ricerca veloce, lista spesa e video collegati.">
-  <link rel="manifest" href="manifest.webmanifest">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="app-header">
-    <h1>Ricette & Lista Spesa</h1>
-    <p>Raccolta ricette con ricerca veloce, lista spesa e video collegati.</p>
-  </header>
+  <h1>Ricette & Lista Spesa</h1>
 
-  <main class="app-main">
-    <section class="search-bar">
-      <input
-        id="search-input"
-        type="search"
-        placeholder="Cerca per titolo o ingredienti">
-      <span id="recipes-count" class="recipes-count"></span>
-    </section>
+  <div class="toolbar">
+    <input id="searchInput" placeholder="Cerca per titolo o ingredienti" />
+    <button id="updateButton">Aggiorna dati</button>
+    <label><input type="checkbox" id="favoriteToggle"> Solo preferiti</label>
+    <span id="visibleCount"></span>
+  </div>
 
-    <section id="chips-container" class="chips-container">
-    </section>
+  <div id="recipesContainer" class="recipes"></div>
 
-    <section class="toolbar">
-      <button id="refresh-data-btn" class="btn-outline">Aggiorna dati</button>
-      <label class="toggle-favorites">
-        <input type="checkbox" id="filter-favorites">
-        <span>Solo preferiti</span>
-      </label>
-    </section>
-
-    <section id="recipes-container" class="recipes-grid">
-    </section>
-  </main>
-
-  <!-- Modale video -->
-  <div id="modal-backdrop" class="video-modal-backdrop hidden">
-    <div id="video-modal" class="video-modal" role="dialog" aria-modal="true" aria-labelledby="video-modal-title">
-      <div class="video-modal-header">
-        <h2 id="video-modal-title" class="video-modal-title">Video ricetta</h2>
-        <button id="close-video-modal" class="video-modal-close" aria-label="Chiudi video">×</button>
-      </div>
-      <div class="video-modal-body">
-        <iframe
-          id="video-frame"
-          title="Video ricetta"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
-      </div>
-      <div id="video-error" class="video-error hidden">
-        Problema con il player integrato. Il video si aprirà in una nuova scheda.
-      </div>
+  <!-- Modale Ricetta -->
+  <div id="recipeModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close" onclick="closeRecipeModal()">&times;</span>
+      <h3 id="modalTitle"></h3>
+      <div id="modalBody"></div>
     </div>
   </div>
 
-  <!-- Modale ricetta -->
-  <div id="recipe-modal-backdrop" class="recipe-modal-backdrop hidden">
-    <div id="recipe-modal" class="recipe-modal" role="dialog" aria-modal="true" aria-labelledby="recipe-modal-title">
-      <div class="recipe-modal-header">
-        <h2 id="recipe-modal-title" class="recipe-modal-title"></h2>
-        <button id="close-recipe-modal" class="recipe-modal-close" aria-label="Chiudi ricetta">×</button>
-      </div>
-      <div class="recipe-modal-body">
-        <p id="recipe-meta" class="recipe-meta"></p>
-
-        <h3 class="recipe-section-title">Ingredienti</h3>
-        <ul id="recipe-ingredients" class="recipe-list"></ul>
-
-        <h3 class="recipe-section-title">Preparazione</h3>
-        <ol id="recipe-steps" class="recipe-list"></ol>
-
-        <p id="recipe-tags" class="recipe-tags"></p>
-
-        <a id="recipe-source-link" class="recipe-source-link hidden" href="#" target="_blank" rel="noopener">
-          Vai alla ricetta originale
-        </a>
-      </div>
+  <!-- Modale Video -->
+  <div id="videoModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close" onclick="closeVideoModal()">&times;</span>
+      <iframe id="videoFrame" width="560" height="315" allowfullscreen></iframe>
     </div>
   </div>
 
-  <template id="recipe-card-template">
-    <article class="recipe-card">
-      <div class="recipe-card-body">
-        <h3 class="recipe-title"></h3>
-        <p class="recipe-diff"></p>
-        <p class="recipe-servings"></p>
-      </div>
-      <div class="recipe-actions">
-        <button class="btn-primary btn-open-recipe">Apri ricetta</button>
-        <button class="btn-secondary btn-video" disabled>Video n/d</button>
-      </div>
-      <button class="link-add">Aggiungi alla lista spesa</button>
-    </article>
-  </template>
-
-  <script src="app.v17.js" defer></script>
+  <script src="app.v17.js"></script>
 </body>
 </html>
