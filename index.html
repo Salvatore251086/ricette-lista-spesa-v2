@@ -2,39 +2,93 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ricette & Lista Spesa</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <h1>Ricette & Lista Spesa</h1>
+  <div class="app-root">
+    <!-- HEADER -->
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-logo">R&S</div>
+        <div class="brand-text">
+          <h1>Ricette &amp; Lista Spesa</h1>
+          <p>Raccolta curata di ricette, lista spesa intelligente e video selezionati.</p>
+        </div>
+      </div>
 
-  <div class="toolbar">
-    <input id="searchInput" placeholder="Cerca per titolo o ingredienti" />
-    <button id="updateButton">Aggiorna dati</button>
-    <label><input type="checkbox" id="favoriteToggle"> Solo preferiti</label>
-    <span id="visibleCount"></span>
-  </div>
+      <div class="toolbar">
+        <div class="search-wrapper">
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="Cerca per titolo o ingredienti"
+            autocomplete="off"
+          />
+        </div>
 
-  <div id="recipesContainer" class="recipes"></div>
+        <button id="updateBtn" class="btn primary">
+          Aggiorna dati
+        </button>
 
-  <!-- Modale Ricetta -->
-  <div id="recipeModal" class="modal hidden">
-    <div class="modal-content">
-      <span class="close" onclick="closeRecipeModal()">&times;</span>
-      <h3 id="modalTitle"></h3>
-      <div id="modalBody"></div>
+        <label class="toggle-favorites">
+          <input id="favoritesOnly" type="checkbox" />
+          <span>Sólo preferiti</span>
+        </label>
+
+        <div class="meta">
+          <span>Ricette visibili: <strong id="visibleCount">0</strong></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+      <!-- dove lo script inietta le card -->
+      <section id="recipesContainer" class="recipes-grid" aria-live="polite">
+        <!-- Popolato da app.v17.js -->
+      </section>
+    </main>
+
+    <!-- MODALE RICETTA -->
+    <div id="recipeModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-backdrop"></div>
+      <div class="modal-dialog">
+        <button class="modal-close" id="closeRecipeModal" aria-label="Chiudi">
+          ✕
+        </button>
+        <div class="modal-body">
+          <h2 id="modalTitle"></h2>
+
+          <div class="modal-meta">
+            <span id="modalServings"></span>
+            <span id="modalSource"></span>
+          </div>
+
+          <div class="modal-columns">
+            <div class="modal-section">
+              <h3>Ingredienti</h3>
+              <ul id="modalIngredients"></ul>
+            </div>
+            <div class="modal-section">
+              <h3>Preparazione</h3>
+              <ol id="modalSteps"></ol>
+            </div>
+          </div>
+
+          <div id="modalVideoWrap" class="modal-video hidden">
+            <h3>Video collegato</h3>
+            <a id="modalVideoLink" href="#" target="_blank" rel="noopener">
+              Guarda il video
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- Modale Video -->
-  <div id="videoModal" class="modal hidden">
-    <div class="modal-content">
-      <span class="close" onclick="closeVideoModal()">&times;</span>
-      <iframe id="videoFrame" width="560" height="315" allowfullscreen></iframe>
-    </div>
-  </div>
-
-  <script src="app.v17.js"></script>
+  <!-- Il tuo script esistente; NON lo tocco -->
+  <script src="./app.v17.js"></script>
 </body>
 </html>
