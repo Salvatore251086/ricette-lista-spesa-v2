@@ -1,172 +1,176 @@
 // script/enrich-from-adapters.cjs
-// Enrichment multi-fonte delle ricette usando adapter per siti ufficiali
+// Arricchimento ricette da fonti ufficiali tramite adapter multipli.
 
-const fs = require("fs")
-const path = require("path")
+const fs = require("fs");
+const path = require("path");
 
-// Setup fetch per gli adapter
-let fetchImpl = null
+// Adapters ufficiali: aggiungi qui man mano che li creiamo
+const cucchiaio = require("./adapters/cucchiaio.cjs");
+// Esempio futuri:
+// const giallozafferano = require("./adapters/giallozafferano.cjs");
+// const fattoincasa = require("./adapters/fattoincasa.cjs");
+// const salepepe = require("./adapters/salepepe.cjs");
 
-try {
-  if (typeof fetch === "function") {
-    fetchImpl = fetch
-  } else {
-    // Node senza fetch globale
-    fetchImpl = require("node-fetch")
+const adapters = [
+  cucchiaio,
+  // giallozafferano,
+  // fattoincasa,
+  // salepepe,
+];
+
+// --- Utility JSON base ------------------------------------------------------
+
+function loadRecipes(inputPath) {
+  const raw = fs.readFileSync(inputPath, "utf8");
+  const data = JSON.parse(raw);
+
+  if (Array.isArray(data)) {
+    return data;
   }
-} catch {
-  fetchImpl = require("node-fetch")
+  if (Array.isArray(data.recipes)) {
+    return data.recipes;
+  }
+
+  throw new Error("Formato recipes-it.json non riconosciuto");
 }
 
-if (typeof global.fetch !== "function") {
-  global.fetch = (...args) => fetchImpl(...args)
-}
-
-// Adapter sorgenti
-const { parseCucchiaio } = require("./adapters/cucchiaio.cjs")
-const { parseGialloZafferano } = require("./adapters/giallozafferano.cjs")
-const { parseBenedetta } = require("./adapters/fattoincasa.cjs")
-const { parseLaCucinaItaliana } = require("./adapters/lacucinaitaliana.cjs")
-const { parseSalePepe } = require("./adapters/salepepe.cjs")
-
-function normalizeUrl(url) {
-  if (!url) return null
-  try {
-    return new URL(url).toString()
-  } catch {
-    return null
-  }
-}
-
-function pickAdapter(url) {
-  const u = normalizeUrl(url)
-  if (!u) return null
-  const hostname = new URL(u).hostname
-
-  if (hostname.includes("cucchiaio.it")) return parseCucchiaio
-  if (hostname.includes("giallozafferano.it")) return parseGialloZafferano
-  if (hostname.includes("fattoincasadabenedetta.it")) return parseBenedetta
-  if (hostname.includes("lacucinaitaliana.it")) return parseLaCucinaItaliana
-  if (hostname.includes("salepepe.it")) return parseSalePepe
-
-  return null
-}
-
-function mergeEnrichment(base, enriched) {
-  if (!enriched || typeof enriched !== "object") return { merged: base, touched: false }
-
-  const result = { ...base }
-  let touched = false
-
-  for (const [key, val] of Object.entries(enriched)) {
-    if (key === "url" || key === "source") continue
-
-    if (val == null) continue
-    if (typeof val === "string" && val.trim() === "") continue
-    if (Array.isArray(val) && val.length === 0) continue
-
-    const current = result[key]
-
-    // Non sovrascrivo valori già presenti con roba vuota o identica
-    if (Array.isArray(val)) {
-      const existing = Array.isArray(current) ? current : []
-      const cleaned = val.map(v => String(v).trim()).filter(v => v)
-      const mergedArr = cleaned.length ? cleaned : existing
-      if (JSON.stringify(mergedArr) !== JSON.stringify(existing)) {
-        result[key] = mergedArr
-        touched = true
-      }
-    } else if (typeof val === "string") {
-      const cleaned = val.trim()
-      if (!current || String(current).trim() === "") {
-        result[key] = cleaned
-        touched = true
-      }
-    } else {
-      if (current == null) {
-        result[key] = val
-        touched = true
-      }
-    }
-  }
-
-  return { merged: result, touched }
-}
-
-async function enrichSingle(recipe, index, total) {
-  if (!recipe || !recipe.url) {
-    return { recipe, touched: false }
-  }
-
-  const adapter = pickAdapter(recipe.url)
-  if (!adapter) {
-    return { recipe, touched: false }
-  }
-
-  try {
-    const enriched = await adapter(recipe.url)
-    const { merged, touched } = mergeEnrichment(recipe, enriched)
-    return { recipe: merged, touched }
-  } catch (err) {
-    console.error(
-      `Errore enrichment [${index + 1}/${total}] ${recipe.url}:`,
-      err.message || err.toString()
-    )
-    return { recipe, touched: false }
-  }
-}
-
-async function run() {
-  const inputPath = path.join(__dirname, "../assets/json/recipes-it.json")
-  const outputPath = path.join(__dirname, "../assets/json/recipes-it.enriched.json")
-
-  const raw = fs.readFileSync(inputPath, "utf8")
-  const data = JSON.parse(raw)
-
-  const recipes = Array.isArray(data.recipes)
-    ? data.recipes
-    : Array.isArray(data)
-    ? data
-    : []
-
-  if (!recipes.length) {
-    throw new Error("Nessuna ricetta valida trovata in recipes-it.json")
-  }
-
-  console.log("Ricette in ingresso:", recipes.length)
-
-  const enriched = []
-  let touchedCount = 0
-
-  for (let i = 0; i < recipes.length; i++) {
-    const base = recipes[i]
-    const { recipe, touched } = await enrichSingle(base, i, recipes.length)
-    enriched.push(recipe)
-    if (touched) touchedCount++
-
-    if ((i + 1) % 10 === 0 || i === recipes.length - 1) {
-      console.log(
-        `Processate ${i + 1} su ${recipes.length} | ricette arricchite finora: ${touchedCount}`
-      )
-    }
-  }
-
+function saveRecipes(outputPath, recipes) {
   const out = {
     schemaVersion: 1,
     generatedAt: new Date().toISOString(),
-    source: "multi-adapter",
-    recipes: enriched
-  }
+    recipes,
+  };
 
-  fs.writeFileSync(outputPath, JSON.stringify(out, null, 2), "utf8")
-
-  console.log("Enrichment completato.")
-  console.log("Ricette totali:", enriched.length)
-  console.log("Ricette con dati arricchiti da fonti ufficiali:", touchedCount)
-  console.log("File scritto:", outputPath)
+  fs.writeFileSync(outputPath, JSON.stringify(out, null, 2), "utf8");
 }
 
-run().catch(err => {
-  console.error("Errore enrichment:", err)
-  process.exit(1)
-})
+// Normalizza i campi URL così gli adapter hanno qualcosa di sensato
+function normalizeRecipeUrl(recipe) {
+  const url =
+    recipe.url ||
+    recipe.link ||
+    recipe.href ||
+    (recipe.sources && recipe.sources[0] && recipe.sources[0].url) ||
+    null;
+
+  if (url && !recipe.url) {
+    recipe.url = url;
+  }
+
+  return recipe.url || null;
+}
+
+// Confronto per capire se l'arricchimento ha realmente cambiato qualcosa
+function snapshotForDiff(r) {
+  return JSON.stringify({
+    ingredients: r.ingredients || [],
+    steps: r.steps || [],
+    difficulty: r.difficulty || null,
+    prepTime: r.prepTime || null,
+    servings: r.servings || null,
+    source: r.source || null,
+  });
+}
+
+// Applica gli adapter in cascata finché uno arricchisce qualcosa
+async function enrichWithAdapters(recipe) {
+  const url = normalizeRecipeUrl(recipe);
+  if (!url) return { recipe, enriched: false, official: false };
+
+  const before = snapshotForDiff(recipe);
+  let current = recipe;
+  let usedOfficial = false;
+
+  for (const adapter of adapters) {
+    try {
+      if (!adapter || typeof adapter.matches !== "function") continue;
+
+      if (!adapter.matches(url)) continue;
+
+      if (typeof adapter.enrich !== "function") continue;
+
+      const after = await adapter.enrich(current);
+
+      // Se l'adapter restituisce qualcosa di falsy, ignora
+      if (!after) continue;
+
+      const afterSnap = snapshotForDiff(after);
+      if (afterSnap !== before) {
+        // Cambiato qualcosa: segna arricchimento e stoppiamo la catena
+        current = after;
+        usedOfficial = true;
+        break;
+      }
+    } catch (err) {
+      console.error(
+        `[enrich-from-adapters] Errore adapter ${adapter.id || "?"} su ${url}:`,
+        err.message
+      );
+    }
+  }
+
+  const finalSnap = snapshotForDiff(current);
+  const enriched = finalSnap !== before;
+
+  // Marca in modo esplicito se deriva da fonte ufficiale
+  if (enriched && usedOfficial) {
+    if (!current.meta) current.meta = {};
+    current.meta.enrichedFromOfficial = true;
+  }
+
+  return { recipe: current, enriched, official: enriched && usedOfficial };
+}
+
+// --- Main -------------------------------------------------------------------
+
+async function main() {
+  const inputPath = path.join(__dirname, "..", "assets", "json", "recipes-it.json");
+  const outputPath = path.join(
+    __dirname,
+    "..",
+    "assets",
+    "json",
+    "recipes-it.enriched.json"
+  );
+
+  const recipes = loadRecipes(inputPath);
+
+  console.log("Enrichment da adapter multi-fonte");
+  console.log("Ricette in ingresso:", recipes.length);
+  console.log("Adapter attivi:", adapters.map(a => a.id).join(", ") || "nessuno");
+
+  const enrichedRecipes = [];
+  let enrichedCount = 0;
+  let officialCount = 0;
+
+  for (let i = 0; i < recipes.length; i++) {
+    const r = recipes[i];
+    const { recipe: newRecipe, enriched, official } =
+      await enrichWithAdapters({ ...r });
+
+    if (enriched) enrichedCount++;
+    if (official) officialCount++;
+
+    enrichedRecipes.push(newRecipe);
+
+    if ((i + 1) % 10 === 0 || i === recipes.length - 1) {
+      process.stdout.write(
+        `\rProcessate ${i + 1} su ${recipes.length} | arricchite finora: ${enrichedCount}`
+      );
+    }
+  }
+
+  console.log("\nEnrichment completato.");
+  console.log("Ricette totali:", enrichedRecipes.length);
+  console.log("Ricette arricchite (qualsiasi fonte adapter):", enrichedCount);
+  console.log("Ricette con dati arricchiti da fonti ufficiali:", officialCount);
+
+  saveRecipes(outputPath, enrichedRecipes);
+
+  console.log("File scritto:", outputPath);
+}
+
+main().catch((err) => {
+  console.error("Errore enrichment globale:", err);
+  process.exit(1);
+});

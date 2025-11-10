@@ -1,67 +1,60 @@
 // script/adapters/shared.cjs
-// Helper condivisi per tutti gli adapter di scraping ricette
+// Helper condivisi per tutti gli adapter multi-fonte.
 
-const cheerio = require("cheerio")
+const cheerio = require("cheerio");
 
-// Usa fetch globale se esiste, altrimenti prova a richiamare node-fetch
-let fetchImpl = null
-
-try {
-  if (typeof fetch === "function") {
-    fetchImpl = fetch
-  } else {
-    fetchImpl = require("node-fetch")
-  }
-} catch {
-  fetchImpl = require("node-fetch")
-}
-
-if (typeof global.fetch !== "function") {
-  global.fetch = (...args) => fetchImpl(...args)
-}
-
-async function fetchHtml(url) {
-  if (!url) {
-    throw new Error("URL mancante in fetchHtml")
-  }
-
-  const res = await fetchImpl(url, {
-    headers: {
-      "User-Agent":
-        "Mozilla/5.0 (compatible; RicetteListaSpesaBot/1.0; +https://github.com/Salvatore251086/ricette-lista-spesa-v2)"
-    },
-    redirect: "follow"
-  })
-
+// Scarica HTML e restituisce l'istanza di cheerio
+async function loadHtml(url) {
+  const res = await fetch(url);
   if (!res.ok) {
-    throw new Error(`Richiesta fallita ${res.status} per ${url}`)
+    throw new Error(`HTTP ${res.status} per ${url}`);
+  }
+  const html = await res.text();
+  return cheerio.load(html);
+}
+
+function cleanText(str) {
+  if (!str) return "";
+  return String(str)
+    .replace(/\u00A0/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+// Estrae testo da un selettore o elemento
+function text($, selectorOrEl) {
+  if (!selectorOrEl) return "";
+  const $el =
+    typeof selectorOrEl === "string" ? $(selectorOrEl) : $(selectorOrEl);
+  return cleanText($el.text());
+}
+
+// Estrae una lista di testi da:
+// - un selettore CSS (stringa)
+// - una collezione cheerio
+function textList($, selectorOrNodes) {
+  const out = [];
+  if (!selectorOrNodes) return out;
+
+  if (typeof selectorOrNodes === "string") {
+    $(selectorOrNodes).each((_, el) => {
+      const t = cleanText($(el).text());
+      if (t) out.push(t);
+    });
+  } else {
+    // collezione cheerio
+    selectorOrNodes.each((_, el) => {
+      const t = cleanText($(el).text());
+      if (t) out.push(t);
+    });
   }
 
-  const html = await res.text()
-  return html
-}
-
-function loadCheerio(html) {
-  return cheerio.load(html)
-}
-
-function cleanText(text) {
-  if (!text) return ""
-  return String(text)
-    .replace(/\s+/g, " ")
-    .trim()
-}
-
-function nonEmptyLines(arr) {
-  if (!Array.isArray(arr)) return []
-  return arr
-    .map(t => cleanText(t))
-    .filter(t => t.length > 0)
+  return out;
 }
 
 module.exports = {
-  fetchHtml,
-  loadCheerio,
+  loadHtml,
   cleanText,
-  nonEmptyLines
-}
+  text,
+  textList,
+};
