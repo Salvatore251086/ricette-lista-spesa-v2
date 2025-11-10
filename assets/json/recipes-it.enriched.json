@@ -1,6 +1,4 @@
 {
-  "schemaVersion": 1,
-  "generatedAt": "2025-11-10T17:27:44.889Z",
   "recipes": [
     {
       "id": "ricetta-senza-titolo",
@@ -47,7 +45,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "polenta-e-baccala-con-cipolla-brasata",
@@ -74,7 +78,13 @@
         "300 g di farina di mais"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "capesante-cavolo-nero-e-maionese-leggera",
@@ -99,7 +109,13 @@
         "focaccia"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "castagnaccio-reggiano",
@@ -126,7 +142,13 @@
         "liquore dolce aromatizzato (facoltativo)"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "zuppa-di-fasolari-e-misticanza-di-verdure",
@@ -156,7 +178,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "spaghetti-alle-vongole-e-bottarga-di-tonno",
@@ -184,7 +212,13 @@
         "spaghetti Senatore Cappelli"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "tagliolini-al-ragu",
@@ -213,7 +247,13 @@
         "Parmigiano Reggiano stagionato"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "filetto-all-aceto-balsamico",
@@ -238,7 +278,13 @@
         "pepe in grani"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "pasta-all-amatriciana-con-variazioni",
@@ -266,7 +312,13 @@
         "rosmarino"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "riso-con-gamberi-e-crema-di-patate-al-curry-dolce",
@@ -294,7 +346,13 @@
         "gola stagionata (di cinta)"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "risotto-all-aceto-balsamico",
@@ -320,7 +378,13 @@
         "Parmigiano Reggiano ben stagionato"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "scampi-sfumati-al-traminer-aromatico-con-zucchine-e-peperoncino",
@@ -346,7 +410,13 @@
         "Traminer aromatico"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "cozze-in-guazzetto-con-crostini-fritti-e-fagiolini-verdi",
@@ -374,7 +444,13 @@
         "pepe nero in grani"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "risotto-alla-zucca-con-crema-di-parmigiano-e-aceto-balsamico",
@@ -403,7 +479,13 @@
         "2 amaretti"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "zuppa-di-fagioli-borlotti-e-ravioli-di-gamberetti",
@@ -431,7 +513,13 @@
         "pepe nero in grani"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "fusilli-con-patate-porri-e-crema-di-zucca",
@@ -461,7 +549,13 @@
         "noce moscata"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "calamarata-con-lampuga-e-olive-nere",
@@ -488,7 +582,13 @@
         "ritagli da 1 kg di Lampuga"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "rigatoni-all-arrabbiata-d-ombrina",
@@ -519,7 +619,13 @@
         "2 cucchiaini di amido di mais"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "coda-di-rospo-in-padella-con-peperoni-in-agrodolce",
@@ -548,7 +654,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "minestra-di-zucchine-zucca-gialla-e-salsiccia-piccante",
@@ -578,7 +690,13 @@
         "pecorino stagionato grattugiato"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "lepre-in-salmi",
@@ -611,7 +729,13 @@
         "2 l di vino rosato"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "torta-sbrisolona-mantovana-con-variazione-di-nocciole",
@@ -640,7 +764,13 @@
         "100 g di zucchero bianco"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "cheesecake-giapponese-con-salsa-di-mango",
@@ -672,7 +802,13 @@
         "1 bicchierino di vino dolce fermo"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "risotto-in-brodo-di-coda-al-valpolicella-ripasso",
@@ -705,7 +841,13 @@
         "1 costa di sedano"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "mazzancolle-al-vapore-con-gazpacho-e-maionese-al-lime",
@@ -733,7 +875,13 @@
         "1 cipollina di Tropea"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "risotto-carnaroli-con-porri-anguilla-e-bottarga-di-orbetello",
@@ -764,7 +912,13 @@
         "anguilla sfumata di Orbetello"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "capesante-con-olio-alla-menta-zucchine-e-pomodorini-all-aceto-balsamico",
@@ -794,7 +948,13 @@
         "olio aromatizzato alla menta"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "tagliatelle-di-farro-con-sugo-di-lepre",
@@ -830,7 +990,13 @@
         "1 uovo +1"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "filetto-di-angus-con-flan-di-cavolfiore",
@@ -860,7 +1026,13 @@
         "besciamella"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "ravioli-d-orata-e-pesto-leggero-con-vongole-veraci-e-capperi",
@@ -892,7 +1064,13 @@
         "aglio"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "risotto-ai-peperoni-con-culaccia-e-crosta-di-parmigiano-reggiano",
@@ -920,7 +1098,13 @@
         "croste di Parmigiano Reggiano"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "paccheri-ripieni-di-cotechino-con-crema-piccante-di-lenticchie",
@@ -947,7 +1131,13 @@
         "paccheri Fratelli Setaro"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "tonno-rosso-in-crosta-di-sesamo-pure-di-topinambur-e-tartare-all-anice-stellato",
@@ -974,7 +1164,13 @@
         "4 fiori di anice stellato"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "filetto-di-maiale-con-pancetta-patate-e-salsa-al-valpolicella",
@@ -1004,7 +1200,13 @@
         "pepe nero in grani"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "stracotto-di-guancia-di-bue-con-polenta",
@@ -1035,7 +1237,13 @@
         "pepe bianco"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "risotto-ai-carciofi-e-taleggio",
@@ -1062,7 +1270,13 @@
         "Parmigiano Reggiano"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "gnocchi-di-zucca-con-ragu-di-fegatini-di-pollo",
@@ -1090,7 +1304,13 @@
         "200 g di fegatini di pollo"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "cotiche-con-fagioli-dell-occhio",
@@ -1124,7 +1344,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "maccheroncini-con-carbonara-alla-majonese",
@@ -1149,7 +1375,13 @@
         "pepe nero egiziano"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "torta-nera-al-cioccolato-con-confettura-di-albicocche-e-lime",
@@ -1181,7 +1413,13 @@
         "2 cubetti di cioccolato fondente"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "tortelli-di-zucca-con-soffritto-al-lardo",
@@ -1213,7 +1451,13 @@
         "noce moscata"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "paccheri-con-guazzetto-di-cozze",
@@ -1242,7 +1486,13 @@
         "sale fiore"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "filetti-di-cernia-con-medaglioni-di-patate-in-padella",
@@ -1270,7 +1520,13 @@
         "1 rametto di rosmarino"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "ombrina-cruda-con-marinatura-piccante-e-zucca",
@@ -1297,7 +1553,13 @@
         "olio evo"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "ossobuco-alla-milanese-in-gremolada",
@@ -1329,7 +1591,13 @@
         "pepe in grani"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "pane-bianco",
@@ -1355,7 +1623,13 @@
         "20 g di strutto"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "asparagi-crudi-con-emulsione-di-pomodoro",
@@ -1381,7 +1655,13 @@
         "pepe nero"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "gamberetti-e-taccole",
@@ -1408,7 +1688,13 @@
         "pepe nero egiziano"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "filetto-di-cavallo-al-sale-e-pane-integrale",
@@ -1436,7 +1722,13 @@
         "sale fiore di Cervia"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "vellutata-di-carciofi-e-fonduta-di-taleggio",
@@ -1467,7 +1759,13 @@
         "12 fette sottili di pane rustico"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "scones-dolci-con-marmellata-di-ribes",
@@ -1491,7 +1789,13 @@
         "scones"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "lasagnette-con-ragu-di-agnello-e-olive",
@@ -1524,7 +1828,13 @@
         "olive taggiasche sottolio"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "tagliatelle-con-melanzane-e-pinoli-tostati",
@@ -1555,7 +1865,13 @@
         "Parmigiano Reggiano stagionato"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "capesante-con-pure-di-fagioli-e-mortadella",
@@ -1582,7 +1898,13 @@
         "pepe nero in grani"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "pollo-alle-mandorle-con-coulis-di-verdure",
@@ -1618,7 +1940,13 @@
         "burro"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "penne-con-pomodorini-e-ricotta-salata",
@@ -1644,7 +1972,13 @@
         "pepe in grani"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "zuppa-di-cipolle-con-grana-e-pesto-al-prezzemolo",
@@ -1672,7 +2006,13 @@
         "Parmigiano Reggiano"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "caponata-in-agrodolce",
@@ -1706,7 +2046,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "carne-cruda-alla-piemontese",
@@ -1734,7 +2080,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "crostini-con-salsiccia-e-stracchino",
@@ -1759,7 +2111,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "prosciutto-crudo-e-fichi-bianchi-e-neri",
@@ -1782,7 +2140,13 @@
         "4 fichi neri"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "finocchi-e-pompelmi-rosa",
@@ -1810,7 +2174,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "prosciutto-crudo-e-melone-giallo",
@@ -1832,7 +2202,13 @@
         "1 melone giallo"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "strudel-di-carciofi-e-zucchine",
@@ -1871,7 +2247,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "tortine-di-cipolle-caramellate",
@@ -1900,7 +2282,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "crostini-alla-toscana",
@@ -1930,7 +2318,13 @@
         "aceto"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "cialde-di-frico",
@@ -1953,7 +2347,13 @@
         "olio"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "tartine-alla-pizzaiola",
@@ -1984,7 +2384,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "salsa-aurora",
@@ -2008,7 +2414,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "salsa-vellutata",
@@ -2033,7 +2445,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "fondi-di-cottura",
@@ -2058,7 +2476,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "burro-chiarificato",
@@ -2079,7 +2503,13 @@
         "1 kg di burro"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "focaccia-e-stracchino",
@@ -2103,7 +2533,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "sformato-di-zucchine",
@@ -2137,7 +2573,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "calzone",
@@ -2165,7 +2607,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "spaghetti-alla-salsa-di-pomodoro",
@@ -2195,7 +2643,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "spaghetti-al-pepe-verde",
@@ -2222,7 +2676,13 @@
         "pepe verde in grani"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "quadrucci-e-piselli-in-brodo",
@@ -2252,7 +2712,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "agnolotti-alla-piemontese",
@@ -2307,7 +2773,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "maccheroni-alla-chitarra-con-polpette",
@@ -2345,7 +2817,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "risotto-porri-zucca-salmone-nocciole",
@@ -2377,7 +2855,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "risotto-alla-valdostana",
@@ -2408,7 +2892,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "risotto-al-radicchio-lungo-di-treviso",
@@ -2437,7 +2927,13 @@
         "pepe bianco"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "pansotti-di-magro",
@@ -2472,7 +2968,13 @@
         "olio"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "bucatini-alla-mozzarella-e-melanzane",
@@ -2501,7 +3003,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "zuppa-di-cozze",
@@ -2539,7 +3047,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": "VIeLzfgX4lU"
+      "videoId": "VIeLzfgX4lU",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "trenette-con-il-pesto",
@@ -2564,7 +3078,13 @@
         "sale."
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "minestrone-alla-genovese",
@@ -2600,7 +3120,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "pizzoccheri-al-bitto-e-casera",
@@ -2633,7 +3159,13 @@
         "Grana Padano grattugiato"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "pizza-alla-pescatora",
@@ -2665,7 +3197,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "cotolette-alla-pizzaiola",
@@ -2694,7 +3232,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "ravioli-di-magro",
@@ -2726,7 +3270,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "coniglio-in-fricassea",
@@ -2753,7 +3303,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "anatra-alla-birra",
@@ -2783,7 +3339,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "costolette-di-agnello-alla-scottadito",
@@ -2807,7 +3369,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "ossibuchi-di-vitello-alla-milanese",
@@ -2847,7 +3415,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "astice-in-insalata-al-succo-di-pompelmo",
@@ -2881,7 +3455,13 @@
         "aceto"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "capesante-al-curry",
@@ -2913,7 +3493,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "acciughe-gratinate",
@@ -2940,7 +3526,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "dentice-al-sale",
@@ -2966,7 +3558,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "coda-di-rospo-farcita",
@@ -2995,7 +3593,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "filetto-di-rombo-con-patate",
@@ -3027,7 +3631,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "insalata-di-gamberi-e-verdure",
@@ -3059,7 +3669,13 @@
         "pepe bianco"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "penne-allo-zafferano",
@@ -3086,7 +3702,13 @@
         "olio"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "spaghetti-al-pomodoro-crudo",
@@ -3113,7 +3735,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "tagliatelle-panna-piselli-e-prosciutto",
@@ -3142,7 +3770,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "tagliolini-al-burro-e-tartufo",
@@ -3169,7 +3803,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "rombo-al-marsala",
@@ -3195,7 +3835,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "pesce-spada-marinato-allo-scalogno-e-basilico",
@@ -3228,7 +3874,13 @@
         "pepe bianco macinato"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "spiedini-di-mare",
@@ -3258,7 +3910,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "spiedini-di-anguilla",
@@ -3284,7 +3942,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "uova-fritte-su-pancarre-dorato-e-burro-d-acciuga",
@@ -3309,7 +3973,13 @@
         "1 dl d'olio"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "polenta-al-gorgonzola",
@@ -3334,7 +4004,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "panzerotti-napoletani",
@@ -3365,7 +4041,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "cima-ripiena",
@@ -3402,7 +4084,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "costolette-valdostane",
@@ -3430,7 +4118,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "cassata-siciliana",
@@ -3466,7 +4160,13 @@
         "frutta candita a piacere"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "bruschette-al-tartufo",
@@ -3489,7 +4189,13 @@
         "olio"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "risi-e-bisi",
@@ -3510,8 +4216,7 @@
         "800 g di piselli",
         "300 g di riso",
         "50 g di pancetta magra o prosciutto crudo",
-        "40 g di parmigiano",
-        "1 litro di brodo",
+        "40 g di Grana Padano grattugiato",
         "1/2 cipolla",
         "prezzemolo",
         "olio",
@@ -3519,7 +4224,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "vitel-tonne",
@@ -3556,7 +4267,13 @@
         "olio"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "alici-marinate",
@@ -3582,7 +4299,13 @@
         "olio"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "capitone-di-natale",
@@ -3609,7 +4332,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "caprese-di-mozzarella-di-bufala",
@@ -3634,7 +4363,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "scampi-marinati",
@@ -3664,7 +4399,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "sarde-in-saor",
@@ -3696,7 +4437,13 @@
         "75 g di vino"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "fondi-di-carciofo-in-tegame",
@@ -3724,7 +4471,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "insalata-di-limoni",
@@ -3750,7 +4503,13 @@
         "1 cucchiaino raso di sale grosso"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "fregula",
@@ -3775,7 +4534,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "polpettone-di-fagiolini",
@@ -3806,7 +4571,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "piselli-con-lattuga",
@@ -3833,7 +4604,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "insalata-di-ovoli-alla-maggiorana",
@@ -3857,7 +4634,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "insalata-di-pollo-con-sedano-rapa",
@@ -3883,7 +4666,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "panzanella-di-verdura",
@@ -3913,7 +4702,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "castagnaccio-alla-pistoiese",
@@ -3941,7 +4736,13 @@
         "1 cucchiaino di sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "crema-fritta",
@@ -3968,7 +4769,13 @@
         "olio"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "millefoglie-alla-crema",
@@ -3998,7 +4805,13 @@
         "100 ml di marsala"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "panettone-dorato",
@@ -4022,7 +4835,13 @@
         "6 cucchiai di cognac"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "tartufi-al-fondente-e-torrone",
@@ -4047,7 +4866,13 @@
         "1 cucchiaio di liquore a scelta"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "fettine-di-vitello-con-capperi-e-succo-di-limone",
@@ -4075,7 +4900,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "spinacino-ai-carciofi",
@@ -4104,7 +4935,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "torta-moka",
@@ -4136,7 +4973,13 @@
         "50 g di ciliegine candite"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "pesche-ripiene",
@@ -4162,7 +5005,13 @@
         "2 tuorli"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "cotolette-di-vitello-al-consumato-di-brodo",
@@ -4190,7 +5039,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "spaghettini-alle-acciughe-e-capperi",
@@ -4215,7 +5070,13 @@
         "olio"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "farfalle-al-mascarpone",
@@ -4244,7 +5105,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "zuppa-di-legumi-e-cicoria",
@@ -4275,7 +5142,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "fusilli-ai-carciofi",
@@ -4307,7 +5180,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "conchigliette-alla-mozzarella",
@@ -4335,7 +5214,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "brodo-di-gallina",
@@ -4360,7 +5245,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "maccheroni-integrali-al-cicorino",
@@ -4389,7 +5280,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "patellette",
@@ -4417,7 +5314,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "lagane-e-ceci",
@@ -4446,7 +5349,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "pasticcio-di-maccheroni",
@@ -4475,7 +5384,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "cavatelli-e-broccoletti",
@@ -4503,7 +5418,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "ruote-alle-zucchine-e-pomodori",
@@ -4531,7 +5452,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "pipe-alla-rucola",
@@ -4558,7 +5485,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "bucatini-con-lo-stocco",
@@ -4587,7 +5520,13 @@
         "peperoncino"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "linguine-ai-ricci-di-mare",
@@ -4614,7 +5553,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "mezzi-rigatoni-con-avocado-e-gorgonzola",
@@ -4641,7 +5586,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "laganedde-con-funghi-e-salsiccia",
@@ -4670,7 +5621,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "conchiglie-ai-filetti-di-trota",
@@ -4699,7 +5656,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "ditali-asparagi-e-fontina",
@@ -4726,7 +5689,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "pennette-ai-carciofi-e-lattuga",
@@ -4753,7 +5722,13 @@
         "pepe bianco"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "orecchiette-piccanti",
@@ -4782,7 +5757,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "maccarruni-al-ragu",
@@ -4815,7 +5796,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "maccheroncini-con-pollo-e-verdure",
@@ -4848,7 +5835,13 @@
         "pepe bianco"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "ruote-al-mais-pancetta-e-spinaci-novelli",
@@ -4875,7 +5868,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "mezze-penne-al-tonno-e-pomodorini",
@@ -4903,7 +5902,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "tagliolini-alla-liquirizia-cime-di-rapa-e-ricotta",
@@ -4932,7 +5937,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "trenette-al-pesto-e-olive-nere",
@@ -4960,7 +5971,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "strozzapreti-ai-calamaretti",
@@ -4990,7 +6007,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "zuppa-di-sedano",
@@ -5020,7 +6043,13 @@
         "fettine di pane casereccio"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "pennette-integrali-piccanti",
@@ -5050,7 +6079,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "minestra-di-zucca",
@@ -5080,7 +6115,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "minestra-di-scarola",
@@ -5106,7 +6147,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "minestra-di-melanzane",
@@ -5135,7 +6182,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "vermicelli-freddi",
@@ -5165,7 +6218,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "gnocchetti-sardi-con-carote-alla-menta",
@@ -5193,7 +6252,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "farfalle-alla-polpa-di-granchio",
@@ -5222,7 +6287,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "ditalini-alla-maionese-e-yogurt",
@@ -5254,7 +6325,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "pennette-e-cannellini",
@@ -5282,7 +6359,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "farfalline-in-insalata",
@@ -5311,7 +6394,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "ravioli-capresi",
@@ -5346,7 +6435,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "capellini-al-profumo-di-limone",
@@ -5374,7 +6469,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "fusilli-alla-robiola",
@@ -5401,7 +6502,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "ditali-spinaci-e-pinoli",
@@ -5431,7 +6538,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "ruote-alla-boscaiola",
@@ -5459,7 +6572,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "timpano-di-rigatoni",
@@ -5496,7 +6615,13 @@
         "2 cucchiai di Grana Padano grattugiato."
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "reginelle-lattughino-e-filetti-di-coniglio",
@@ -5526,7 +6651,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "spaghetti-alla-bottarga-rughetta-e-basilico",
@@ -5553,7 +6684,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "timpano-ripieno",
@@ -5594,7 +6731,13 @@
         "20 g di burro o strutto"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "tortelloni-in-brodo",
@@ -5623,7 +6766,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "cannelloni-alla-piacentina",
@@ -5656,7 +6805,13 @@
         "60 g di burro"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "cannelloni-alla-crema-di-radicchio",
@@ -5681,13 +6836,19 @@
         "40 g di burro",
         "1 tazza di besciamella",
         "2 cucchiai di olio",
-        "2 cucchiai di formaggio grattugiato",
+        "2 cucchiai di formaggio  grattugiato",
         "1 scalogno",
         "sale",
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "cannelloni-alla-napoletana",
@@ -5717,7 +6878,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "ravioli-integrali-con-piselli",
@@ -5750,7 +6917,13 @@
         "prezzemolo"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "zuppa-di-castagne-e-legumi",
@@ -5788,7 +6961,13 @@
         "fette di pane tostato"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "zuppa-di-scarola",
@@ -5819,7 +6998,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "ravioli-alla-bottarga",
@@ -5859,7 +7044,13 @@
         "40 g di bottarga"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "ravioli-al-castelmagno",
@@ -5892,7 +7083,13 @@
         "Grana Padano grattugiato"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "ravioli-di-zucchine-e-mandorle",
@@ -5938,7 +7135,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "anolini-di-parma",
@@ -5978,7 +7181,13 @@
         "parmigiano grattugiato"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "lasagne-ricotta-pomodoro-e-spinaci",
@@ -6006,7 +7215,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "tagliatelle-al-ragu",
@@ -6043,7 +7258,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "tortino-di-taglierini",
@@ -6079,7 +7300,13 @@
         "noce moscata (facoltativa)"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "tagliatelle-paglia-e-fieno-al-sugo-di-fagioli",
@@ -6118,7 +7345,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "fettuccine-al-tartufo",
@@ -6145,7 +7378,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "zuppa-di-canocchie",
@@ -6173,7 +7412,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "orecchiette-con-pomodori-al-forno",
@@ -6202,7 +7447,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "orecchiette-al-petto-di-pollo",
@@ -6234,7 +7485,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "bomba-di-riso",
@@ -6267,7 +7524,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "crostini-di-polenta-al-gorgonzola",
@@ -6293,7 +7556,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "risotto-con-salsiccia-e-balsamico",
@@ -6323,7 +7592,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "crocchette-di-radicchio-rosso",
@@ -6358,7 +7633,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "taglierini-panna-e-prosciutto",
@@ -6387,7 +7668,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "frittedda",
@@ -6417,7 +7704,13 @@
         "zucchero (dipende dal tipo di aceto che si adopera)"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "taglierini-al-tonno",
@@ -6446,7 +7739,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "stracci-alle-vongole",
@@ -6474,7 +7773,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "rotolo-di-spinaci-al-burro-e-salvia",
@@ -6506,7 +7811,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "alici-agli-agrumi",
@@ -6534,7 +7845,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "bigoli-al-brandy",
@@ -6565,7 +7882,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "involtini-di-spada-alla-messinese",
@@ -6600,7 +7923,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "gnocchi-di-ricotta-ed-erbette",
@@ -6629,7 +7958,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "frittelle-di-fontina",
@@ -6653,7 +7988,7 @@
         "200 g di pane raffermo",
         "4-5 cucchiai di pangrattato",
         "2 uova",
-        "1 cucchiaio di erbe aromatiche tritate (prezzemolo, rosmarino, timo)",
+        "1 cucchiaio di erbe aromatiche tritate (prezzemolo,  rosmarino,  timo)",
         "noce moscata",
         "latte",
         "olio",
@@ -6661,7 +7996,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "crostini-al-lardo-di-arnad",
@@ -6683,7 +8024,13 @@
         "8 fette di pane di segale oppure 8 fettine di polenta abbrustolita."
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "frittelle-di-patate",
@@ -6714,7 +8061,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "polenta-pasticciata-con-le-acciughe",
@@ -6742,7 +8095,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "zuppa-di-piselli-con-lattuga",
@@ -6765,13 +8124,19 @@
         "2 lattughe piccole",
         "3 cipolline",
         "3 patate medie",
-        "1 mazzetto di erbe odorose (tra prezzemolo, finocchio, salvia)",
+        "1 mazzetto di erbe odorose (tra prezzemolo,  finocchio,  salvia)",
         "prezzemolo tritato",
         "sale",
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "cannelloni-di-farro-con-peperoni",
@@ -6793,7 +8158,7 @@
         "carne avanzata(pollo e/o maiale e/o coniglio)",
         "1 fetta di prosciutto cotto",
         "Parmigiano Reggiano",
-        "20 g di burro",
+        "20 g  di burro",
         "1 cucchiaio di farina \"00\"",
         "1/2 bicchiere di latte",
         "1 peperone rosso",
@@ -6801,7 +8166,13 @@
         "noce moscata"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "ravioli-integrali-di-coniglio-e-salsa-di-broccoli",
@@ -6839,7 +8210,13 @@
         "burro"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "braciole-di-agnello-con-gelato-di-rape-rosse",
@@ -6866,7 +8243,13 @@
         "1 cucchiaio zucchero"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "sformato-di-spinaci",
@@ -6895,7 +8278,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "salsa-di-pomodoro",
@@ -6921,7 +8310,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "spaghetti-ai-frutti-di-mare-al-cartoccio",
@@ -6954,7 +8349,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "risotto-alle-mandorle-e-arance",
@@ -6987,7 +8388,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "risotto-alle-vongole-veraci",
@@ -7016,7 +8423,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "insalata-di-riso-ai-funghi-e-sedano",
@@ -7045,7 +8458,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "bruschetta",
@@ -7070,7 +8489,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "risotto-alla-certosina",
@@ -7105,7 +8530,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "arrosto-di-vitello-al-parmigiano",
@@ -7136,7 +8567,13 @@
         "pepe abbondante"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "albicocche-al-moscato-panna-e-pistacchi",
@@ -7165,7 +8602,13 @@
         "zucchero a velo"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "baba",
@@ -7208,7 +8651,13 @@
         "2 cucchiai di rum"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "barbajada",
@@ -7234,7 +8683,13 @@
         "panna"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "gubana",
@@ -7276,7 +8731,13 @@
         "1 albume per spennellare"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "pandolce-genovese",
@@ -7306,7 +8767,13 @@
         "un rametto di alloro"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "strudel-alla-frutta-secca",
@@ -7342,7 +8809,13 @@
         "30 g di burro per lucidare lo strudel"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "nodini-al-burro-salvia-e-rosmarino",
@@ -7370,7 +8843,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "piccata-al-marsala",
@@ -7395,7 +8874,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "cosciotto-d-agnello-arrosto",
@@ -7426,7 +8911,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "fegato-al-burro-e-salvia",
@@ -7453,7 +8944,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "pollo-alla-babi",
@@ -7479,7 +8976,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "pollo-in-crosta-di-sale",
@@ -7507,7 +9010,13 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "cappesante-in-salsa-di-zafferano",
@@ -7535,7 +9044,13 @@
         "sale"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "moscardini-alla-ligure",
@@ -7564,11 +9079,17 @@
         "pepe"
       ],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": [
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio",
+        "cucchiaio"
+      ]
     },
     {
       "id": "ricetta-ribollita-semplice",
-      "title": "Ricetta Ribollita semplice",
+      "title": "Ribollita semplice",
       "slug": "ricetta-ribollita-semplice",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-ribollita-semplice/",
       "image": "",
@@ -7583,11 +9104,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-calamarata-con-bottarga-di-tonno-zucchine-e-calamari",
-      "title": "Ricetta Calamarata con bottarga di tonno, zucchine e calamari",
+      "title": "Calamarata con bottarga di tonno, zucchine e calamari",
       "slug": "ricetta-calamarata-con-bottarga-di-tonno-zucchine-e-calamari",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-calamarata-bottarga-tonno-zucchine-calamari/",
       "image": "",
@@ -7602,11 +9124,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "cucchiaio-d-39-argento-ricette-semplici-e-gourmet-con-tante-idee-e-consigli-per-mangiar-bene",
-      "title": "Cucchiaio d&#39;Argento - Ricette semplici e gourmet con tante idee e consigli per mangiar bene",
+      "title": "Ricette Cucchiaio d'Argento",
       "slug": "cucchiaio-d-39-argento-ricette-semplici-e-gourmet-con-tante-idee-e-consigli-per-mangiar-bene",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-lesso-dossa/",
       "image": "",
@@ -7621,11 +9144,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-bucatini-con-il-lardo",
-      "title": "Ricetta Bucatini con il lardo",
+      "title": "Bucatini con il lardo",
       "slug": "ricetta-bucatini-con-il-lardo",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-lardiata-bucatini-setaro/",
       "image": "",
@@ -7640,11 +9164,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-carbonara-di-pesce",
-      "title": "Ricetta Carbonara di pesce",
+      "title": "Carbonara di pesce",
       "slug": "ricetta-carbonara-di-pesce",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-carbonara-pesce/",
       "image": "",
@@ -7659,11 +9184,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-ziti-ai-calamari",
-      "title": "Ricetta Ziti ai calamari",
+      "title": "Ziti ai calamari",
       "slug": "ricetta-ziti-ai-calamari",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-ziti-calamari/",
       "image": "",
@@ -7678,11 +9204,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-pate-di-fegato",
-      "title": "Ricetta Paté di fegato",
+      "title": "Paté di fegato",
       "slug": "ricetta-pate-di-fegato",
       "url": "https://www.cucchiaio.it/ricetta/pate-di-fegato-di-coniglio-rognone-e-gelatina-al-limone/",
       "image": "",
@@ -7697,11 +9224,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-linguine-con-cernia-e-fiori-di-zucca",
-      "title": "Ricetta Linguine con cernia e fiori di zucca",
+      "title": "Linguine con cernia e fiori di zucca",
       "slug": "ricetta-linguine-con-cernia-e-fiori-di-zucca",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-linguine-cernia-fiori-zucca/",
       "image": "",
@@ -7716,11 +9244,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-penne-con-orata-zucchine-e-pomodorini",
-      "title": "Ricetta Penne con orata, zucchine e pomodorini",
+      "title": "Penne con orata, zucchine e pomodorini",
       "slug": "ricetta-penne-con-orata-zucchine-e-pomodorini",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-penne-candele-faella-lorata-zucchine-pomodori-datterini/",
       "image": "",
@@ -7735,7 +9264,8 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricette-di-cucina",
@@ -7754,11 +9284,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-maccheroni-con-bottarga-fiori-di-zucca-e-pecorino",
-      "title": "Ricetta Maccheroni con bottarga, fiori di zucca e pecorino",
+      "title": "Maccheroni con bottarga, fiori di zucca e pecorino",
       "slug": "ricetta-maccheroni-con-bottarga-fiori-di-zucca-e-pecorino",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-maccheroni-tosca-zucchine-fiori-bottarga-pecorino/",
       "image": "",
@@ -7773,11 +9304,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-mezze-maniche-con-broccoli-bottarga-di-tonno-e-pecorino",
-      "title": "Ricetta Mezze maniche con broccoli, bottarga di tonno e pecorino",
+      "title": "Mezze maniche con broccoli, bottarga di tonno e pecorino",
       "slug": "ricetta-mezze-maniche-con-broccoli-bottarga-di-tonno-e-pecorino",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-mezzemaniche-broccoli-bottarga-tonno-pecorino/",
       "image": "",
@@ -7792,11 +9324,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-maccheroni-con-sgombro-e-pomodorini",
-      "title": "Ricetta Maccheroni con sgombro e pomodorini",
+      "title": "Maccheroni con sgombro e pomodorini",
       "slug": "ricetta-maccheroni-con-sgombro-e-pomodorini",
       "url": "https://www.cucchiaio.it/ricetta/maccheroni-con-sgombro-e-pomodorini/",
       "image": "",
@@ -7811,11 +9344,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-tartare-di-tonno-con-cipollotti-e-olive-taggiasche",
-      "title": "Ricetta Tartare di tonno con cipollotti e olive taggiasche",
+      "title": "Tartare di tonno con cipollotti e olive taggiasche",
       "slug": "ricetta-tartare-di-tonno-con-cipollotti-e-olive-taggiasche",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-crudo-tonno-cipollotti-pralina-olive-taggiasche/",
       "image": "",
@@ -7830,11 +9364,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-cannelloni-di-broccoli-e-salsa-al-gorgonzola",
-      "title": "Ricetta Cannelloni di broccoli e salsa al gorgonzola",
+      "title": "Cannelloni di broccoli e salsa al gorgonzola",
       "slug": "ricetta-cannelloni-di-broccoli-e-salsa-al-gorgonzola",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-cannelloni-broccoli-vellutata-gorgonzola/",
       "image": "",
@@ -7849,11 +9384,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-bresaola-al-limone",
-      "title": "Ricetta Bresaola al limone",
+      "title": "Bresaola al limone",
       "slug": "ricetta-bresaola-al-limone",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-bresaola-limone/",
       "image": "",
@@ -7868,11 +9404,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-insalata-russa",
-      "title": "Ricetta Insalata russa",
+      "title": "Insalata russa",
       "slug": "ricetta-insalata-russa",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-insalata-russa/",
       "image": "",
@@ -7887,11 +9424,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-olive-all-ascolana",
-      "title": "Ricetta Olive all’ascolana",
+      "title": "Olive all’ascolana",
       "slug": "ricetta-olive-all-ascolana",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-olive-ripiene-allascolana/",
       "image": "",
@@ -7906,11 +9444,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-carpaccio-di-pesce",
-      "title": "Ricetta Carpaccio di pesce",
+      "title": "Carpaccio di pesce",
       "slug": "ricetta-carpaccio-di-pesce",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-carpaccio-pesce/",
       "image": "",
@@ -7925,11 +9464,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-salvia-fritta",
-      "title": "Ricetta Salvia fritta",
+      "title": "Salvia fritta",
       "slug": "ricetta-salvia-fritta",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-stuzzichini-salvia/",
       "image": "",
@@ -7944,11 +9484,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-bruschette-al-pomodoro",
-      "title": "Ricetta Bruschette al pomodoro",
+      "title": "Bruschette al pomodoro",
       "slug": "ricetta-bruschette-al-pomodoro",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-bruschetta-pomodoro/",
       "image": "",
@@ -7963,11 +9504,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-bagna-cauda",
-      "title": "Ricetta Bagna Cauda",
+      "title": "Bagna Cauda",
       "slug": "ricetta-bagna-cauda",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-bagna-cauda/",
       "image": "",
@@ -7982,11 +9524,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-ragu-alla-bolognese",
-      "title": "Ricetta Ragù alla bolognese",
+      "title": "Ragù alla bolognese",
       "slug": "ricetta-ragu-alla-bolognese",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-ragu-bolognese/",
       "image": "",
@@ -8001,11 +9544,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-sugo-di-carciofi",
-      "title": "Ricetta Sugo di carciofi",
+      "title": "Sugo di carciofi",
       "slug": "ricetta-sugo-di-carciofi",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-sugo-carciofi/",
       "image": "",
@@ -8020,11 +9564,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-salsa-tonnata",
-      "title": "Ricetta Salsa tonnata",
+      "title": "Salsa tonnata",
       "slug": "ricetta-salsa-tonnata",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-salsa-tonnata/",
       "image": "",
@@ -8039,11 +9584,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-sformato-di-zucca",
-      "title": "Ricetta Sformato di zucca",
+      "title": "Sformato di zucca",
       "slug": "ricetta-sformato-di-zucca",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-sformato-zucca/",
       "image": "",
@@ -8058,11 +9604,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-torta-rustica",
-      "title": "Ricetta Torta rustica",
+      "title": "Torta rustica",
       "slug": "ricetta-torta-rustica",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-torta-rustica/",
       "image": "",
@@ -8077,11 +9624,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-torta-di-cipolle",
-      "title": "Ricetta Torta di cipolle",
+      "title": "Torta di cipolle",
       "slug": "ricetta-torta-di-cipolle",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-torta-cipolle-allantica/",
       "image": "",
@@ -8096,11 +9644,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-pure-di-cavolfiore",
-      "title": "Ricetta Purè di cavolfiore",
+      "title": "Purè di cavolfiore",
       "slug": "ricetta-pure-di-cavolfiore",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-pure-cavolfiore/",
       "image": "",
@@ -8115,11 +9664,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-pasta-veloce-con-acciughe-e-mozzarella",
-      "title": "Ricetta Pasta veloce con acciughe e mozzarella",
+      "title": "Pasta veloce con acciughe e mozzarella",
       "slug": "ricetta-pasta-veloce-con-acciughe-e-mozzarella",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-spaghettini-salsa-d-uova-mozzarella/",
       "image": "",
@@ -8134,11 +9684,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-spaghetti-al-tonno",
-      "title": "Ricetta Spaghetti al tonno",
+      "title": "Spaghetti al tonno",
       "slug": "ricetta-spaghetti-al-tonno",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-spaghetti-tonno/",
       "image": "",
@@ -8153,11 +9704,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-passatelli-in-brodo",
-      "title": "Ricetta Passatelli in brodo",
+      "title": "Passatelli in brodo",
       "slug": "ricetta-passatelli-in-brodo",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-passatelli-brodo/",
       "image": "",
@@ -8172,11 +9724,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-fave-e-cicoria",
-      "title": "Ricetta Fave e cicoria",
+      "title": "Fave e cicoria",
       "slug": "ricetta-fave-e-cicoria",
       "url": "https://www.cucchiaio.it/ricetta/fave-cicoria/",
       "image": "",
@@ -8191,11 +9744,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-stracciatella",
-      "title": "Ricetta Stracciatella",
+      "title": "Stracciatella",
       "slug": "ricetta-stracciatella",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-stracciatella/",
       "image": "",
@@ -8210,11 +9764,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-gnocchi-alla-bava",
-      "title": "Ricetta Gnocchi alla bava",
+      "title": "Gnocchi alla bava",
       "slug": "ricetta-gnocchi-alla-bava",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-gnocchi-bava/",
       "image": "",
@@ -8229,11 +9784,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-pasta-all-39-uovo",
-      "title": "Ricetta Pasta all&#39;uovo",
+      "title": "Pasta all'uovo",
       "slug": "ricetta-pasta-all-39-uovo",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-pasta-alluovo/",
       "image": "",
@@ -8248,11 +9804,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-pasta-al-forno-con-peperoni",
-      "title": "Ricetta Pasta al forno con peperoni",
+      "title": "Pasta al forno con peperoni",
       "slug": "ricetta-pasta-al-forno-con-peperoni",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-pasta-al-forno-peperoni/",
       "image": "",
@@ -8267,11 +9824,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-orecchiette-con-i-broccoli",
-      "title": "Ricetta Orecchiette con i broccoli",
+      "title": "Orecchiette con i broccoli",
       "slug": "ricetta-orecchiette-con-i-broccoli",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-orecchiette-broccoli/",
       "image": "",
@@ -8286,11 +9844,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-tagliatelle-alla-bolognese",
-      "title": "Ricetta Tagliatelle alla bolognese",
+      "title": "Tagliatelle alla bolognese",
       "slug": "ricetta-tagliatelle-alla-bolognese",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-tagliatelle-bolognese/",
       "image": "",
@@ -8305,11 +9864,12 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     },
     {
       "id": "ricetta-orecchiette-con-cime-di-rapa",
-      "title": "Ricetta Orecchiette con cime di rapa",
+      "title": "Orecchiette con cime di rapa",
       "slug": "ricetta-orecchiette-con-cime-di-rapa",
       "url": "https://www.cucchiaio.it/ricetta/ricetta-orecchiette-cime-rapa/",
       "image": "",
@@ -8324,7 +9884,8 @@
       "tags": [],
       "ingredients": [],
       "steps": [],
-      "videoId": ""
+      "videoId": "",
+      "enrichedFrom": "cucchiaio"
     }
   ]
 }
