@@ -21,11 +21,7 @@
 
   <main>
     <div class="search-bar">
-      <input
-        id="search"
-        type="text"
-        placeholder="Cerca per titolo o ingredienti"
-      />
+      <input id="searchInput" type="text" placeholder="Cerca per titolo o ingredienti" />
       <button id="updateDataBtn">Aggiorna dati</button>
       <label>
         <input type="checkbox" id="favoritesToggle" /> Solo preferiti
@@ -33,7 +29,8 @@
       <span id="recipeCount">Ricette visibili: 0</span>
     </div>
 
-    <section id="recipes-grid" class="recipes-grid"></section>
+    <!-- SEZIONE CORRETTA -->
+    <section id="recipesContainer" class="recipes-container"></section>
   </main>
 
   <!-- Modal video -->
