@@ -1,225 +1,309 @@
-// app.js - Ricette & Lista Spesa v18 (UI + Video safe)
+console.log("Avvio app Ricette & Lista Spesa v18");
 
-console.log('Avvio app Ricette & Lista Spesa v18');
+// -------------------------
+// Config
+// -------------------------
+const DATA_URL = "assets/json/recipes-it.enriched.json";
+const LS_FAVORITES_KEY = "rls_favorites_v1";
 
-const EL = {
-  search: document.getElementById('search'),
-  updateBtn: document.getElementById('btn-update'),
-  onlyFavorites: document.getElementById('only-favorites'),
-  visibleCount: document.getElementById('visible-count'),
-  recipesContainer: document.getElementById('recipes'),
+// -------------------------
+// DOM refs (allineati a index.html)
+// -------------------------
+const dom = {
+  searchInput: document.getElementById("search"),
+  updateBtn: document.getElementById("updateDataBtn"),
+  favoritesToggle: document.getElementById("favoritesToggle"),
+  recipeCount: document.getElementById("recipeCount"),
+  recipesContainer: document.getElementById("recipes"),
+  videoModal: document.getElementById("videoModal"),
+  videoFrame: document.getElementById("videoFrame"),
+  closeVideo: document.getElementById("closeVideo"),
 };
 
-if (!EL.search || !EL.updateBtn || !EL.recipesContainer) {
-  console.error('Errore: elementi DOM mancanti. Controlla ID in index.html.');
-}
+// Controllo DOM (non blocca l'app, logga solo se manca qualcosa)
+{
+  const missing = Object.entries(dom)
+    .filter(([, el]) => !el)
+    .map(([key]) => key);
 
-const FAVORITES_KEY = 'rls_favorites_v1';
-
-// Helpers
-function loadFavorites() {
-  try {
-    return new Set(JSON.parse(localStorage.getItem(FAVORITES_KEY) || '[]'));
-  } catch {
-    return new Set();
+  if (missing.length) {
+    console.error(
+      "Errore: elementi DOM mancanti. Controlla ID in index.html.",
+      missing
+    );
   }
 }
 
-function saveFavorites(set) {
-  localStorage.setItem(FAVORITES_KEY, JSON.stringify([...set]));
-}
-
-function isValidVideoUrl(url) {
-  if (!url || typeof url !== 'string') return false;
-  try {
-    const u = new URL(url);
-    const host = u.hostname.replace(/^www\./, '');
-    if (['youtube.com', 'youtu.be'].includes(host)) return true;
-    if (host === 'vimeo.com') return true;
-    return false;
-  } catch {
-    return false;
-  }
-}
-
+// -------------------------
 // Stato
+// -------------------------
 let allRecipes = [];
 let favorites = loadFavorites();
 
-// Carica JSON embedded
-async function loadRecipes() {
+// -------------------------
+// LocalStorage favorites
+// -------------------------
+function loadFavorites() {
   try {
-    const res = await fetch('./assets/json/recipes-it.enriched.json', { cache: 'no-store' });
+    const raw = localStorage.getItem(LS_FAVORITES_KEY);
+    if (!raw) return {};
+    const parsed = JSON.parse(raw);
+    return parsed && typeof parsed === "object" ? parsed : {};
+  } catch {
+    return {};
+  }
+}
+
+function saveFavorites() {
+  try {
+    localStorage.setItem(LS_FAVORITES_KEY, JSON.stringify(favorites));
+  } catch {
+    // silenzioso, niente drammi in produzione
+  }
+}
+
+// -------------------------
+// Utility rendering
+// -------------------------
+function normalize(str) {
+  return (str || "").toLowerCase();
+}
+
+function matchesSearch(recipe, term) {
+  if (!term) return true;
+  const q = normalize(term);
+  const title = normalize(recipe.title);
+  const ingredients = normalize((recipe.ingredients || []).join(" "));
+  return title.includes(q) || ingredients.includes(q);
+}
+
+function isFavorite(id) {
+  return Boolean(favorites[id]);
+}
+
+function toggleFavorite(id) {
+  if (!id) return;
+  favorites[id] = !favorites[id];
+  if (!favorites[id]) delete favorites[id];
+  saveFavorites();
+  renderRecipes();
+}
+
+// -------------------------
+// Video modal
+// -------------------------
+function openVideo(url) {
+  if (!dom.videoModal || !dom.videoFrame) return;
+  dom.videoFrame.src = url;
+  dom.videoModal.classList.remove("hidden");
+}
+
+function closeVideo() {
+  if (!dom.videoModal || !dom.videoFrame) return;
+  dom.videoFrame.src = "";
+  dom.videoModal.classList.add("hidden");
+}
+
+// -------------------------
+// Render
+// -------------------------
+function renderRecipes() {
+  if (!dom.recipesContainer) return;
+  const term = dom.searchInput ? dom.searchInput.value.trim() : "";
+  const onlyFav = dom.favoritesToggle ? dom.favoritesToggle.checked : false;
+
+  const filtered = allRecipes.filter((r) => {
+    if (onlyFav && !isFavorite(r.id)) return false;
+    return matchesSearch(r, term);
+  });
+
+  if (dom.recipeCount) {
+    dom.recipeCount.textContent = `Ricette visibili: ${filtered.length}`;
+  }
+
+  dom.recipesContainer.innerHTML = "";
+
+  filtered.forEach((r) => {
+    const card = document.createElement("article");
+    card.className = "recipe-card";
+
+    const fav = isFavorite(r.id);
+
+    const difficulty = r.difficulty || r.diff || "";
+    const servings = r.servings || r.persone || r.porzioni || r.portions;
+    const source = r.source || (r.enrichedFrom && r.enrichedFrom.source) || "";
+    const hasVideo = Boolean(r.video && r.video.url);
+    const videoLabel = hasVideo ? "Guarda video" : "Video n/d";
+
+    // URL ricetta
+    const recipeUrl =
+      r.url ||
+      (r.links && r.links.source) ||
+      (r.enrichedFrom && r.enrichedFrom.url) ||
+      null;
+
+    // Badge ingredienti
+    const ingredientsCount = Array.isArray(r.ingredients)
+      ? r.ingredients.length
+      : 0;
+
+    card.innerHTML = `
+      <div class="recipe-card-header">
+        <button class="fav-btn" data-id="${r.id || ""}" title="Aggiungi ai preferiti">
+          ${fav ? "★" : "☆"}
+        </button>
+        <h2 class="recipe-title">${r.title || "Ricetta senza titolo"}</h2>
+      </div>
+      <div class="recipe-meta">
+        ${
+          difficulty
+            ? `<span class="badge">Diff: ${difficulty}</span>`
+            : ""
+        }
+        ${
+          servings
+            ? `<span class="badge">Porzioni: ${servings}</span>`
+            : ""
+        }
+        ${
+          source
+            ? `<span class="badge badge-source">${source}</span>`
+            : ""
+        }
+        ${
+          ingredientsCount
+            ? `<span class="badge badge-ingredients">${ingredientsCount} ingredienti</span>`
+            : ""
+        }
+      </div>
+      <div class="recipe-actions">
+        ${
+          recipeUrl
+            ? `<button class="btn primary" data-open-recipe="${encodeURI(
+                recipeUrl
+              )}">Apri ricetta</button>`
+            : `<button class="btn disabled" disabled>Nessun link</button>`
+        }
+        <button class="btn ghost" data-show-ingredients="${
+          r.id || ""
+        }">Lista ingredienti</button>
+        ${
+          hasVideo
+            ? `<button class="btn video" data-video="${encodeURI(
+                r.video.url
+              )}">${videoLabel}</button>`
+            : `<button class="btn ghost" disabled>${videoLabel}</button>`
+        }
+      </div>
+    `;
+
+    dom.recipesContainer.appendChild(card);
+  });
+
+  attachCardEvents();
+}
+
+function attachCardEvents() {
+  if (!dom.recipesContainer) return;
+
+  // Preferiti
+  dom.recipesContainer.querySelectorAll(".fav-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const id = btn.getAttribute("data-id");
+      toggleFavorite(id);
+    });
+  });
+
+  // Apri ricetta
+  dom.recipesContainer
+    .querySelectorAll("[data-open-recipe]")
+    .forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const url = btn.getAttribute("data-open-recipe");
+        if (url) window.open(url, "_blank", "noopener");
+      });
+    });
+
+  // Ingredienti (popup minimale per ora)
+  dom.recipesContainer
+    .querySelectorAll("[data-show-ingredients]")
+    .forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-show-ingredients");
+        const recipe = allRecipes.find((r) => r.id === id);
+        if (!recipe || !Array.isArray(recipe.ingredients)) {
+          alert("Nessuna lista ingredienti disponibile.");
+          return;
+        }
+        alert("Ingredienti:\n\n" + recipe.ingredients.join("\n"));
+      });
+    });
+
+  // Video
+  dom.recipesContainer.querySelectorAll("[data-video]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const url = btn.getAttribute("data-video");
+      if (url) openVideo(url);
+    });
+  });
+}
+
+// -------------------------
+// Load data
+// -------------------------
+async function loadData() {
+  try {
+    const res = await fetch(DATA_URL, { cache: "no-store" });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-    allRecipes = Array.isArray(data.recipes) ? data.recipes : data;
-    console.log('Caricate ricette:', allRecipes.length);
-    render();
+    const json = await res.json();
+    const base = Array.isArray(json) ? json : json.recipes || [];
+    allRecipes = base.map((r, index) => ({
+      id: r.id || `r-${index}`,
+      ...r,
+    }));
+    console.log("Caricate ricette:", allRecipes.length);
+    renderRecipes();
   } catch (err) {
-    console.error('Errore nel caricamento ricette:', err);
+    console.error("Errore nel caricare i dati ricette:", err);
+    if (dom.recipeCount) {
+      dom.recipeCount.textContent = "Errore nel caricamento dati.";
+    }
   }
 }
 
-// Filtro principale
-function getFilteredRecipes() {
-  const q = (EL.search?.value || '').trim().toLowerCase();
-  const onlyFav = !!EL.onlyFavorites?.checked;
-
-  return allRecipes.filter((r) => {
-    if (!r || !r.title) return false;
-
-    if (onlyFav && !favorites.has(r.id || r.url || r.title)) return false;
-
-    if (!q) return true;
-
-    const haystack = [
-      r.title,
-      r.subtitle,
-      r.source,
-      (r.ingredients || []).join(' '),
-    ]
-      .filter(Boolean)
-      .join(' ')
-      .toLowerCase();
-
-    return haystack.includes(q);
+// -------------------------
+// Event listeners
+// -------------------------
+if (dom.searchInput) {
+  dom.searchInput.addEventListener("input", () => {
+    renderRecipes();
   });
 }
 
-// Render card singola
-function renderRecipeCard(recipe) {
-  const id = recipe.id || recipe.url || recipe.title;
-  const isFav = favorites.has(id);
-
-  // videoUrl: supporta diverse chiavi possibili
-  const candidateVideo =
-    recipe.videoUrl ||
-    recipe.video_url ||
-    recipe.video ||
-    recipe.youtube ||
-    null;
-
-  const hasValidVideo = isValidVideoUrl(candidateVideo);
-
-  const card = document.createElement('article');
-  card.className = 'recipe-card';
-
-  card.innerHTML = `
-    <div class="recipe-card__header">
-      <button class="fav-btn ${isFav ? 'fav-btn--active' : ''}" data-id="${id}" title="Aggiungi ai preferiti">
-        ★
-      </button>
-      <h2 class="recipe-title">${recipe.title || 'Ricetta senza titolo'}</h2>
-    </div>
-
-    <div class="recipe-meta">
-      ${recipe.source ? `<span class="badge badge--source">${recipe.source}</span>` : ''}
-      ${recipe.difficulty ? `<span class="badge">${recipe.difficulty}</span>` : ''}
-      ${recipe.portions ? `<span class="badge">${recipe.portions} porzioni</span>` : ''}
-      ${
-        hasValidVideo
-          ? `<span class="badge badge--video">Video</span>`
-          : ''
-      }
-    </div>
-
-    <div class="recipe-actions">
-      ${
-        recipe.url
-          ? `<a class="btn btn-primary" href="${recipe.url}" target="_blank" rel="noopener noreferrer">Apri ricetta</a>`
-          : `<button class="btn btn-disabled" disabled>Nessun link</button>`
-      }
-      ${
-        hasValidVideo
-          ? `<a class="btn btn-outline" href="${candidateVideo}" target="_blank" rel="noopener noreferrer">Guarda video</a>`
-          : `<button class="btn btn-ghost" disabled>Video n/d</button>`
-      }
-      <button class="btn btn-outline btn-ingredients" data-id="${id}">
-        Lista ingredienti
-      </button>
-    </div>
-  `;
-
-  // Click preferiti
-  const favBtn = card.querySelector('.fav-btn');
-  favBtn.addEventListener('click', () => {
-    if (favorites.has(id)) {
-      favorites.delete(id);
-      favBtn.classList.remove('fav-btn--active');
-    } else {
-      favorites.add(id);
-      favBtn.classList.add('fav-btn--active');
-    }
-    saveFavorites(favorites);
-    if (EL.onlyFavorites?.checked) {
-      render();
-    }
-  });
-
-  // Click ingredienti (modale semplice / alert temporaneo)
-  const ingBtn = card.querySelector('.btn-ingredients');
-  ingBtn.addEventListener('click', () => {
-    const list = recipe.ingredients || [];
-    if (!list.length) {
-      alert('Nessun ingrediente disponibile per questa ricetta.');
-      return;
-    }
-    alert(`Ingredienti:\n\n${list.join('\n')}`);
-  });
-
-  return card;
-}
-
-// Render lista
-function render() {
-  if (!EL.recipesContainer) return;
-  EL.recipesContainer.innerHTML = '';
-
-  const list = getFilteredRecipes();
-
-  if (EL.visibleCount) {
-    EL.visibleCount.textContent = list.length;
-  }
-
-  if (!list.length) {
-    const empty = document.createElement('p');
-    empty.className = 'empty-state';
-    empty.textContent = 'Nessuna ricetta trovata con i filtri attuali.';
-    EL.recipesContainer.appendChild(empty);
-    return;
-  }
-
-  const frag = document.createDocumentFragment();
-  list.forEach((r) => frag.appendChild(renderRecipeCard(r)));
-  EL.recipesContainer.appendChild(frag);
-}
-
-// Eventi UI
-if (EL.search) {
-  EL.search.addEventListener('input', () => {
-    render();
+if (dom.favoritesToggle) {
+  dom.favoritesToggle.addEventListener("change", () => {
+    renderRecipes();
   });
 }
 
-if (EL.onlyFavorites) {
-  EL.onlyFavorites.addEventListener('change', () => {
-    render();
+// Bottone "Aggiorna dati": per ora ricarica il JSON (hook diretto, niente magie)
+if (dom.updateBtn) {
+  dom.updateBtn.addEventListener("click", () => {
+    loadData();
   });
 }
 
-// Aggiorna dati (placeholder: qui potresti agganciare una chiamata reale)
-if (EL.updateBtn) {
-  EL.updateBtn.addEventListener('click', async () => {
-    EL.updateBtn.disabled = true;
-    EL.updateBtn.textContent = 'Aggiorno...';
-    try {
-      await loadRecipes(); // ricarica dal JSON attuale
-    } finally {
-      EL.updateBtn.disabled = false;
-      EL.updateBtn.textContent = 'Aggiorna dati';
-    }
+// Video modal close
+if (dom.closeVideo) {
+  dom.closeVideo.addEventListener("click", closeVideo);
+}
+if (dom.videoModal) {
+  dom.videoModal.addEventListener("click", (e) => {
+    if (e.target === dom.videoModal) closeVideo();
   });
 }
 
-// Boot
-loadRecipes();
+// -------------------------
+// Init
+// -------------------------
+loadData();
