@@ -366,28 +366,24 @@
     fillList(recipeIngredientsEl, recipe.ingredients, 'Ingredienti non disponibili.')
 
     // Preparazione con logica pulita
-    if (!recipeStepsEl) return
+    html += '<h3>Preparazione</h3>';
 
-    recipeStepsEl.innerHTML = ''
-
-    if (steps.length > 0) {
-      recipeStepsEl.style.listStyleType = 'decimal'
-      steps.forEach(text => {
-        const li = document.createElement('li')
-        li.textContent = String(text).trim()
-        recipeStepsEl.appendChild(li)
-      })
-    } else if (url) {
-      recipeStepsEl.style.listStyleType = 'none'
-      const li = document.createElement('li')
-      li.textContent = 'Consulta la preparazione sulla ricetta originale.'
-      recipeStepsEl.appendChild(li)
-    } else {
-      recipeStepsEl.style.listStyleType = 'none'
-      const li = document.createElement('li')
-      li.textContent = 'Preparazione non disponibile.'
-      recipeStepsEl.appendChild(li)
+if (Array.isArray(recipe.steps) && recipe.steps.length > 0) {
+  html += '<ol>';
+  recipe.steps.forEach(step => {
+    const text = String(step).trim();
+    if (text.length > 0) {
+      html += `<li>${text}</li>`;
     }
+  });
+  html += '</ol>';
+} else if (recipe.url && recipe.url.trim() !== '') {
+  const safeUrl = recipe.url.trim();
+  html += '<p>La preparazione completa è disponibile sulla fonte originale:</p>';
+  html += `<p><a href="${safeUrl}" target="_blank" rel="noopener noreferrer">Apri ricetta originale</a></p>`;
+} else {
+  html += '<p>Preparazione non disponibile.</p>';
+}
 
     // Tag
     if (tags.length && recipeTagsEl) {
