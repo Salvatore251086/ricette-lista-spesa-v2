@@ -1,94 +1,43 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ricette & Lista Spesa</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="./styles.css" />
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="assets/icons/icon-192.png" type="image/png">
 </head>
 <body>
-  <div class="app-root">
-    <!-- HEADER -->
-    <header class="app-header">
-      <div class="brand">
-        <div class="brand-logo">R&S</div>
-        <div class="brand-text">
-          <h1>Ricette &amp; Lista Spesa</h1>
-          <p>Raccolta curata di ricette, lista spesa intelligente e video selezionati.</p>
-        </div>
-      </div>
+  <header class="app-header">
+    <div class="logo">
+      <img src="assets/icons/icon-64.png" alt="Logo" />
+      <h1>Ricette & Lista Spesa</h1>
+    </div>
+    <p>Raccolta curata di ricette, lista spesa intelligente e video selezionati.</p>
+  </header>
 
-      <div class="toolbar">
-        <div class="search-wrapper">
-          <input
-            id="searchInput"
-            type="search"
-            placeholder="Cerca per titolo o ingredienti"
-            autocomplete="off"
-          />
-        </div>
+  <main>
+    <div class="search-bar">
+      <input id="search" type="text" placeholder="Cerca per titolo o ingredienti" />
+      <button id="updateDataBtn">Aggiorna dati</button>
+      <label>
+        <input type="checkbox" id="favoritesToggle">
+        Solo preferiti
+      </label>
+      <span id="recipeCount">Ricette visibili: 0</span>
+    </div>
 
-        <button id="updateBtn" class="btn primary">
-          Aggiorna dati
-        </button>
+    <section id="recipes" class="recipes-grid"></section>
+  </main>
 
-        <label class="toggle-favorites">
-          <input id="favoritesOnly" type="checkbox" />
-          <span>Sólo preferiti</span>
-        </label>
-
-        <div class="meta">
-          <span>Ricette visibili: <strong id="visibleCount">0</strong></span>
-        </div>
-      </div>
-    </header>
-
-    <!-- MAIN CONTENT -->
-    <main>
-      <!-- dove lo script inietta le card -->
-      <section id="recipesContainer" class="recipes-grid" aria-live="polite">
-        <!-- Popolato da app.v17.js -->
-      </section>
-    </main>
-
-    <!-- MODALE RICETTA -->
-    <div id="recipeModal" class="modal hidden" aria-hidden="true">
-      <div class="modal-backdrop"></div>
-      <div class="modal-dialog">
-        <button class="modal-close" id="closeRecipeModal" aria-label="Chiudi">
-          ✕
-        </button>
-        <div class="modal-body">
-          <h2 id="modalTitle"></h2>
-
-          <div class="modal-meta">
-            <span id="modalServings"></span>
-            <span id="modalSource"></span>
-          </div>
-
-          <div class="modal-columns">
-            <div class="modal-section">
-              <h3>Ingredienti</h3>
-              <ul id="modalIngredients"></ul>
-            </div>
-            <div class="modal-section">
-              <h3>Preparazione</h3>
-              <ol id="modalSteps"></ol>
-            </div>
-          </div>
-
-          <div id="modalVideoWrap" class="modal-video hidden">
-            <h3>Video collegato</h3>
-            <a id="modalVideoLink" href="#" target="_blank" rel="noopener">
-              Guarda il video
-            </a>
-          </div>
-        </div>
-      </div>
+  <div id="videoModal" class="modal hidden">
+    <div class="modal-content">
+      <button id="closeVideo" class="close-btn">×</button>
+      <iframe id="videoFrame" src="" frameborder="0" allowfullscreen></iframe>
     </div>
   </div>
 
-  <!-- Il tuo script esistente; NON lo tocco -->
-  <script src="./app.v18.js"></script>
+  <script src="app.v18.js"></script>
 </body>
 </html>
