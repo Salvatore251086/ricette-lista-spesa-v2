@@ -1,6 +1,6 @@
 // app.v18.js
 // Ricette & Lista Spesa v18
-// UI stabile, preferiti, ricerca, modale video funzionante.
+// UI stabile, preferiti, ricerca, modale video auto-detect.
 
 console.log("Avvio app Ricette & Lista Spesa v18")
 
@@ -24,7 +24,7 @@ const dom = {
   closeVideo: document.getElementById("closeVideo"),
 }
 
-// Check diagnostico (non blocca)
+// Warning diagnostico (non blocca)
 ;(() => {
   const missing = Object.entries(dom)
     .filter(([, el]) => !el)
@@ -75,7 +75,7 @@ function toggleFavorite(id) {
 }
 
 // -------------------------
-// Utility
+// Utility base
 // -------------------------
 function normalize(str) {
   return (str || "").toString().toLowerCase()
@@ -107,66 +107,89 @@ function getRecipeUrl(r) {
   )
 }
 
-// Legge il video da vari formati possibili del JSON
-function getRawVideoUrl(r) {
-  if (!r || typeof r !== "object") return null
+// -------------------------
+// Video: auto-detect nel JSON
+// -------------------------
 
-  // Caso: { video: { url: "..." } }
-  if (r.video && typeof r.video === "object" && typeof r.video.url === "string") {
-    return r.video.url
-  }
-
-  // Caso: { video: "https://..." } o ID
-  if (typeof r.video === "string") {
-    return r.video
-  }
-
-  // Caso: { videoUrl: "..." }
-  if (typeof r.videoUrl === "string") {
-    return r.videoUrl
-  }
-
-  // Caso: { youtube: "..." }
-  if (typeof r.youtube === "string") {
-    return r.youtube
-  }
-
-  return null
-}
-
-// Converte YouTube normali in embed sicuro
+// converte url/id YouTube (o url generico) in url embed per <iframe>
 function toEmbedUrl(url) {
   if (!url) return null
   const trimmed = url.trim()
-
   if (!trimmed) return null
 
+  // youtu.be/ID
   if (/^https?:\/\/youtu\.be\//i.test(trimmed)) {
     const id = trimmed.split("/").pop()
     if (id) return `https://www.youtube.com/embed/${id}?rel=0`
   }
 
+  // youtube.com/...
   if (/^https?:\/\/(www\.)?youtube\.com\//i.test(trimmed)) {
     const m = trimmed.match(/[?&]v=([\w-]{6,})/)
-    if (m && m[1]) {
-      return `https://www.youtube.com/embed/${m[1]}?rel=0`
-    }
-    if (/\/embed\//i.test(trimmed)) {
-      return trimmed
-    }
+    if (m && m[1]) return `https://www.youtube.com/embed/${m[1]}?rel=0`
+    if (/\/embed\//i.test(trimmed)) return trimmed
   }
 
-  // Se non è YouTube ma è un URL valido, uso diretto
-  if (/^https?:\/\//i.test(trimmed)) {
-    return trimmed
-  }
+  // URL generico http/https
+  if (/^https?:\/\//i.test(trimmed)) return trimmed
 
-  // Se sembra un ID YouTube secco
+  // ID YouTube secco
   if (/^[\w-]{8,}$/.test(trimmed)) {
     return `https://www.youtube.com/embed/${trimmed}?rel=0`
   }
 
   return null
+}
+
+// scorri oggetto e nested comuni per cercare un campo video stringa plausibile
+function findVideoLikeField(obj) {
+  if (!obj || typeof obj !== "object") return null
+
+  const directCandidates = []
+
+  // 1) chiavi specifiche note
+  if (typeof obj.video === "string") directCandidates.push(obj.video)
+  if (obj.video && typeof obj.video.url === "string")
+    directCandidates.push(obj.video.url)
+  if (typeof obj.videoUrl === "string") directCandidates.push(obj.videoUrl)
+  if (typeof obj.youtube === "string") directCandidates.push(obj.youtube)
+  if (obj.links && typeof obj.links.video === "string")
+    directCandidates.push(obj.links.video)
+
+  if (obj.enrichedFrom) {
+    const ef = obj.enrichedFrom
+    if (typeof ef.video === "string") directCandidates.push(ef.video)
+    if (ef.video && typeof ef.video.url === "string")
+      directCandidates.push(ef.video.url)
+    if (typeof ef.videoUrl === "string") directCandidates.push(ef.videoUrl)
+    if (ef.links && typeof ef.links.video === "string")
+      directCandidates.push(ef.links.video)
+  }
+
+  // 2) fallback generico: qualunque chiave con "video" nel nome che sia stringa
+  for (const [key, val] of Object.entries(obj)) {
+    if (
+      /video/i.test(key) &&
+      typeof val === "string" &&
+      val.trim() &&
+      !directCandidates.includes(val)
+    ) {
+      directCandidates.push(val)
+    }
+  }
+
+  // seleziona il primo che produce un embed valido
+  for (const candidate of directCandidates) {
+    const embed = toEmbedUrl(candidate)
+    if (embed) return candidate
+  }
+
+  return null
+}
+
+// API pubblica per il resto del codice
+function getRawVideoUrl(r) {
+  return findVideoLikeField(r)
 }
 
 // -------------------------
@@ -229,7 +252,10 @@ function renderRecipes() {
       r.servings || r.persone || r.porzioni || r.portions || ""
     const source =
       r.source ||
-      (r.enrichedFrom && (r.enrichedFrom.source || r.enrichedFrom.hostname)) ||
+      (r.enrichedFrom &&
+        (r.enrichedFrom.source ||
+          r.enrichedFrom.hostname ||
+          r.enrichedFrom.label)) ||
       ""
     const ingredientsCount = Array.isArray(r.ingredients)
       ? r.ingredients.length
@@ -237,17 +263,13 @@ function renderRecipes() {
 
     const recipeUrl = getRecipeUrl(r)
     const rawVideoUrl = getRawVideoUrl(r)
-    const videoUrl = toEmbedUrl(rawVideoUrl)
-    const hasVideo = !!videoUrl
+    const hasVideo = !!toEmbedUrl(rawVideoUrl)
 
     const card = document.createElement("article")
     card.className = "recipe-card"
 
     card.innerHTML = `
-      ${fav
-        ? `<div class="favorite-pill">★ Preferita</div>`
-        : ""
-      }
+      ${fav ? `<div class="favorite-pill">★ Preferita</div>` : ""}
 
       <h2 class="recipe-title">
         ${r.title || "Ricetta senza titolo"}
@@ -273,10 +295,7 @@ function renderRecipes() {
             : `<button class="btn disabled" disabled>Nessun link</button>`
         }
 
-        <button
-          class="btn-ghost"
-          data-show-ingredients="${id}"
-        >
+        <button class="btn-ghost" data-show-ingredients="${id}">
           Lista ingredienti
         </button>
 
@@ -312,7 +331,7 @@ function bindCardEvents() {
       })
     })
 
-  // Apri ricetta sorgente
+  // Apri ricetta
   dom.recipesContainer
     .querySelectorAll("[data-open-recipe]")
     .forEach((btn) => {
@@ -328,7 +347,9 @@ function bindCardEvents() {
     .forEach((btn) => {
       btn.addEventListener("click", () => {
         const id = btn.getAttribute("data-show-ingredients")
-        const recipe = allRecipes.find((r, index) => getRecipeId(r, index) === id)
+        const recipe = allRecipes.find(
+          (r, index) => getRecipeId(r, index) === id
+        )
         if (!recipe || !Array.isArray(recipe.ingredients)) {
           alert("Nessuna lista ingredienti disponibile.")
           return
