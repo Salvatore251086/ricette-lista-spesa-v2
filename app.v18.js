@@ -1,6 +1,5 @@
 // app.v18.js
 // Ricette & Lista Spesa - Frontend v18 stabile
-// Pulito, robusto, niente circoli viziosi.
 
 console.log("Avvio app Ricette & Lista Spesa v18");
 
@@ -9,14 +8,14 @@ const LS_FAVORITES_KEY = "rls_favorites_v1";
 
 window.addEventListener("DOMContentLoaded", () => {
   // -------------------------
-  // Cache DOM
+  // Cache DOM (allineato a index.html)
   // -------------------------
   const dom = {
-    searchInput: document.getElementById("search"),
+    searchInput: document.getElementById("searchInput"),
     updateBtn: document.getElementById("updateDataBtn"),
     favoritesToggle: document.getElementById("favoritesToggle"),
     recipeCount: document.getElementById("recipeCount"),
-    recipesContainer: document.getElementById("recipes"),
+    recipesContainer: document.getElementById("recipesContainer"),
     videoModal: document.getElementById("videoModal"),
     videoFrame: document.getElementById("videoFrame"),
     closeVideo: document.getElementById("closeVideo"),
@@ -57,7 +56,7 @@ window.addEventListener("DOMContentLoaded", () => {
     try {
       localStorage.setItem(LS_FAVORITES_KEY, JSON.stringify(favorites));
     } catch {
-      // in produzione ignoriamo errori storage
+      // silenzioso
     }
   }
 
@@ -128,7 +127,7 @@ window.addEventListener("DOMContentLoaded", () => {
     dom.recipesContainer.innerHTML = "";
 
     filtered.forEach((r, index) => {
-      const id = r.id || `r-${index}`;
+      const id = (r.id || `r-${index}`).toString();
       const fav = isFavorite(id);
 
       const difficulty = r.difficulty || r.diff || "";
@@ -232,13 +231,15 @@ window.addEventListener("DOMContentLoaded", () => {
         });
       });
 
-    // Lista ingredienti (popup minimale)
+    // Lista ingredienti
     dom.recipesContainer
       .querySelectorAll("[data-show-ingredients]")
       .forEach((btn) => {
         btn.addEventListener("click", () => {
           const id = btn.getAttribute("data-show-ingredients");
-          const recipe = allRecipes.find((r) => (r.id || "").toString() === id);
+          const recipe = allRecipes.find(
+            (r, i) => (r.id || `r-${i}`).toString() === id
+          );
           if (!recipe || !Array.isArray(recipe.ingredients)) {
             alert("Nessuna lista ingredienti disponibile.");
             return;
@@ -266,7 +267,7 @@ window.addEventListener("DOMContentLoaded", () => {
       const json = await res.json();
       const base = Array.isArray(json) ? json : json.recipes || [];
       allRecipes = base.map((r, index) => ({
-        id: r.id || `r-${index}`,
+        id: (r.id || `r-${index}`).toString(),
         ...r,
       }));
       console.log("Caricate ricette:", allRecipes.length);
@@ -300,10 +301,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   if (dom.videoModal) {
     dom.videoModal.addEventListener("click", (e) => {
-      if (
-        e.target === dom.videoModal ||
-        e.target.classList.contains("modal-backdrop")
-      ) {
+      if (e.target === dom.videoModal) {
         closeVideo();
       }
     });
