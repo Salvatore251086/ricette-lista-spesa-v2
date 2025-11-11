@@ -13,7 +13,7 @@
   --shadow-soft: 0 14px 35px rgba(15, 23, 42, 0.09);
   --shadow-subtle: 0 10px 25px rgba(15, 23, 42, 0.04);
   --transition-fast: 0.18s ease-out;
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro", -system-ui,
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro",
     -ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
@@ -32,7 +32,7 @@ body {
   color: var(--text-main);
 }
 
-/* ROOT WRAPPER */
+/* ROOT */
 
 .app-root {
   min-height: 100vh;
@@ -48,10 +48,10 @@ body {
   z-index: 20;
   backdrop-filter: blur(14px);
   background: linear-gradient(
-      to bottom,
-      rgba(245, 245, 247, 0.96),
-      rgba(245, 245, 247, 0.94)
-    );
+    to bottom,
+    rgba(245, 245, 247, 0.97),
+    rgba(245, 245, 247, 0.94)
+  );
   border-bottom: 1px solid rgba(148, 163, 253, 0.08);
 }
 
@@ -100,8 +100,8 @@ main {
 
 .toolbar {
   max-width: 1200px;
-  margin: 8px auto 14px;
-  padding: 0 20px 6px;
+  margin: 6px auto 14px;
+  padding: 0 20px 8px;
   display: grid;
   grid-template-columns: minmax(0, 3fr) auto auto auto;
   gap: 10px;
@@ -114,8 +114,7 @@ main {
 
 .search-wrapper input {
   width: 100%;
-  padding: 9px 12px;
-  padding-left: 34px;
+  padding: 9px 12px 9px 34px;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-subtle);
   background-color: #ffffff;
@@ -123,7 +122,8 @@ main {
   font-size: 13px;
   color: var(--text-main);
   outline: none;
-  transition: border-color var(--transition-fast),
+  transition:
+    border-color var(--transition-fast),
     box-shadow var(--transition-fast),
     background-color var(--transition-fast),
     transform var(--transition-fast);
@@ -179,6 +179,13 @@ main {
   box-shadow: 0 14px 34px rgba(37, 99, 235, 0.26);
 }
 
+.btn.disabled {
+  background: #e5e7eb;
+  color: var(--text-soft);
+  cursor: default;
+  box-shadow: none;
+}
+
 .toggle-favorites {
   display: inline-flex;
   align-items: center;
@@ -200,13 +207,13 @@ main {
   color: var(--text-soft);
 }
 
-/* GRID RICETTE */
+/* MAIN & GRID */
 
 main {
   flex: 1;
 }
 
-.recipes-grid {
+.recipes-container {
   max-width: 1200px;
   margin: 10px auto 30px;
   padding: 0 20px 20px;
@@ -226,7 +233,8 @@ main {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  transition: transform var(--transition-fast),
+  transition:
+    transform var(--transition-fast),
     box-shadow var(--transition-fast),
     border-color var(--transition-fast),
     background-color var(--transition-fast);
@@ -269,7 +277,8 @@ main {
 }
 
 .btn-outline,
-.btn-ghost {
+.btn-ghost,
+.btn.video {
   font-size: 10px;
   padding: 6px 10px;
   border-radius: var(--radius-md);
@@ -283,7 +292,8 @@ main {
   transition: all var(--transition-fast);
 }
 
-.btn-outline:hover {
+.btn-outline:hover,
+.btn.video:hover {
   background: var(--accent-soft);
   box-shadow: var(--shadow-subtle);
   transform: translateY(-1px);
@@ -313,7 +323,7 @@ main {
   gap: 4px;
 }
 
-/* MODALE */
+/* MODALE VIDEO */
 
 .modal.hidden {
   display: none;
@@ -331,7 +341,7 @@ main {
 .modal-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(15, 23, 42, 0.4);
+  background: rgba(15, 23, 42, 0.45);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
@@ -345,7 +355,8 @@ main {
   max-width: 880px;
   width: calc(100% - 32px);
   max-height: calc(100vh - 40px);
-  overflow: auto;
+  display: flex;
+  flex-direction: column;
   z-index: 60;
 }
 
@@ -375,47 +386,15 @@ main {
 }
 
 .modal-body h2 {
-  margin: 4px 0 2px;
-  font-size: 20px;
+  margin: 4px 0 10px;
+  font-size: 18px;
 }
 
-.modal-meta {
-  display: flex;
-  gap: 10px;
-  font-size: 11px;
-  color: var(--text-soft);
-  margin-bottom: 10px;
-}
-
-.modal-columns {
-  display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.8fr);
-  gap: 18px;
-  margin-top: 4px;
-}
-
-.modal-section h3 {
-  margin: 0 0 6px;
-  font-size: 13px;
-  font-weight: 600;
-}
-
-#modalIngredients,
-#modalSteps {
-  font-size: 12px;
-  color: var(--text-main);
-  padding-left: 16px;
-  margin: 0;
-}
-
-.modal-video {
-  margin-top: 14px;
-  padding-top: 10px;
-  border-top: 1px solid var(--border-subtle);
-}
-
-.modal-video.hidden {
-  display: none;
+.modal-video iframe {
+  width: 100%;
+  height: 420px;
+  border-radius: 14px;
+  border: 1px solid var(--border-subtle);
 }
 
 /* RESPONSIVE */
@@ -426,15 +405,11 @@ main {
     align-items: stretch;
   }
 
-  .meta {
-    justify-self: flex-start;
-  }
-
-  .recipes-grid {
+  .recipes-container {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .modal-columns {
-    grid-template-columns: minmax(0, 1fr);
+  .modal-video iframe {
+    height: 260px;
   }
 }

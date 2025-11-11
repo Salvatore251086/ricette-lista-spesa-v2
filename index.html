@@ -10,42 +10,71 @@
   <link rel="icon" href="assets/icons/icon-192.png" type="image/png" />
 </head>
 <body>
-  <header class="app-header">
-    <div class="logo">
-      <img src="assets/icons/icon-192.png" alt="Ricette avanzate Zero Sprechi" />
-    </div>
-    <h1>Ricette &amp; Lista Spesa</h1>
-    <p>Raccolta curata di ricette, lista spesa intelligente e video selezionati.</p>
-  </header>
+  <div class="app-root">
+    <header class="app-header">
+      <div class="app-header-inner">
+        <div class="brand">
+          <div class="brand-logo">R&S</div>
+          <div class="brand-text">
+            <h1>Ricette &amp; Lista Spesa</h1>
+            <p>Raccolta curata di ricette, lista spesa intelligente e video selezionati.</p>
+          </div>
+        </div>
 
-  <main>
-    <div class="search-bar">
-      <input
-        id="searchInput"
-        type="text"
-        placeholder="Cerca per titolo o ingredienti"
-      />
-      <button id="updateDataBtn">Aggiorna dati</button>
-      <label>
-        <input type="checkbox" id="favoritesToggle" />
-        Solo preferiti
-      </label>
-      <span id="recipeCount">Ricette visibili: 0</span>
-    </div>
+        <div class="toolbar">
+          <div class="search-wrapper">
+            <input
+              id="searchInput"
+              type="text"
+              placeholder="Cerca per titolo o ingredienti"
+              autocomplete="off"
+            />
+          </div>
 
-    <section id="recipesContainer" class="recipes-container"></section>
-  </main>
+          <button id="updateDataBtn" class="btn primary">
+            Aggiorna dati
+          </button>
 
-  <div id="videoModal" class="modal hidden">
-    <div class="modal-content">
-      <button id="closeVideo" class="close-btn">×</button>
-      <iframe
-        id="videoFrame"
-        src=""
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
+          <label class="toggle-favorites">
+            <input type="checkbox" id="favoritesToggle" />
+            Solo preferiti
+          </label>
+
+          <div class="meta">
+            <span id="recipeCount">Ricette visibili: 0</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section
+        id="recipesContainer"
+        class="recipes-container"
+        aria-live="polite"
+      ></section>
+    </main>
+
+    <!-- Modale video -->
+    <div id="videoModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-backdrop"></div>
+      <div class="modal-dialog" role="dialog" aria-modal="true">
+        <button id="closeVideo" class="modal-close" aria-label="Chiudi video">
+          ×
+        </button>
+        <div class="modal-body">
+          <h2>Video ricetta</h2>
+          <div class="modal-video">
+            <iframe
+              id="videoFrame"
+              src=""
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
