@@ -1,0 +1,261 @@
+[enrich] Uso recipes-it.enriched.json come base (295 ricette).
+Adapter attivi: cucchiaio, giallozafferano
+✅ [cucchiaio] Tartare di Tonno e Filetto di Tonno Scottato — 8 ingredienti, 0 step
+✅ [cucchiaio] Polenta e baccalà con cipolla brasata — 7 ingredienti, 0 step
+✅ [cucchiaio] Capesante, cavolo nero e maionese leggera — 5 ingredienti, 0 step
+✅ [cucchiaio] Castagnaccio reggiano — 7 ingredienti, 0 step
+✅ [cucchiaio] Zuppa di fasolari e misticanza di verdure — 10 ingredienti, 0 step
+✅ [cucchiaio] Spaghetti alle Vongole e Bottarga di Tonno — 8 ingredienti, 0 step
+✅ [cucchiaio] Tagliolini al ragù — 9 ingredienti, 0 step
+✅ [cucchiaio] Filetto All'aceto Balsamico — 5 ingredienti, 0 step
+✅ [cucchiaio] Pasta all'Amatriciana con Variazioni — 8 ingredienti, 0 step
+✅ [cucchiaio] Riso con Gamberi e Crema di Patate Al Curry Dolce — 8 ingredienti, 0 step
+✅ [cucchiaio] Risotto all'aceto balsamico — 6 ingredienti, 0 step
+✅ [cucchiaio] Scampi Sfumati al Traminer Aromatico con Zucchine e Peperoncino — 6 ingredienti, 0 step
+✅ [cucchiaio] Cozze in guazzetto con crostini fritti e fagiolini verdi — 8 ingredienti, 0 step
+✅ [cucchiaio] Risotto Alla Zucca con Crema di Parmigiano e Aceto Balsamico — 9 ingredienti, 0 step
+✅ [cucchiaio] Zuppa di fagioli borlotti e ravioli di gamberetti — 8 ingredienti, 0 step
+✅ [cucchiaio] Fusilli con patate, porri e crema di zucca — 10 ingredienti, 0 step
+✅ [cucchiaio] Calamarata con lampuga e olive nere — 7 ingredienti, 0 step
+✅ [cucchiaio] Rigatoni all'arrabbiata d'ombrina — 11 ingredienti, 0 step
+✅ [cucchiaio] Coda di Rospo in Padella con Peperoni in Agrodolce — 9 ingredienti, 0 step
+✅ [cucchiaio] Minestra di zucchine, zucca gialla e salsiccia piccante — 10 ingredienti, 0 step
+✅ [cucchiaio] Lepre in salmì — 13 ingredienti, 0 step
+✅ [cucchiaio] Torta Sbrisolona Mantovana con Variazione di Nocciole — 9 ingredienti, 0 step
+✅ [cucchiaio] Cheesecake Giapponese con Salsa di Mango — 12 ingredienti, 0 step
+✅ [cucchiaio] Risotto in brodo di coda al Valpolicella Ripasso — 13 ingredienti, 0 step
+✅ [cucchiaio] Mazzancolle al Vapore con Gazpacho e Maionese al Lime — 8 ingredienti, 0 step
+✅ [cucchiaio] Risotto Carnaroli con Porri, Anguilla e Bottarga di Orbetello — 11 ingredienti, 0 step
+✅ [cucchiaio] Capesante con Olio alla Menta, Zucchine e Pomodorini All'Aceto Balsamico — 10 ingredienti, 0 step
+✅ [cucchiaio] Tagliatelle di farro con sugo di lepre — 16 ingredienti, 0 step
+✅ [cucchiaio] Filetto di angus con flan di cavolfiore — 10 ingredienti, 0 step
+✅ [cucchiaio] Ravioli d'orata e pesto leggero con vongole veraci e capperi — 12 ingredienti, 0 step
+✅ [cucchiaio] Risotto Ai Peperoni con Culaccia e Crosta di Parmigiano Reggiano — 8 ingredienti, 0 step
+✅ [cucchiaio] Paccheri ripieni di cotechino con crema piccante di lenticchie — 7 ingredienti, 0 step
+✅ [cucchiaio] Tonno rosso in crosta di sesamo, purè di topinambur e tartare all'anice stellato — 7 ingredienti, 0 step
+✅ [cucchiaio] Filetto di Maiale con Pancetta, Patate e Salsa al Valpolicella — 10 ingredienti, 0 step
+✅ [cucchiaio] Stracotto di Guancia di Bue con Polenta — 11 ingredienti, 0 step
+✅ [cucchiaio] Risotto ai carciofi e taleggio — 7 ingredienti, 0 step
+✅ [cucchiaio] Gnocchi di Zucca con Ragù di Fegatini di Pollo — 8 ingredienti, 0 step
+✅ [cucchiaio] Cotiche con fagioli dell’occhio — 14 ingredienti, 0 step
+✅ [cucchiaio] Maccheroncini con carbonara alla majonese — 5 ingredienti, 0 step
+✅ [cucchiaio] Torta Nera al Cioccolato con Confettura di Albicocche e Lime — 12 ingredienti, 0 step
+✅ [cucchiaio] Tortelli di Zucca con Soffritto al Lardo — 12 ingredienti, 0 step
+✅ [cucchiaio] Paccheri con guazzetto di cozze — 9 ingredienti, 0 step
+✅ [cucchiaio] Filetti di Cernia con Medaglioni di Patate in Padella — 8 ingredienti, 0 step
+✅ [cucchiaio] Ombrina Cruda con marinatura Piccante e Zucca — 7 ingredienti, 0 step
+✅ [cucchiaio] Ossobuco alla Milanese in Gremolada — 12 ingredienti, 0 step
+✅ [cucchiaio] Pane bianco — 6 ingredienti, 0 step
+✅ [cucchiaio] Asparagi Crudi con Emulsione di Pomodoro — 6 ingredienti, 0 step
+✅ [cucchiaio] Gamberetti e taccole — 7 ingredienti, 0 step
+✅ [cucchiaio] Filetto di Cavallo al Sale e Pane Integrale — 8 ingredienti, 0 step
+✅ [cucchiaio] Vellutata di Carciofi e Fonduta di Taleggio — 11 ingredienti, 0 step
+✅ [cucchiaio] Scones Dolci con Marmellata di Ribes — 4 ingredienti, 0 step
+✅ [cucchiaio] Lasagnette Con Ragù di Agnello e Olive — 13 ingredienti, 0 step
+✅ [cucchiaio] Tagliatelle con Melanzane e Pinoli Tostati — 11 ingredienti, 0 step
+✅ [cucchiaio] Capesante con Purè di Fagioli e Mortadella — 7 ingredienti, 0 step
+✅ [cucchiaio] Pollo alle Mandorle con Coulis di Verdure — 16 ingredienti, 0 step
+✅ [cucchiaio] Penne con Pomodorini e Ricotta Salata — 6 ingredienti, 0 step
+✅ [cucchiaio] Zuppa di Cipolle con Grana e Pesto al Prezzemolo — 8 ingredienti, 0 step
+✅ [cucchiaio] Caponata in agrodolce — 14 ingredienti, 0 step
+✅ [cucchiaio] Carne cruda alla piemontese — 8 ingredienti, 0 step
+✅ [cucchiaio] Crostini con salsiccia e stracchino — 5 ingredienti, 0 step
+✅ [cucchiaio] Prosciutto crudo e fichi bianchi e neri — 3 ingredienti, 0 step
+✅ [cucchiaio] Finocchi e pompelmi rosa — 8 ingredienti, 0 step
+✅ [cucchiaio] Prosciutto crudo e melone giallo — 2 ingredienti, 0 step
+✅ [cucchiaio] Strudel di carciofi e zucchine — 19 ingredienti, 0 step
+✅ [cucchiaio] Tortine di cipolle caramellate — 9 ingredienti, 0 step
+✅ [cucchiaio] Crostini alla toscana — 10 ingredienti, 0 step
+✅ [cucchiaio] Cialde di frico — 3 ingredienti, 0 step
+✅ [cucchiaio] Tartine alla pizzaiola — 11 ingredienti, 0 step
+✅ [cucchiaio] Salsa aurora — 4 ingredienti, 0 step
+✅ [cucchiaio] Salsa vellutata — 5 ingredienti, 0 step
+✅ [cucchiaio] Fondi di cottura — 5 ingredienti, 0 step
+✅ [cucchiaio] Burro chiarificato — 1 ingredienti, 0 step
+✅ [cucchiaio] Focaccia e stracchino — 4 ingredienti, 0 step
+✅ [cucchiaio] Sformato di zucchine — 14 ingredienti, 0 step
+✅ [cucchiaio] Calzone — 8 ingredienti, 0 step
+✅ [cucchiaio] Spaghetti alla salsa di pomodoro — 10 ingredienti, 0 step
+✅ [cucchiaio] Spaghetti al pepe verde — 7 ingredienti, 0 step
+✅ [cucchiaio] Quadrucci e piselli in brodo — 10 ingredienti, 0 step
+✅ [cucchiaio] Agnolotti alla piemontese — 35 ingredienti, 0 step
+✅ [cucchiaio] Maccheroni alla chitarra con polpette — 18 ingredienti, 0 step
+✅ [cucchiaio] Risotto porri, zucca, salmone, nocciole — 12 ingredienti, 0 step
+✅ [cucchiaio] Risotto alla valdostana — 11 ingredienti, 0 step
+✅ [cucchiaio] Risotto al radicchio lungo di Treviso — 9 ingredienti, 0 step
+✅ [cucchiaio] Pansotti di magro — 15 ingredienti, 0 step
+✅ [cucchiaio] Bucatini alla mozzarella e melanzane — 9 ingredienti, 0 step
+✅ [cucchiaio] Zuppa di cozze — 18 ingredienti, 0 step
+✅ [cucchiaio] Trenette con il pesto — 5 ingredienti, 0 step
+✅ [cucchiaio] Minestrone alla genovese — 16 ingredienti, 0 step
+✅ [cucchiaio] Pizzoccheri al bitto e casera — 13 ingredienti, 0 step
+✅ [cucchiaio] Pizza alla pescatora — 12 ingredienti, 0 step
+✅ [cucchiaio] Cotolette alla pizzaiola — 9 ingredienti, 0 step
+✅ [cucchiaio] Ravioli di magro — 12 ingredienti, 0 step
+✅ [cucchiaio] Coniglio in fricassea — 7 ingredienti, 0 step
+✅ [cucchiaio] Anatra alla birra — 10 ingredienti, 0 step
+✅ [cucchiaio] Costolette di agnello alla scottadito — 4 ingredienti, 0 step
+✅ [cucchiaio] Ossibuchi di vitello alla milanese — 20 ingredienti, 0 step
+✅ [cucchiaio] Astice in insalata al succo di pompelmo — 14 ingredienti, 0 step
+✅ [cucchiaio] Capesante al curry — 12 ingredienti, 0 step
+✅ [cucchiaio] Acciughe gratinate — 7 ingredienti, 0 step
+✅ [cucchiaio] Dentice al sale — 6 ingredienti, 0 step
+✅ [cucchiaio] Coda di rospo farcita — 9 ingredienti, 0 step
+✅ [cucchiaio] Filetto di rombo con patate — 12 ingredienti, 0 step
+✅ [cucchiaio] Insalata di gamberi e verdure — 12 ingredienti, 0 step
+✅ [cucchiaio] Penne allo zafferano — 7 ingredienti, 0 step
+✅ [cucchiaio] Spaghetti al pomodoro crudo — 7 ingredienti, 0 step
+✅ [cucchiaio] Tagliatelle panna, piselli e prosciutto — 9 ingredienti, 0 step
+✅ [cucchiaio] Tagliolini al burro e tartufo — 7 ingredienti, 0 step
+✅ [cucchiaio] Rombo al marsala — 6 ingredienti, 0 step
+✅ [cucchiaio] Pesce spada marinato allo scalogno e basilico — 13 ingredienti, 0 step
+✅ [cucchiaio] Spiedini di mare — 10 ingredienti, 0 step
+✅ [cucchiaio] Spiedini di anguilla — 6 ingredienti, 0 step
+✅ [cucchiaio] Uova fritte su pancarrè dorato e burro d'acciuga — 5 ingredienti, 0 step
+✅ [cucchiaio] Polenta al gorgonzola — 5 ingredienti, 0 step
+✅ [cucchiaio] Panzerotti napoletani — 11 ingredienti, 0 step
+✅ [cucchiaio] Cima ripiena — 17 ingredienti, 0 step
+✅ [cucchiaio] Costolette valdostane — 8 ingredienti, 0 step
+✅ [cucchiaio] Cassata siciliana — 16 ingredienti, 0 step
+✅ [cucchiaio] Bruschette al tartufo — 3 ingredienti, 0 step
+✅ [cucchiaio] Risi e bisi — 9 ingredienti, 0 step
+✅ [cucchiaio] Vitel tonné — 17 ingredienti, 0 step
+✅ [cucchiaio] Alici marinate — 6 ingredienti, 0 step
+✅ [cucchiaio] Capitone di Natale — 7 ingredienti, 0 step
+✅ [cucchiaio] Caprese di mozzarella di bufala — 5 ingredienti, 0 step
+✅ [cucchiaio] Scampi marinati — 10 ingredienti, 0 step
+✅ [cucchiaio] Sarde in saòr — 12 ingredienti, 0 step
+✅ [cucchiaio] Fondi di carciofo in tegame — 8 ingredienti, 0 step
+✅ [cucchiaio] Insalata di limoni — 6 ingredienti, 0 step
+✅ [cucchiaio] Fregula — 5 ingredienti, 0 step
+✅ [cucchiaio] Polpettone di fagiolini — 11 ingredienti, 0 step
+✅ [cucchiaio] Piselli con lattuga — 7 ingredienti, 0 step
+✅ [cucchiaio] Insalata di ovoli alla maggiorana — 4 ingredienti, 0 step
+✅ [cucchiaio] Insalata di pollo con sedano rapa — 6 ingredienti, 0 step
+✅ [cucchiaio] Panzanella di verdura — 10 ingredienti, 0 step
+✅ [cucchiaio] Castagnaccio alla pistoiese — 8 ingredienti, 0 step
+✅ [cucchiaio] Crema fritta — 7 ingredienti, 0 step
+✅ [cucchiaio] Millefoglie alla crema — 10 ingredienti, 0 step
+✅ [cucchiaio] Panettone dorato — 4 ingredienti, 0 step
+✅ [cucchiaio] Tartufi al fondente e torrone — 5 ingredienti, 0 step
+✅ [cucchiaio] Fettine di vitello con capperi e succo di limone — 8 ingredienti, 0 step
+✅ [cucchiaio] Spinacino ai carciofi — 9 ingredienti, 0 step
+✅ [cucchiaio] Torta moka — 12 ingredienti, 0 step
+✅ [cucchiaio] Pesche ripiene — 6 ingredienti, 0 step
+✅ [cucchiaio] Cotolette di vitello al consumato di brodo — 8 ingredienti, 0 step
+✅ [cucchiaio] Spaghettini alle acciughe e capperi — 5 ingredienti, 0 step
+✅ [cucchiaio] Farfalle al mascarpone — 9 ingredienti, 0 step
+✅ [cucchiaio] Zuppa di legumi e cicoria — 11 ingredienti, 0 step
+✅ [cucchiaio] Fusilli ai carciofi — 12 ingredienti, 0 step
+✅ [cucchiaio] Conchigliette alla mozzarella — 8 ingredienti, 0 step
+✅ [cucchiaio] Brodo di gallina — 5 ingredienti, 0 step
+✅ [cucchiaio] Maccheroni integrali al cicorino — 9 ingredienti, 0 step
+✅ [cucchiaio] Patellette — 8 ingredienti, 0 step
+✅ [cucchiaio] Lagane e ceci — 9 ingredienti, 0 step
+✅ [cucchiaio] Pasticcio di maccheroni — 9 ingredienti, 0 step
+✅ [cucchiaio] Cavatelli e broccoletti — 8 ingredienti, 0 step
+✅ [cucchiaio] Ruote alle zucchine e pomodori — 8 ingredienti, 0 step
+✅ [cucchiaio] Pipe alla rucola — 7 ingredienti, 0 step
+✅ [cucchiaio] Bucatini con lo stocco — 9 ingredienti, 0 step
+✅ [cucchiaio] Linguine ai ricci di mare — 7 ingredienti, 0 step
+✅ [cucchiaio] Mezzi rigatoni con avocado e gorgonzola — 7 ingredienti, 0 step
+✅ [cucchiaio] Laganedde con funghi e salsiccia — 9 ingredienti, 0 step
+✅ [cucchiaio] Conchiglie ai filetti di trota — 9 ingredienti, 0 step
+✅ [cucchiaio] Ditali, asparagi e fontina — 7 ingredienti, 0 step
+✅ [cucchiaio] Pennette ai carciofi e lattuga — 7 ingredienti, 0 step
+✅ [cucchiaio] Orecchiette piccanti — 9 ingredienti, 0 step
+✅ [cucchiaio] Maccarruni al ragù — 13 ingredienti, 0 step
+✅ [cucchiaio] Maccheroncini con pollo e verdure — 13 ingredienti, 0 step
+✅ [cucchiaio] Ruote al mais, pancetta e spinaci novelli — 7 ingredienti, 0 step
+✅ [cucchiaio] Mezze penne al tonno e pomodorini — 8 ingredienti, 0 step
+✅ [cucchiaio] Tagliolini alla liquirizia, cime di rapa e ricotta — 9 ingredienti, 0 step
+✅ [cucchiaio] Trenette al pesto e olive nere — 8 ingredienti, 0 step
+✅ [cucchiaio] Strozzapreti ai calamaretti — 10 ingredienti, 0 step
+✅ [cucchiaio] Zuppa di sedano — 10 ingredienti, 0 step
+✅ [cucchiaio] Pennette integrali piccanti — 10 ingredienti, 0 step
+✅ [cucchiaio] Minestra di zucca — 10 ingredienti, 0 step
+✅ [cucchiaio] Minestra di scarola — 6 ingredienti, 0 step
+✅ [cucchiaio] Minestra di melanzane — 9 ingredienti, 0 step
+✅ [cucchiaio] Vermicelli freddi — 10 ingredienti, 0 step
+✅ [cucchiaio] Gnocchetti sardi con carote alla menta — 8 ingredienti, 0 step
+✅ [cucchiaio] Farfalle alla polpa di granchio — 9 ingredienti, 0 step
+✅ [cucchiaio] Ditalini alla maionese e yogurt — 12 ingredienti, 0 step
+✅ [cucchiaio] Pennette e cannellini — 8 ingredienti, 0 step
+✅ [cucchiaio] Farfalline in insalata — 9 ingredienti, 0 step
+✅ [cucchiaio] Ravioli capresi — 15 ingredienti, 0 step
+✅ [cucchiaio] Capellini al profumo di limone — 8 ingredienti, 0 step
+✅ [cucchiaio] Fusilli alla robiola — 7 ingredienti, 0 step
+✅ [cucchiaio] Ditali, spinaci e pinoli — 10 ingredienti, 0 step
+✅ [cucchiaio] Ruote alla boscaiola — 8 ingredienti, 0 step
+✅ [cucchiaio] Timpano di rigatoni — 17 ingredienti, 0 step
+✅ [cucchiaio] Reginelle, lattughino e filetti di coniglio — 10 ingredienti, 0 step
+✅ [cucchiaio] Spaghetti alla bottarga, rughetta e basilico — 7 ingredienti, 0 step
+✅ [cucchiaio] Timpano ripieno — 21 ingredienti, 0 step
+✅ [cucchiaio] Tortelloni in brodo — 9 ingredienti, 0 step
+✅ [cucchiaio] Cannelloni alla piacentina — 13 ingredienti, 0 step
+✅ [cucchiaio] Cannelloni alla crema di radicchio — 11 ingredienti, 0 step
+✅ [cucchiaio] Cannelloni alla napoletana — 10 ingredienti, 0 step
+✅ [cucchiaio] Ravioli integrali con piselli — 13 ingredienti, 0 step
+✅ [cucchiaio] Zuppa di castagne e legumi — 18 ingredienti, 0 step
+✅ [cucchiaio] Zuppa di scarola — 11 ingredienti, 0 step
+✅ [cucchiaio] Ravioli alla bottarga — 20 ingredienti, 0 step
+✅ [cucchiaio] Ravioli al castelmagno — 13 ingredienti, 0 step
+✅ [cucchiaio] Ravioli di zucchine e mandorle — 26 ingredienti, 0 step
+✅ [cucchiaio] Anolini di Parma — 20 ingredienti, 0 step
+✅ [cucchiaio] Lasagne ricotta, pomodoro e spinaci — 8 ingredienti, 0 step
+✅ [cucchiaio] Tagliatelle al ragù — 17 ingredienti, 0 step
+✅ [cucchiaio] Tortino di taglierini — 16 ingredienti, 0 step
+✅ [cucchiaio] Tagliatelle paglia e fieno al sugo di fagioli — 19 ingredienti, 0 step
+✅ [cucchiaio] Fettuccine al tartufo — 7 ingredienti, 0 step
+✅ [cucchiaio] Zuppa di canocchie — 8 ingredienti, 0 step
+✅ [cucchiaio] Orecchiette con pomodori al forno — 9 ingredienti, 0 step
+✅ [cucchiaio] Orecchiette al petto di pollo — 12 ingredienti, 0 step
+✅ [cucchiaio] Bomba di riso — 13 ingredienti, 0 step
+✅ [cucchiaio] Crostini di polenta al gorgonzola — 6 ingredienti, 0 step
+✅ [cucchiaio] Risotto con salsiccia e balsamico — 10 ingredienti, 0 step
+✅ [cucchiaio] Crocchette di radicchio rosso — 15 ingredienti, 0 step
+✅ [cucchiaio] Taglierini panna e prosciutto — 9 ingredienti, 0 step
+✅ [cucchiaio] Frittedda — 10 ingredienti, 0 step
+✅ [cucchiaio] Taglierini al tonno — 9 ingredienti, 0 step
+✅ [cucchiaio] Stracci alle vongole — 8 ingredienti, 0 step
+✅ [cucchiaio] Rotolo di spinaci al burro e salvia — 12 ingredienti, 0 step
+✅ [cucchiaio] Alici agli agrumi — 8 ingredienti, 0 step
+✅ [cucchiaio] Bigoli al brandy — 11 ingredienti, 0 step
+✅ [cucchiaio] Involtini di spada alla messinese — 15 ingredienti, 0 step
+✅ [cucchiaio] Gnocchi di ricotta ed erbette — 9 ingredienti, 0 step
+✅ [cucchiaio] Frittelle di fontina — 12 ingredienti, 0 step
+✅ [cucchiaio] Crostini al lardo di Arnad — 2 ingredienti, 0 step
+✅ [cucchiaio] Frittelle di patate — 11 ingredienti, 0 step
+✅ [cucchiaio] Polenta pasticciata con le acciughe — 8 ingredienti, 0 step
+✅ [cucchiaio] Zuppa di piselli con lattuga — 9 ingredienti, 0 step
+✅ [cucchiaio] Cannelloni di farro con peperoni — 10 ingredienti, 0 step
+✅ [cucchiaio] Ravioli integrali di coniglio e salsa di broccoli — 18 ingredienti, 0 step
+✅ [cucchiaio] Braciole di agnello con gelato di rape rosse — 7 ingredienti, 0 step
+✅ [cucchiaio] Sformato di spinaci — 9 ingredienti, 0 step
+✅ [cucchiaio] Salsa di pomodoro — 6 ingredienti, 0 step
+✅ [cucchiaio] Spaghetti ai frutti di mare al cartoccio — 13 ingredienti, 0 step
+✅ [cucchiaio] Risotto alle mandorle e arance — 13 ingredienti, 0 step
+✅ [cucchiaio] Risotto alle vongole veraci — 9 ingredienti, 0 step
+✅ [cucchiaio] Insalata di riso ai funghi e sedano — 9 ingredienti, 0 step
+✅ [cucchiaio] Bruschetta — 5 ingredienti, 0 step
+✅ [cucchiaio] Risotto alla certosina — 15 ingredienti, 0 step
+✅ [cucchiaio] Arrosto di vitello al parmigiano — 11 ingredienti, 0 step
+✅ [cucchiaio] Albicocche al moscato, panna e pistacchi — 9 ingredienti, 0 step
+✅ [cucchiaio] Babà — 23 ingredienti, 0 step
+✅ [cucchiaio] Barbajada — 6 ingredienti, 0 step
+✅ [cucchiaio] Gubana — 22 ingredienti, 0 step
+✅ [cucchiaio] Pandolce genovese — 10 ingredienti, 0 step
+✅ [cucchiaio] Strudel alla frutta secca — 16 ingredienti, 0 step
+✅ [cucchiaio] Nodini al burro, salvia e rosmarino — 8 ingredienti, 0 step
+✅ [cucchiaio] Piccata al Marsala — 5 ingredienti, 0 step
+✅ [cucchiaio] Cosciotto d'agnello arrosto — 11 ingredienti, 0 step
+✅ [cucchiaio] Fegato al burro e salvia — 7 ingredienti, 0 step
+✅ [cucchiaio] Pollo alla babi — 6 ingredienti, 0 step
+✅ [cucchiaio] Pollo in crosta di sale — 8 ingredienti, 0 step
+✅ [cucchiaio] Cappesante in salsa di zafferano — 8 ingredienti, 0 step
+✅ [cucchiaio] Moscardini alla ligure — 9 ingredienti, 0 step
+
+[enrich] Enrichment completato.
+Ricette totali: 295
+Ricette arricchite (qualsiasi fonte adapter): 254
+File scritto: C:\Users\sasap\Desktop\ricette-paw\ricette-lista-spesa-main\assets\json\recipes-it.enriched.json
