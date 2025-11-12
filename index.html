@@ -1,83 +1,40 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Ricette & Lista Spesa</title>
-
-  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="favicon.ico" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="assets/icons/icon-192.png" type="image/png" />
 </head>
 <body>
-  <div class="app-root">
-    <header class="app-header">
-      <div class="app-header-inner">
-        <div class="brand">
-          <div class="brand-logo">R&S</div>
-          <div class="brand-text">
-            <h1>Ricette &amp; Lista Spesa</h1>
-            <p>Raccolta curata di ricette, lista spesa intelligente e video selezionati.</p>
-          </div>
-        </div>
+  <header class="app-header">
+    <div class="brand">
+      <img src="icon-192.png" alt="R&S" width="32" height="32" />
+      <h1>Ricette & Lista Spesa</h1>
+    </div>
+    <p>Raccolta curata di ricette, lista spesa intelligente e video selezionati.</p>
+  </header>
 
-        <div class="toolbar">
-          <div class="search-wrapper">
-            <input
-              id="searchInput"
-              type="text"
-              placeholder="Cerca per titolo o ingredienti"
-              autocomplete="off"
-            />
-          </div>
+  <main>
+    <div class="search-bar">
+      <input id="search" type="text" placeholder="Cerca per titolo o ingredienti" />
+      <button id="updateDataBtn">Aggiorna dati</button>
+      <label><input id="favoritesToggle" type="checkbox" /> Solo preferiti</label>
+      <span id="recipeCount">Ricette visibili: 0</span>
+    </div>
 
-          <button id="updateDataBtn" class="btn primary">
-            Aggiorna dati
-          </button>
+    <section id="recipes" class="recipes-container"></section>
+  </main>
 
-          <label class="toggle-favorites">
-            <input type="checkbox" id="favoritesToggle" />
-            Solo preferiti
-          </label>
-
-          <div class="meta">
-            <span id="recipeCount">Ricette visibili: 0</span>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <main>
-      <section
-        id="recipesContainer"
-        class="recipes-container"
-        aria-live="polite"
-      ></section>
-    </main>
-
-    <!-- Modale video -->
-    <div id="videoModal" class="modal hidden" aria-hidden="true">
-      <div class="modal-backdrop"></div>
-      <div class="modal-dialog" role="dialog" aria-modal="true">
-        <button id="closeVideo" class="modal-close" aria-label="Chiudi video">
-          ×
-        </button>
-        <div class="modal-body">
-          <h2>Video ricetta</h2>
-          <div class="modal-video">
-            <iframe
-              id="videoFrame"
-              src=""
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
-          </div>
-        </div>
-      </div>
+  <!-- Modal video -->
+  <div id="videoModal" class="modal hidden" aria-hidden="true" role="dialog" aria-label="Video ricetta">
+    <div class="modal-dialog">
+      <button id="closeVideo" class="modal-close" aria-label="Chiudi">×</button>
+      <iframe id="videoFrame" title="Video ricetta" frameborder="0" allowfullscreen></iframe>
     </div>
   </div>
 
-  <script src="app.v18.js"></script>
+  <script defer src="app.v18.js"></script>
 </body>
 </html>
