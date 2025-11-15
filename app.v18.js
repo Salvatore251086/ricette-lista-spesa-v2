@@ -83,40 +83,38 @@
   }
 
   // Normalizza qualsiasi URL video in embed sicuro youtube-nocookie
-  function normalizeVideoUrl(raw) {
-    const url = String(raw || '').trim();
-    if (!url) return '';
+  function normalizeVideoUrl(videoId) {
+    const id = String(videoId || '').trim();
+    if (!id) return '';
 
-    if (url.includes('/embed/')) {
-      return url.replace('youtube.com', 'www.youtube-nocookie.com');
+    // Se è già un URL completo
+    if (id.includes('youtube.com') || id.includes('youtu.be')) {
+      if (id.includes('/embed/')) {
+        return id.replace('youtube.com', 'www.youtube-nocookie.com');
+      }
+      const short = id.match(/^https?:\/\/youtu\.be\/([A-Za-z0-9_-]{6,})/i);
+      if (short) {
+        return `https://www.youtube-nocookie.com/embed/${short[1]}?rel=0&modestbranding=1&playsinline=1`;
+      }
+      const watch = id.match(/[?&]v=([A-Za-z0-9_-]{6,})/i);
+      if (watch) {
+        return `https://www.youtube-nocookie.com/embed/${watch[1]}?rel=0&modestbranding=1&playsinline=1`;
+      }
     }
-    const short = url.match(/^https?:\/\/youtu\.be\/([A-Za-z0-9_-]{6,})/i);
-    if (short) {
-      const id = short[1];
-      return `https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1&playsinline=1`;
-    }
-    const watch = url.match(/[?&]v=([A-Za-z0-9_-]{6,})/i);
-    if (watch) {
-      const id = watch[1];
-      return `https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1&playsinline=1`;
-    }
-    const anyId = url.match(/([A-Za-z0-9_-]{6,})$/);
-    if (anyId) {
-      return `https://www.youtube-nocookie.com/embed/${anyId[1]}?rel=0&modestbranding=1&playsinline=1`;
-    }
-    return '';
+
+    // Altrimenti è solo l'ID del video
+    return `https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1&playsinline=1`;
   }
 
   // -------------------------
   // Modale video con fallback
   // -------------------------
-  function openVideo(rawUrl) {
+  function openVideo(videoId) {
     if (!dom.videoModal || !dom.videoFrame) return;
 
-    const embed = normalizeVideoUrl(rawUrl);
+    const embed = normalizeVideoUrl(videoId);
     if (!embed) {
-      // se non riconosco l’URL, apro comunque in nuova scheda
-      window.open(rawUrl, '_blank', 'noopener');
+      alert('Video non disponibile');
       return;
     }
 
@@ -129,7 +127,7 @@
 
     let fallbackTimer = setTimeout(() => {
       try { dom.videoFrame.src = ''; } catch {}
-      window.open(embed, '_blank', 'noopener');
+      window.open(embed.replace('youtube-nocookie.com', 'youtube.com'), '_blank', 'noopener');
       closeVideo();
     }, 2000);
 
@@ -137,7 +135,7 @@
     dom.videoFrame.onerror = () => {
       clearTimeout(fallbackTimer);
       try { dom.videoFrame.src = ''; } catch {}
-      window.open(embed, '_blank', 'noopener');
+      window.open(embed.replace('youtube-nocookie.com', 'youtube.com'), '_blank', 'noopener');
       closeVideo();
     };
 
@@ -179,7 +177,7 @@
       const difficulty = r.difficulty || r.diff || '';
       const servings = r.servings || r.persone || r.porzioni || r.portions;
       const source = r.source || (r.enrichedFrom && r.enrichedFrom.source) || '';
-      const hasVideo = Boolean(r.video && r.video.url);
+      const hasVideo = Boolean(r.videoId && r.videoId.length > 0);
       const videoLabel = hasVideo ? 'Guarda video' : 'Video n/d';
 
       const recipeUrl =
@@ -214,7 +212,7 @@
           <button class="btn ghost" data-show-ingredients="${r.id || ''}">Lista ingredienti</button>
           ${
             hasVideo
-              ? `<button class="btn link" data-video="${encodeURI(r.video.url)}">Guarda video</button>`
+              ? `<button class="btn link" data-video="${r.videoId}">Guarda video</button>`
               : `<button class="btn ghost" disabled>${videoLabel}</button>`
           }
         </div>
@@ -257,8 +255,8 @@
 
     dom.recipesContainer.querySelectorAll('[data-video]').forEach((btn) => {
       btn.addEventListener('click', () => {
-        const url = btn.getAttribute('data-video');
-        if (url) openVideo(url);
+        const videoId = btn.getAttribute('data-video');
+        if (videoId) openVideo(videoId);
       });
     });
   }
