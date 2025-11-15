@@ -1,6 +1,6 @@
 // app.v18.js
 // Ricette & Lista Spesa – Frontend v18
-// UI pulita, ricerca, preferiti, modale video con fallback
+// UI pulita, ricerca, preferiti, modale video con ricerca automatica
 
 (function () {
   'use strict';
@@ -82,7 +82,42 @@
     return title.includes(q) || ingredients.includes(q);
   }
 
-  // Normalizza qualsiasi URL video in embed sicuro youtube-nocookie
+  // -------------------------
+  // Video Search System
+  // -------------------------
+  function cleanRecipeTitle(title) {
+    return title
+      .toLowerCase()
+      .replace(/ricetta\s+/gi, '')
+      .replace(/\s+alla\s+/gi, ' ')
+      .replace(/\s+di\s+/gi, ' ')
+      .replace(/\s+con\s+/gi, ' ')
+      .replace(/[^\w\sàèéìòù]/gi, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function generateYouTubeSearchUrl(recipeTitle) {
+    const cleanTitle = cleanRecipeTitle(recipeTitle);
+    // Aggiungi "ricetta" e "giallozafferano" per risultati migliori
+    const searchQuery = encodeURIComponent(`${cleanTitle} ricetta giallozafferano`);
+    // sp=EgIQAQ%253D%253D filtra solo video (non playlist o canali)
+    return `https://www.youtube.com/results?search_query=${searchQuery}&sp=EgIQAQ%253D%253D`;
+  }
+
+  function searchVideoForRecipe(recipe) {
+    const searchUrl = generateYouTubeSearchUrl(recipe.title);
+    
+    const message = `Video non disponibile per "${recipe.title}".\n\nVuoi cercare su YouTube?\n\n(Si aprirà una ricerca ottimizzata)`;
+    
+    if (confirm(message)) {
+      window.open(searchUrl, '_blank', 'noopener,noreferrer');
+    }
+  }
+
+  // -------------------------
+  // Video Player
+  // -------------------------
   function normalizeVideoUrl(videoId) {
     const id = String(videoId || '').trim();
     if (!id) return '';
@@ -106,9 +141,6 @@
     return `https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1&playsinline=1`;
   }
 
-  // -------------------------
-  // Modale video con fallback
-  // -------------------------
   function openVideo(videoId) {
     if (!dom.videoModal || !dom.videoFrame) return;
 
@@ -178,7 +210,6 @@
       const servings = r.servings || r.persone || r.porzioni || r.portions;
       const source = r.source || (r.enrichedFrom && r.enrichedFrom.source) || '';
       const hasVideo = Boolean(r.videoId && r.videoId.length > 0);
-      const videoLabel = hasVideo ? 'Guarda video' : 'Video n/d';
 
       const recipeUrl =
         r.url ||
@@ -187,6 +218,14 @@
         null;
 
       const ingredientsCount = Array.isArray(r.ingredients) ? r.ingredients.length : 0;
+
+      // Determina il testo e lo stile del pulsante video
+      let videoButtonHtml;
+      if (hasVideo) {
+        videoButtonHtml = `<button class="btn link" data-video="${r.videoId}" data-recipe-id="${r.id}">▶ Guarda video</button>`;
+      } else {
+        videoButtonHtml = `<button class="btn ghost" data-video="search" data-recipe-id="${r.id}">🔍 Cerca video</button>`;
+      }
 
       card.innerHTML = `
         <div class="recipe-card-header">
@@ -210,11 +249,7 @@
               : `<button class="btn disabled" disabled>Nessun link</button>`
           }
           <button class="btn ghost" data-show-ingredients="${r.id || ''}">Lista ingredienti</button>
-          ${
-            hasVideo
-              ? `<button class="btn link" data-video="${r.videoId}">Guarda video</button>`
-              : `<button class="btn ghost" disabled>${videoLabel}</button>`
-          }
+          ${videoButtonHtml}
         </div>
       `;
 
@@ -227,6 +262,7 @@
   function attachCardEvents() {
     if (!dom.recipesContainer) return;
 
+    // Gestione preferiti
     dom.recipesContainer.querySelectorAll('.fav-btn').forEach((btn) => {
       btn.addEventListener('click', () => {
         const id = btn.getAttribute('data-id');
@@ -234,6 +270,7 @@
       });
     });
 
+    // Apertura ricetta
     dom.recipesContainer.querySelectorAll('[data-open-recipe]').forEach((btn) => {
       btn.addEventListener('click', () => {
         const url = btn.getAttribute('data-open-recipe');
@@ -241,6 +278,7 @@
       });
     });
 
+    // Lista ingredienti
     dom.recipesContainer.querySelectorAll('[data-show-ingredients]').forEach((btn) => {
       btn.addEventListener('click', () => {
         const id = btn.getAttribute('data-show-ingredients');
@@ -253,10 +291,24 @@
       });
     });
 
+    // Gestione video con ricerca automatica
     dom.recipesContainer.querySelectorAll('[data-video]').forEach((btn) => {
       btn.addEventListener('click', () => {
         const videoId = btn.getAttribute('data-video');
-        if (videoId) openVideo(videoId);
+        const recipeId = btn.getAttribute('data-recipe-id');
+        const recipe = allRecipes.find((r) => r.id === recipeId);
+
+        if (videoId === 'search') {
+          // Nessun video disponibile, offri ricerca
+          if (recipe) {
+            searchVideoForRecipe(recipe);
+          } else {
+            alert('Impossibile cercare il video per questa ricetta.');
+          }
+        } else if (videoId && videoId.length > 0) {
+          // Video disponibile, apri modale
+          openVideo(videoId);
+        }
       });
     });
   }
@@ -275,6 +327,11 @@
         ...r,
       }));
       console.log('Caricate ricette:', allRecipes.length);
+      
+      // Conta quante ricette hanno video
+      const withVideo = allRecipes.filter(r => r.videoId && r.videoId.length > 0).length;
+      console.log(`📹 Ricette con video: ${withVideo} su ${allRecipes.length}`);
+      
       renderRecipes();
     } catch (err) {
       console.error('Errore nel caricare i dati ricette:', err);
@@ -306,6 +363,6 @@
   // -------------------------
   // Init
   // -------------------------
-  console.log('Avvio app Ricette & Lista Spesa v18');
+  console.log('🚀 Avvio app Ricette & Lista Spesa v18 (con ricerca video automatica)');
   loadData();
 })();
