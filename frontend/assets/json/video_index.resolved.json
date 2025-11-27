@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "generated_at": "2025-11-25T23:30:00Z",
+  "by_slug": {
+    "spaghetti-aglio-olio-e-peperoncino": {
+      "youtubeId": "OqqvjvZr0Zw",
+      "title": "Spaghetti aglio, olio e peperoncino",
+      "source": "manual-test",
+      "confidence": 0.95
+    },
+    "penne-all-arrabbiata": {
+      "youtubeId": "EEH1FRFyCXs",
+      "title": "Penne all'arrabbiata",
+      "source": "manual-test",
+      "confidence": 0.95
+    }
+  }
+}

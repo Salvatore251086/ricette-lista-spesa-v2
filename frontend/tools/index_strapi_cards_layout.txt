@@ -1,0 +1,88 @@
+DESCRIZIONE FILE
+Questo file documenta la struttura della pagina index-strapti.html mostrata nello screenshot, e come ogni "card" di ricetta deve essere interpretata dall’agente.
+
+FILE HTML DI RIFERIMENTO
+frontend/index-strapti.html
+
+CONTESTO
+La pagina mostra una griglia di card, una per ogni ricetta importata da Strapi.
+In alto a sinistra compare il titolo dell’app: "Ricette & Lista Spesa".
+Subito sotto c’è una barra che indica "Versione collegata a Strapi." e un campo di ricerca.
+Sotto, una griglia con 297 card visibili in più pagine di scroll.
+
+STRUTTURA DI UNA CARD
+Per ogni ricetta c’è una card rettangolare bianca con bordo grigio chiaro.
+
+All’interno di ciascuna card gli elementi, dall’alto verso il basso, sono sempre nello stesso ordine:
+
+1) TITOLO RICETTA
+   Esempi:
+   - "Spaghetti aglio, olio e peperoncino"
+   - "Penne all’arrabbiata"
+   - "Risotto alla zucca"
+   È il nome leggibile della ricetta, derivato dal campo Strapi "title".
+
+2) RIGA METADATI
+   Una riga testuale con tre informazioni separate da punti o simboli "•":
+   - Origine: sempre "Strapi"
+   - Diff: livello di difficoltà (es. "medium")
+   - legacyId: numero intero che identifica la ricetta nel vecchio sistema (es. "legacyId: 19")
+   Questa riga rappresenta:
+   - difficulty  -> valore dopo "Diff:"
+   - legacyId    -> numero dopo "legacyId:"
+   - origine     -> fisso "Strapi"
+
+3) NUMERO PROGRESSIVO IN BASSO A SINISTRA DELLA RIGA METADATI
+   Subito sotto la riga "Strapi • Diff: ... • legacyId: N" compare un numero secco, ad esempio:
+   - "19"
+   - "20"
+   - "24"
+   Questo numero è semplicemente il conteggio/indice locale della ricetta sulla pagina, ordinato per legacyId o per importazione. Non è un campo Strapi, serve solo come riferimento visivo locale.
+
+4) BOTTONI AZIONE
+   Sotto i metadati ci sono uno o due pulsanti di testo:
+   - "Apri ricetta"  (link che apre il dettaglio della ricetta lato frontend)
+   - "Lista ingredienti"  (link che apre la lista degli ingredienti)
+   Questi pulsanti non contengono nuovi dati, ma rappresentano azioni navigabili.
+   Per la mappatura dati, è sufficiente sapere che:
+   - il link "Apri ricetta" porta alla pagina di dettaglio per quella ricetta
+   - il link "Lista ingredienti" mostra solo la parte ingredienti
+
+5) STATO VIDEO
+   Sotto i pulsanti compare una riga di testo che indica lo stato del video collegato alla ricetta:
+   - "Nessun video"  se la ricetta non ha ancora un video associato
+   - "Video disponibile" o testo equivalente, se presente (in altre varianti della pagina)
+   Questa riga è la traduzione dello stato del campo Strapi "videoId":
+   - se videoId è nullo/vuoto -> mostra "Nessun video"
+   - se videoId contiene un ID YouTube -> mostra "Video disponibile"
+
+6) STATO LINK FONTE ORIGINALE
+   Ancora sotto, un’altra riga di testo indica lo stato del link alla fonte esterna (es. Giallo Zafferano):
+   - "Nessun link" se non c’è URL
+   - "Fonte originale" se esiste un link alla ricetta originale
+   Questa riga è la traduzione del campo Strapi "sourceUrl":
+   - se sourceUrl è nullo/vuoto -> "Nessun link"
+   - se sourceUrl è valorizzato      -> testo cliccabile "Fonte originale"
+
+ASSOCIAZIONE CAMPI CARD -> STRAPI
+Per ogni card della pagina index-strapti.html, l’agente deve interpretare i dati così:
+
+- card.title                      -> Strapi.recipe.title
+- card.meta.difficulty            -> Strapi.recipe.difficulty
+- card.meta.legacyId              -> Strapi.recipe.legacyId
+- card.meta.source                -> fisso "Strapi"
+- card.localIndexNumber           -> indice locale mostrato subito sotto la riga meta (solo riferimento umano)
+- card.links.openRecipeUrl        -> URL collegato al bottone "Apri ricetta"
+- card.links.ingredientsUrl       -> URL collegato al bottone "Lista ingredienti"
+- card.videoStatusText            -> testo "Nessun video" oppure indicazione video presente
+- card.hasVideo                   -> true se videoStatusText indica un video presente, altrimenti false
+- card.sourceLinkStatusText       -> "Nessun link" oppure "Fonte originale"
+- card.hasSourceUrl               -> true se c’è un link cliccabile (fonte originale), altrimenti false
+
+USO PREVISTO DEL FILE
+Questo file serve come guida descrittiva per:
+- Agenti AI che devono capire come leggere i dati dalle card della pagina index-strapti.html.
+- Sviluppatori che vogliono verificare che il rendering della pagina rispecchi i campi salvati in Strapi.
+
+NON CONTIENE DATI REALI
+Questo file non contiene dati di ricette reali, ma solo la descrizione della struttura visiva e logica di ciascuna card.

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <title>Ricette &amp; Lista Spesa – Strapi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Ricette &amp; Lista Spesa</h1>
+      <p class="subtitle">Vista collegata a Strapi per controllo ricette</p>
+    </header>
+
+    <main class="app-main">
+      <section class="search-panel">
+        <label for="search-input">Cerca ricette o ingredienti</label>
+        <input
+          id="search-input"
+          type="search"
+          autocomplete="off"
+          placeholder="es. pasta, pollo, zucchine"
+        >
+
+        <button id="btn-suggerisci-ricette" type="button">
+          Suggerisci ricette
+        </button>
+      </section>
+
+      <section class="tags-panel">
+        <h2>Filtra per tag</h2>
+        <div id="tags-container" class="tags-container"></div>
+      </section>
+
+      <section class="recipes-panel">
+        <h2>Tutte le ricette</h2>
+        <div id="recipes-list" class="recipes-list">
+          <p>Caricamento ricette da Strapi in corso...</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Modale video YouTube -->
+    <div
+      id="video-modal-overlay"
+      class="modal-overlay"
+      style="display:none;"
+    >
+      <div class="modal">
+        <button id="video-modal-close" type="button" class="modal-close">
+          ×
+        </button>
+        <div id="video-modal-content" class="modal-content">
+          <!-- iframe video inserito via JS -->
+        </div>
+      </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script defer src="app.v18.strapi.js"></script>
+  </body>
+</html>

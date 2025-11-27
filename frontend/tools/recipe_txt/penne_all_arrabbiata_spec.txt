@@ -1,0 +1,35 @@
+Strapi Recipe Spec - Penne all'arrabbiata
+
+id: 8  (esempio, da verificare in Strapi)
+title: Penne all'arrabbiata
+slug: penne-all-arrabbiata
+
+prepTime: 10
+cookTime: 15
+difficulty: medium
+servings: 4
+
+ingredients (JSON):
+[
+  { "name": "penne rigate", "quantity": 320, "unit": "g" },
+  { "name": "pomodori pelati", "quantity": 400, "unit": "g" },
+  { "name": "olio extravergine di oliva", "quantity": 3, "unit": "cucchiai" },
+  { "name": "aglio", "quantity": 1, "unit": "spicchio" },
+  { "name": "peperoncino", "quantity": 1, "unit": "q.b." },
+  { "name": "prezzemolo", "quantity": 1, "unit": "ciuffo, tritato" },
+  { "name": "sale", "quantity": 1, "unit": "q.b." }
+]
+
+steps (JSON):
+[
+  "Metti a bollire una pentola di acqua salata.",
+  "In una padella scalda l'olio con lo spicchio d'aglio e il peperoncino.",
+  "Aggiungi i pomodori pelati schiacciati e cuoci per 10–15 minuti a fuoco medio.",
+  "Cuoci le penne al dente.",
+  "Sala la pasta nel condimento, completa con prezzemolo tritato e servi subito."
+]
+
+sourceUrl: "https://ricette.giallozafferano.it/Penne-all-arrabbiata.html"   # da confermare
+videoId: ""   # Nessun video associato in Strapi per ora
+tags (JSON): ["pasta", "piccante", "primo piatto"]
+legacyId: null

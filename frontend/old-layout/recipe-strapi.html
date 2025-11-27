@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <title>Ricetta – Ricette &amp; Lista Spesa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="app-header">
+      <h1 id="recipe-title">Ricetta</h1>
+      <a href="index-strapi.html" class="back-link">← Torna alle ricette</a>
+    </header>
+
+    <main class="recipe-main">
+      <section class="recipe-hero">
+        <img
+          id="recipe-image"
+          class="recipe-image-large"
+          src="assets/screenshots/placeholder.jpg"
+          alt=""
+        >
+        <div class="recipe-meta-block">
+          <p id="recipe-meta"></p>
+          <p id="recipe-tags"></p>
+          <button id="btn-detail-video" type="button">
+            Guarda video
+          </button>
+        </div>
+      </section>
+
+      <section class="recipe-section">
+        <h2>Ingredienti</h2>
+        <ul id="recipe-ingredients"></ul>
+      </section>
+
+      <section class="recipe-section">
+        <h2>Preparazione</h2>
+        <ol id="recipe-steps"></ol>
+      </section>
+    </main>
+
+    <div
+      id="video-modal-overlay"
+      class="modal-overlay"
+      style="display:none;"
+    >
+      <div class="modal">
+        <button id="video-modal-close" type="button" class="modal-close">
+          ×
+        </button>
+        <div id="video-modal-content" class="modal-content"></div>
+      </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script defer src="recipe_strapi.js"></script>
+  </body>
+</html>

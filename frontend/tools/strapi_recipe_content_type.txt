@@ -1,0 +1,18 @@
+Collection type: Recipe
+
+Campi:
+
+1) title | tipo: Text | obbligatorio: sì
+2) description | tipo: Rich text (Blocks) | obbligatorio: no
+3) coverImage | tipo: Media | obbligatorio: no
+4) prepTime | tipo: Number | obbligatorio: no
+5) cookTime | tipo: Number | obbligatorio: no
+6) difficulty | tipo: Enumeration | obbligatorio: no
+7) servings | tipo: Number | obbligatorio: no
+8) slug | tipo: Text | obbligatorio: sì
+9) ingredients | tipo: JSON | obbligatorio: no
+10) steps | tipo: JSON | obbligatorio: no
+11) sourceUrl | tipo: Text | obbligatorio: no
+12) videoId | tipo: Text | obbligatorio: no
+13) tags | tipo: JSON | obbligatorio: no
+14) legacyId | tipo: Number | obbligatorio: no

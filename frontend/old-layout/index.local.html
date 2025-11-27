@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ricette & Lista Spesa</title>
+  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <img src="assets/icons/icon-192.png" alt="R&S" width="32" height="32" />
+      <h1>Ricette & Lista Spesa</h1>
+    </div>
+    <p>Raccolta curata di ricette, lista spesa intelligente e video selezionati.</p>
+  </header>
+
+  <main>
+    <div class="search-bar">
+      <input id="search" type="text" placeholder="Cerca per titolo o ingredienti" />
+      <button id="updateDataBtn">Aggiorna dati</button>
+      <label><input id="favoritesToggle" type="checkbox" /> Solo preferiti</label>
+      <span id="recipeCount">Ricette visibili: 0</span>
+    </div>
+
+    <section id="recipes" class="recipes-container"></section>
+  </main>
+
+  <!-- Modal video -->
+  <div id="videoModal" class="modal hidden" aria-hidden="true" role="dialog" aria-label="Video ricetta">
+    <div class="modal-dialog">
+      <button id="closeVideo" class="modal-close" aria-label="Chiudi">×</button>
+      <iframe id="videoFrame" title="Video ricetta" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <script defer src="app.v18.js"></script>
+</body>
+</html>

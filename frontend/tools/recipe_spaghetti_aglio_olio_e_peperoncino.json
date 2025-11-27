@@ -1,0 +1,62 @@
+{
+  "title": "Spaghetti aglio, olio e peperoncino",
+  "description": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "text": "Gli spaghetti aglio, olio e peperoncino sono un primo piatto semplice e veloce."
+        }
+      ]
+    }
+  ],
+  "prepTime": 5,
+  "cookTime": 10,
+  "difficulty": "medium",
+  "servings": 4,
+  "slug": "spaghetti-aglio-olio-e-peperoncino",
+  "ingredients": [
+    {
+      "name": "spaghetti",
+      "quantity": "320 g"
+    },
+    {
+      "name": "olio extravergine di oliva",
+      "quantity": "80 g"
+    },
+    {
+      "name": "aglio",
+      "quantity": "2 spicchi"
+    },
+    {
+      "name": "peperoncino",
+      "quantity": "1"
+    },
+    {
+      "name": "prezzemolo",
+      "quantity": "q.b."
+    },
+    {
+      "name": "sale",
+      "quantity": "q.b."
+    }
+  ],
+  "steps": [
+    "Metti a bollire l’acqua e sala.",
+    "In una padella scalda l’olio con gli spicchi d’aglio.",
+    "Aggiungi il peperoncino e lascia insaporire a fuoco dolce.",
+    "Cuoci gli spaghetti al dente.",
+    "Scola la pasta e saltala in padella con olio, aglio e peperoncino.",
+    "Completa con prezzemolo tritato e servi subito."
+  ],
+  "sourceUrl": "https://ricette.giallozafferano.it/Spaghetti-aglio-olio-e-peperoncino.html",
+  "videoId": "0goyjVz0RwE",
+  "tags": [
+    "pasta",
+    "veloce",
+    "piccante",
+    "primo piatto"
+  ],
+  "legacyId": 6
+}

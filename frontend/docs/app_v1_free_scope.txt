@@ -1,0 +1,160 @@
+APP V1 – LIVELLO FREE
+Progetto: Cucina Intelligente e Risparmio
+
+Obiettivo versione Free
+Permettere a un utente senza piano a pagamento di:
+- trovare ricette adatte a quello che vuole cucinare
+- aggiungerle a una lista spesa chiara
+- salvare preferiti e cronologia
+Senza usare AI e senza planner settimanale.
+
+SCHERMATE PRINCIPALI V1 FREE
+
+1) Schermata Home
+Cosa mostra
+- logo e nome app
+- ricerca rapida per testo (titolo o ingrediente)
+- scorciatoie per categorie (pasta, secondi, contorni, dolci, ecc)
+- sezione “Ricette veloci” usando cookTime + prepTime
+- sezione “Anti spreco” usando tag tipo svuota-frigo, avanzi, freezer
+
+Cosa permette
+- iniziare una ricerca rapida
+- entrare nella lista completa delle ricette
+- aprire una ricetta in dettaglio
+
+Campi Recipe usati
+- title
+- slug
+- tags
+- cookTime
+- prepTime
+- coverImage
+
+
+2) Lista Ricette / Risultati ricerca
+Cosa mostra
+- elenco di ricette con titolo, immagine, tempo totale e tag principali
+- filtri per:
+  - tempo totale (esempio: fino a 15 min, fino a 30, oltre)
+  - difficoltà
+  - tipo piatto (gestito con tag)
+  - “solo veloci” (cookTime + prepTime sotto una soglia)
+
+Cosa permette
+- combinare filtri
+- ordinare per:
+  - tempo
+  - data pubblicazione (se in futuro aggiunto)
+- aprire una ricetta
+
+Campi Recipe usati
+- title
+- slug
+- coverImage
+- cookTime
+- prepTime
+- difficulty
+- tags
+
+
+3) Dettaglio Ricetta
+Cosa mostra
+- titolo
+- immagine di copertina
+- descrizione breve
+- info veloci: tempo, difficoltà, porzioni
+- ingredienti come elenco leggibile
+- passi della preparazione numerati
+- link “Fonte originale” se presente
+- banner informativo se esiste videoId (ma il player video è una extra non essenziale per V1 Free)
+
+Cosa permette
+- aggiungere la ricetta alla lista spesa
+- aggiungere la ricetta ai preferiti
+- tornare alla lista precedente
+
+Campi Recipe usati
+- title
+- coverImage
+- description
+- cookTime
+- prepTime
+- difficulty
+- servings
+- ingredients
+- steps
+- sourceUrl
+- videoId (solo per mostrare che esiste un video)
+
+
+4) Lista Spesa
+Cosa mostra
+- elenco ingredienti derivato dalle ricette selezionate
+- raggruppamento per tipo di ingrediente (esempio: verdure, carne, latticini) se in futuro aggiungiamo questa logica
+- indicatore da quale ricetta arriva ogni ingrediente, utile per capire modifiche
+
+Cosa permette
+- spuntare gli ingredienti acquistati
+- rimuovere un ingrediente singolo
+- rimuovere una ricetta dalla lista spesa
+- svuotare tutta la lista
+
+Campi Recipe usati
+- ingredients
+- title (per indicare la ricetta di origine)
+
+
+5) Preferiti e Cronologia
+Cosa mostra
+- elenco ricette salvate come preferite
+- elenco ricette viste o cucinate di recente
+
+Cosa permette
+- aprire rapidamente una ricetta usata spesso
+- togliere una ricetta dai preferiti
+
+Campi Recipe usati
+- title
+- slug
+- coverImage
+- eventualmente cookTime, prepTime
+
+
+6) Profilo base / Piano utente (stub)
+Cosa mostra
+- tipo piano attuale: Free
+- messaggio chiaro sul valore di Base e Pro
+- esempio concreto di cosa sblocchi passando a Base (svuota frigo AI)
+- esempio concreto di cosa sblocchi passando a Pro (planner settimana intelligente)
+
+Cosa permette
+- registrarsi o fare login (account leggero)
+- vedere un pulsante “Scopri Base” e “Scopri Pro” che porta a una schermata informativa (anche se il pagamento non è ancora attivo)
+
+
+REGOLE DI PROGETTAZIONE V1 FREE
+
+1) Nessuna AI
+Tutta la logica di ricerca, filtro, lista spesa e preferiti funziona al 100 percento senza chiamate AI.
+
+2) Performance
+Le schermate principali devono caricare con pochi dati per volta.
+La lista ricette usa paginazione o caricamento progressivo.
+
+3) Mobile first
+Tutto deve essere comodo da usare con una sola mano e pollice.
+Pulsanti principali ben distanziati.
+Font leggibili.
+
+4) Stabilità prima dei fronzoli
+Prima obiettivo: nessun errore di caricamento ricette, di lista spesa o di preferiti.
+Video, animazioni e altro arrivano dopo che il flusso base è stabile.
+
+
+UTILIZZO DI QUESTO FILE
+
+Questo file serve come riferimento per:
+- cosa deve esistere per dire “la versione Free esiste davvero”
+- quali campi di Recipe sono già fondamentali per l’app
+- cosa NON rientra nella versione Free, per evitare di allargare lo scope mentre sviluppi

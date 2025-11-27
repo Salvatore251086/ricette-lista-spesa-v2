@@ -1,0 +1,79 @@
+{
+  "kind": "collectionType",
+  "collectionName": "recipes",
+  "info": {
+    "singularName": "recipe",
+    "pluralName": "recipes",
+    "displayName": "Recipe"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "coverlmage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "prepTime": {
+      "type": "integer",
+      "min": 1
+    },
+    "cookTime": {
+      "type": "integer",
+      "min": 0
+    },
+    "difficulty": {
+      "type": "enumeration",
+      "default": "medium",
+      "enum": [
+        "easy",
+        "medium",
+        "hard"
+      ]
+    },
+    "servings": {
+      "type": "integer",
+      "default": 4,
+      "min": 1
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "ingredients": {
+      "type": "json"
+    },
+    "steps": {
+      "type": "json"
+    },
+    "sourceUrl": {
+      "type": "string"
+    },
+    "videoId": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "json"
+    },
+    "legacyId": {
+      "type": "integer"
+    },
+    "coverImageUrl": {
+      "type": "string"
+    }
+  }
+}
