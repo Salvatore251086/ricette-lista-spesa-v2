@@ -1,267 +1,592 @@
-// app.v18.strapi.js
-// Versione collegata a Strapi
+'use strict';
 
-const STRAPI_BASE = 'http://localhost:1337';
-const STRAPI_RECIPES = `${STRAPI_BASE}/api/recipes`;
+// Config generale
+const CONFIG = {
+  // Metti true solo quando avrai Strapi attivo e configurato
+  useStrapi: false,
+  // Se un giorno userai Strapi, imposta qui il dominio, senza slash finale
+  // esempio: 'http://localhost:1337' oppure 'https://ricette-strapi.tuo-dominio.it'
+  strapiBaseUrl: 'https://TUO-STRAPI-URL',
+  strapiRecipesPath: '/api/recipes?populate=*',
+  localRecipesUrl: 'assets/json/recipes-it.json',
+  videoIndexUrl: 'assets/json/video_index.manual.json',
+  strapiTimeoutMs: 6000
+};
 
-// Stato in memoria
-let allStrapiRecipes = [];
+// Stato app
+const state = {
+  recipes: [],
+  filteredRecipes: [],
+  tags: new Set(),
+  activeTags: new Set(),
+  videoIndex: {},
+  isUsingStrapi: false,
+  searchQuery: ''
+};
 
-// Utility DOM
-function qs(sel) {
-  return document.querySelector(sel);
+// Riferimenti DOM
+const dom = {
+  searchInput: null,
+  tagChips: null,
+  recipeList: null,
+  recipeCardTemplate: null,
+  videoModal: null,
+  videoModalClose: null,
+  videoIframe: null,
+  modalBackdropElems: null
+};
+
+let modalFallbackTimeoutId = null;
+
+document.addEventListener('DOMContentLoaded', () => {
+  cacheDom();
+  bindEvents();
+  bootstrap();
+});
+
+function cacheDom() {
+  dom.searchInput = document.getElementById('search-input');
+  dom.tagChips = document.getElementById('tag-chips');
+  dom.recipeList = document.getElementById('recipe-list');
+  dom.recipeCardTemplate = document.getElementById('recipe-card-template');
+
+  dom.videoModal = document.getElementById('video-modal');
+  dom.videoModalClose = document.getElementById('video-modal-close');
+  dom.videoIframe = document.getElementById('video-iframe');
+  dom.modalBackdropElems = document.querySelectorAll('[data-modal-close="true"]');
 }
 
-function createEl(tag, opts = {}) {
-  const el = document.createElement(tag);
-  if (opts.className) el.className = opts.className;
-  if (opts.text) el.textContent = opts.text;
-  return el;
-}
+function bindEvents() {
+  if (dom.searchInput) {
+    dom.searchInput.addEventListener('input', onSearchInput);
+  }
 
-// Normalizza il campo ingredienti (stringa JSON, lista per righe, array)
-function getSafeArray(value) {
-  if (Array.isArray(value)) return value;
+  if (dom.videoModalClose) {
+    dom.videoModalClose.addEventListener('click', closeVideoModal);
+  }
 
-  if (typeof value === 'string' && value.trim()) {
-    // Prova prima a interpretare come JSON
-    try {
-      const parsed = JSON.parse(value);
-      if (Array.isArray(parsed)) return parsed;
-    } catch {
-      // Non è JSON, tratto come testo multilinea
+  if (dom.modalBackdropElems && dom.modalBackdropElems.length > 0) {
+    dom.modalBackdropElems.forEach(el => {
+      el.addEventListener('click', closeVideoModal);
+    });
+  }
+
+  document.addEventListener('keydown', evt => {
+    if (evt.key === 'Escape') {
+      closeVideoModal();
     }
+  });
+}
 
-    return value
-      .split('\n')
-      .map(s => s.trim())
+// Avvio app: video_index poi Strapi (se attivo) oppure JSON locale
+async function bootstrap() {
+  try {
+    await loadVideoIndex();
+  } catch (err) {
+    console.error('Errore caricamento video_index', err);
+  }
+
+  const wantStrapi =
+    CONFIG.useStrapi === true &&
+    CONFIG.strapiBaseUrl &&
+    CONFIG.strapiBaseUrl !== 'https://TUO-STRAPI-URL';
+
+  if (wantStrapi) {
+    try {
+      await loadRecipesFromStrapi();
+      state.isUsingStrapi = true;
+      console.info('Uso Strapi come sorgente principale');
+    } catch (err) {
+      console.warn('Strapi non disponibile, uso JSON locale', err);
+      await loadRecipesFromLocal();
+      state.isUsingStrapi = false;
+    }
+  } else {
+    console.info('Strapi disattivato, uso JSON locale');
+    await loadRecipesFromLocal();
+    state.isUsingStrapi = false;
+  }
+
+  console.info(
+    'Video index caricato, slugs con video:',
+    Object.keys(state.videoIndex).slice(0, 20)
+  );
+
+  collectTags();
+  renderTagChips();
+  applyFiltersAndRender();
+}
+
+// Carica video_index.manual.json
+async function loadVideoIndex() {
+  const res = await fetch(CONFIG.videoIndexUrl);
+  if (!res.ok) {
+    throw new Error('HTTP video_index ' + res.status);
+  }
+  const json = await res.json();
+  state.videoIndex = buildVideoIndex(json);
+}
+
+// Prova a leggere da Strapi
+async function loadRecipesFromStrapi() {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), CONFIG.strapiTimeoutMs);
+
+  const base = CONFIG.strapiBaseUrl.replace(/\/$/, '');
+  const url = base + CONFIG.strapiRecipesPath;
+
+  const res = await fetch(url, { signal: controller.signal });
+  clearTimeout(timeoutId);
+
+  if (!res.ok) {
+    throw new Error('HTTP Strapi ' + res.status);
+  }
+
+  const data = await res.json();
+  const arr = Array.isArray(data.data) ? data.data : [];
+  state.recipes = arr
+    .map(mapStrapiRecipe)
+    .filter(r => r && r.title);
+}
+
+// Fallback JSON locale
+async function loadRecipesFromLocal() {
+  const res = await fetch(CONFIG.localRecipesUrl);
+  if (!res.ok) {
+    throw new Error('HTTP local JSON ' + res.status);
+  }
+
+  const data = await res.json();
+  let arr = [];
+
+  if (Array.isArray(data)) {
+    arr = data;
+  } else if (Array.isArray(data.recipes)) {
+    arr = data.recipes;
+  }
+
+  state.recipes = arr
+    .map(mapLocalRecipe)
+    .filter(r => r && r.title);
+}
+
+// Normalizza ricetta Strapi
+function mapStrapiRecipe(item) {
+  if (!item || typeof item !== 'object') return null;
+  const attrs = item.attributes || {};
+
+  const title = attrs.title || 'Ricetta senza titolo';
+  const slug = attrs.slug || slugify(title);
+
+  const description = attrs.description
+    ? extractPlainText(attrs.description)
+    : '';
+
+  const ingredients = attrs.ingredients
+    ? extractPlainText(attrs.ingredients)
+    : '';
+
+  const instructions = attrs.instructions
+    ? extractPlainText(attrs.instructions)
+    : '';
+
+  let tags = [];
+  if (Array.isArray(attrs.tags)) {
+    tags = attrs.tags
+      .map(t => {
+        if (!t) return null;
+        if (typeof t === 'string') return t;
+        if (typeof t === 'object') {
+          return t.name || t.label || null;
+        }
+        return null;
+      })
       .filter(Boolean);
   }
 
-  return [];
+  let coverImageUrl = '';
+  if (attrs.coverImageUrl) {
+    coverImageUrl = absoluteUrl(attrs.coverImageUrl);
+  } else if (
+    attrs.coverImage &&
+    attrs.coverImage.data &&
+    attrs.coverImage.data.attributes &&
+    attrs.coverImage.data.attributes.url
+  ) {
+    coverImageUrl = absoluteUrl(attrs.coverImage.data.attributes.url);
+  }
+
+  return {
+    id: item.id,
+    slug,
+    title,
+    description,
+    ingredients,
+    instructions,
+    tags,
+    coverImageUrl
+  };
 }
 
-// Crea una card per una ricetta Strapi
-function buildCard(recipe) {
-  const a = recipe.attributes || {};
+// Normalizza ricetta JSON locale
+function mapLocalRecipe(raw, index) {
+  if (!raw || typeof raw !== 'object') return null;
 
-  const title = a.title || 'Ricetta senza titolo';
-  const difficulty = a.difficulty || 'medium';
-  const portions = a.portions || a.servings || 4;
-  const ingredients = getSafeArray(a.ingredients);
-  const hasSource = !!a.sourceUrl;
-  const hasVideo = !!a.videoId;
+  const title = raw.title || raw.name || 'Ricetta senza titolo';
+  const slug = raw.slug || slugify(title);
+  const description = raw.description || '';
+  const ingredients = raw.ingredients || '';
+  const instructions = raw.instructions || '';
 
-  const card = createEl('article', { className: 'card strapi-card' });
-  card.style.padding = '10px';
-  card.style.marginBottom = '12px';
+  let tags = [];
+  if (Array.isArray(raw.tags)) {
+    tags = raw.tags.filter(Boolean);
+  }
 
-  // Per filtri
-  card.dataset.title = title.toLowerCase();
-  card.dataset.ingredients = ingredients.join(' ').toLowerCase();
+  const coverImageUrl = raw.coverImageUrl || raw.image || raw.img || '';
 
-  const h2 = createEl('h2', { text: title });
-  card.appendChild(h2);
+  return {
+    id: raw.id || index,
+    slug,
+    title,
+    description,
+    ingredients,
+    instructions,
+    tags,
+    coverImageUrl
+  };
+}
 
-  const meta = createEl('div', { className: 'muted' });
-  meta.textContent = `Strapi · Diff: ${difficulty} · Porzioni: ${portions} · ${ingredients.length} ingredienti`;
-  card.appendChild(meta);
+// Costruisce mappa slug -> videoId da video_index
+function buildVideoIndex(raw) {
+  const index = {};
+  if (!raw) return index;
 
-  const btnRow = createEl('div');
-  btnRow.style.display = 'flex';
-  btnRow.style.flexWrap = 'wrap';
-  btnRow.style.gap = '6px';
-  btnRow.style.marginTop = '8px';
+  // Schema 2: { schema: 2, by_slug: { slug: { primary, backups } } }
+  if (
+    raw.schema === 2 &&
+    raw.by_slug &&
+    typeof raw.by_slug === 'object'
+  ) {
+    Object.entries(raw.by_slug).forEach(([slug, value]) => {
+      if (!slug || !value) return;
+      const primary =
+        value.primary ||
+        (Array.isArray(value.backups) && value.backups[0]) ||
+        null;
+      if (!primary) return;
+      index[String(slug)] = String(primary);
+    });
+    return index;
+  }
 
-  // Apri ricetta (pagina recipe.html)
-  const btnOpen = createEl('button', { className: 'btn', text: 'Apri ricetta' });
-  btnOpen.addEventListener('click', () => {
-    // Usa l'ID nativo di Strapi
-    const url = `recipe.html?src=strapi&id=${recipe.id}`;
-    window.location.href = url;
-  });
-  btnRow.appendChild(btnOpen);
-
-  // Lista ingredienti (popup semplice)
-  const btnIng = createEl('button', { className: 'btn', text: 'Lista ingredienti' });
-  btnIng.addEventListener('click', () => {
-    if (!ingredients.length) {
-      alert('Nessun ingrediente presente in Strapi per questa ricetta.');
-      return;
-    }
-    alert('Ingredienti:\n\n' + ingredients.join('\n'));
-  });
-  btnRow.appendChild(btnIng);
-
-  // Video
-  const btnVideo = createEl('button', { className: 'btn' });
-  if (hasVideo) {
-    btnVideo.textContent = 'Guarda video';
-    btnVideo.addEventListener('click', () => {
-      const raw = a.videoId;
-      if (!raw) return;
-
-      let href = raw;
-      if (!raw.startsWith('http')) {
-        href = `https://www.youtube.com/watch?v=${raw}`;
+  // Array di oggetti
+  if (Array.isArray(raw)) {
+    raw.forEach(item => {
+      if (!item || typeof item !== 'object') return;
+      const slug = item.slug || item.recipe_slug || null;
+      const videoId = item.videoId || item.youtubeId || item.yt_id || null;
+      if (slug && videoId) {
+        index[String(slug)] = String(videoId);
       }
-      window.open(href, '_blank', 'noopener');
     });
-  } else {
-    btnVideo.textContent = 'Nessun video';
-    btnVideo.disabled = true;
+    return index;
   }
-  btnRow.appendChild(btnVideo);
 
-  // Fonte ricetta
-  const btnSource = createEl('a', { className: 'btn' });
-  if (hasSource) {
-    btnSource.textContent = 'Fonte ricetta';
-    btnSource.href = a.sourceUrl;
-    btnSource.target = '_blank';
-    btnSource.rel = 'noopener';
-  } else {
-    btnSource.textContent = 'Nessun link';
-    btnSource.href = '#';
-    btnSource.addEventListener('click', ev => ev.preventDefault());
+  // Mappa slug -> valore
+  if (raw && typeof raw === 'object') {
+    Object.entries(raw).forEach(([slug, value]) => {
+      if (!slug || value == null) return;
+      let videoId = null;
+
+      if (typeof value === 'string') {
+        videoId = value;
+      } else if (typeof value === 'object') {
+        videoId = value.videoId || value.youtubeId || value.yt_id || null;
+      }
+
+      if (videoId) {
+        index[String(slug)] = String(videoId);
+      }
+    });
   }
-  btnRow.appendChild(btnSource);
 
-  card.appendChild(btnRow);
-
-  return card;
+  return index;
 }
 
-// Rendering lista
-function renderStrapiList(recipes) {
-  const listContainer = qs('#recipes');
-  const countSpan = qs('#count');
+// Unifica testo da rich text Strapi, array, oggetti
+function extractPlainText(value) {
+  if (!value) return '';
+  if (typeof value === 'string') return value;
 
-  if (!listContainer) {
-    console.error('Contenitore #recipes non trovato in index-strapi.html');
-    return;
+  if (Array.isArray(value)) {
+    return value.map(extractPlainText).join(' ');
   }
 
-  listContainer.innerHTML = '';
-
-  if (!recipes.length) {
-    listContainer.innerHTML = '<p>Nessuna ricetta trovata in Strapi.</p>';
-    if (countSpan) countSpan.textContent = 'Ricette visibili: 0';
-    return;
+  if (typeof value === 'object') {
+    if (value.type === 'text' && value.text) {
+      return value.text;
+    }
+    if (Array.isArray(value.children)) {
+      return value.children.map(extractPlainText).join(' ');
+    }
+    return Object.values(value).map(extractPlainText).join(' ');
   }
 
-  recipes.forEach(r => {
-    const card = buildCard(r);
-    listContainer.appendChild(card);
+  return '';
+}
+
+// Gestione tag
+function collectTags() {
+  state.tags.clear();
+
+  state.recipes.forEach(r => {
+    if (!r || !Array.isArray(r.tags)) return;
+    r.tags.forEach(tag => {
+      if (!tag) return;
+      state.tags.add(String(tag));
+    });
   });
-
-  if (countSpan) countSpan.textContent = `Ricette visibili: ${recipes.length}`;
 }
 
-// Applica filtri locali (ricerca testo)
-function applyFilters() {
-  const searchInput =
-    qs('#searchStrapi') ||
-    qs('#search') ||
-    qs('input[type="search"]') ||
-    qs('input[name="search"]');
+function renderTagChips() {
+  if (!dom.tagChips) return;
+  dom.tagChips.innerHTML = '';
 
-  let term = '';
-  if (searchInput && typeof searchInput.value === 'string') {
-    term = searchInput.value.toLowerCase().trim();
+  const fragment = document.createDocumentFragment();
+
+  Array.from(state.tags)
+    .sort((a, b) => a.localeCompare(b))
+    .forEach(tag => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'tag-chip';
+      btn.textContent = tag;
+      btn.dataset.tagValue = tag;
+
+      btn.addEventListener('click', () => toggleTag(tag));
+
+      fragment.appendChild(btn);
+    });
+
+  dom.tagChips.appendChild(fragment);
+  updateTagChipActiveStates();
+}
+
+function toggleTag(tag) {
+  const value = String(tag);
+
+  if (state.activeTags.has(value)) {
+    state.activeTags.delete(value);
+  } else {
+    state.activeTags.add(value);
   }
 
-  if (!term) {
-    renderStrapiList(allStrapiRecipes);
-    return;
-  }
+  updateTagChipActiveStates();
+  applyFiltersAndRender();
+}
 
-  const filtered = allStrapiRecipes.filter(r => {
-    const a = r.attributes || {};
-    const title = (a.title || '').toLowerCase();
-    const ingredients = getSafeArray(a.ingredients)
-      .join(' ')
-      .toLowerCase();
+function updateTagChipActiveStates() {
+  if (!dom.tagChips) return;
+  const chips = dom.tagChips.querySelectorAll('.tag-chip');
 
-    return (
-      title.includes(term) ||
-      ingredients.includes(term)
-    );
+  chips.forEach(chip => {
+    const tag = chip.dataset.tagValue;
+    if (!tag) return;
+
+    if (state.activeTags.has(tag)) {
+      chip.classList.add('tag-chip-active');
+    } else {
+      chip.classList.remove('tag-chip-active');
+    }
   });
-
-  renderStrapiList(filtered);
 }
 
-// Carica da Strapi
-async function loadStrapiRecipes() {
-  const listContainer = qs('#recipes');
-  const countSpan = qs('#count');
+// Ricerca + filtro tag AND
+function onSearchInput(evt) {
+  state.searchQuery = String(evt.target.value || '').toLowerCase();
+  applyFiltersAndRender();
+}
 
-  if (listContainer) {
-    listContainer.innerHTML = '<p>Carico ricette da Strapi...</p>';
-  }
-  if (countSpan) countSpan.textContent = 'Ricette visibili: 0';
+function applyFiltersAndRender() {
+  const q = state.searchQuery;
+  const active = Array.from(state.activeTags);
 
-  try {
-    console.log('Avvio app Ricette & Lista Spesa v18 (Strapi)');
-    console.log('Scarico ricette da Strapi…');
+  const filtered = state.recipes.filter(r => {
+    if (!r) return false;
 
-    const res = await fetch(`${STRAPI_RECIPES}?populate=*`);
-    if (!res.ok) {
-      throw new Error(`Errore Strapi HTTP ${res.status}`);
+    if (q) {
+      const haystack = (
+        (r.title || '') +
+        ' ' +
+        (r.description || '') +
+        ' ' +
+        (r.ingredients || '')
+      ).toLowerCase();
+
+      if (!haystack.includes(q)) {
+        return false;
+      }
     }
 
-    const json = await res.json();
-    const items = json.data || [];
+    if (active.length > 0) {
+      if (!Array.isArray(r.tags) || r.tags.length === 0) {
+        return false;
+      }
+      const recipeTagSet = new Set(
+        r.tags.map(t => String(t).toLowerCase())
+      );
 
-    allStrapiRecipes = items;
-
-    console.log('Risposta Strapi:', json);
-    console.log('Ricette da Strapi:', items.length);
-
-    const videosCount = items.filter(r => r.attributes?.videoId).length;
-    console.log('Ricette con video:', videosCount);
-
-    renderStrapiList(allStrapiRecipes);
-  } catch (err) {
-    console.error('Errore nel caricamento da Strapi', err);
-    if (listContainer) {
-      listContainer.innerHTML =
-        '<p style="color:#b00020">Errore nel caricamento delle ricette da Strapi.</p>';
+      for (const tag of active) {
+        if (!recipeTagSet.has(tag.toLowerCase())) {
+          return false;
+        }
+      }
     }
-    if (countSpan) countSpan.textContent = 'Ricette visibili: 0';
+
+    return true;
+  });
+
+  state.filteredRecipes = filtered;
+  renderRecipeList();
+}
+
+// Render lista ricette
+function renderRecipeList() {
+  if (!dom.recipeList || !dom.recipeCardTemplate) return;
+
+  dom.recipeList.innerHTML = '';
+  const fragment = document.createDocumentFragment();
+
+  state.filteredRecipes.forEach((recipe, index) => {
+    const node = dom.recipeCardTemplate.content.cloneNode(true);
+
+    const card = node.querySelector('.recipe-card');
+    const btnMain = node.querySelector('.recipe-main');
+    const titleEl = node.querySelector('.recipe-title');
+    const descEl = node.querySelector('.recipe-description');
+    const tagsEl = node.querySelector('.recipe-tags');
+    const imgWrapper = node.querySelector('.recipe-image-wrapper');
+    const btnVideo = node.querySelector('.btn-video');
+
+    if (titleEl) {
+      titleEl.textContent = recipe.title;
+    }
+
+    if (descEl) {
+      const text = recipe.description || recipe.ingredients || '';
+      descEl.textContent = text.slice(0, 180);
+    }
+
+    if (imgWrapper && recipe.coverImageUrl) {
+      const img = document.createElement('img');
+      img.src = recipe.coverImageUrl;
+      img.alt = recipe.title;
+      img.loading = 'lazy';
+      imgWrapper.appendChild(img);
+    }
+
+    if (tagsEl && Array.isArray(recipe.tags)) {
+      recipe.tags.forEach(tag => {
+        if (!tag) return;
+        const t = String(tag);
+        const tagBtn = document.createElement('button');
+        tagBtn.type = 'button';
+        tagBtn.className = 'tag-chip tag-chip-small';
+        tagBtn.textContent = t;
+        tagBtn.addEventListener('click', () => toggleTag(t));
+        tagsEl.appendChild(tagBtn);
+      });
+    }
+
+    if (btnMain) {
+      btnMain.addEventListener('click', () => {
+        console.log('Apri ricetta', recipe.slug || recipe.title || index);
+      });
+    }
+
+    if (btnVideo) {
+      const videoId = state.videoIndex[recipe.slug];
+      if (!videoId) {
+        btnVideo.disabled = true;
+        btnVideo.textContent = 'Video non disponibile';
+      } else {
+        btnVideo.disabled = false;
+        btnVideo.textContent = 'Guarda video';
+        btnVideo.addEventListener('click', () => openVideoModal(videoId));
+      }
+    }
+
+    fragment.appendChild(node);
+  });
+
+  dom.recipeList.appendChild(fragment);
+}
+
+// Gestione modale video con fallback YouTube
+function openVideoModal(videoId) {
+  if (!videoId) return;
+
+  if (!dom.videoModal || !dom.videoIframe) {
+    window.open('https://www.youtube.com/watch?v=' + videoId, '_blank');
+    return;
+  }
+
+  const src =
+    'https://www.youtube-nocookie.com/embed/' +
+    encodeURIComponent(videoId) +
+    '?autoplay=1';
+
+  dom.videoIframe.src = src;
+  dom.videoModal.classList.remove('hidden');
+  document.body.classList.add('modal-open');
+
+  if (modalFallbackTimeoutId) {
+    clearTimeout(modalFallbackTimeoutId);
+  }
+
+  modalFallbackTimeoutId = window.setTimeout(() => {
+    if (!dom.videoModal.classList.contains('hidden')) {
+      console.warn('Timeout video, apro YouTube in nuova scheda');
+      closeVideoModal();
+      window.open('https://www.youtube.com/watch?v=' + videoId, '_blank');
+    }
+  }, 4000);
+}
+
+function closeVideoModal() {
+  if (!dom.videoModal || !dom.videoIframe) return;
+
+  dom.videoIframe.src = '';
+  dom.videoModal.classList.add('hidden');
+  document.body.classList.remove('modal-open');
+
+  if (modalFallbackTimeoutId) {
+    clearTimeout(modalFallbackTimeoutId);
+    modalFallbackTimeoutId = null;
   }
 }
 
-// Inizializzazione
-window.addEventListener('DOMContentLoaded', () => {
-  // Pulsante Aggiorna dati
-  const btnRefresh =
-    qs('#refreshStrapi') ||
-    qs('#btnRefresh') ||
-    qs('button[data-refresh="strapi"]') ||
-    qs('input[data-refresh="strapi"]');
+// Utilità
 
-  if (btnRefresh) {
-    btnRefresh.addEventListener('click', ev => {
-      ev.preventDefault();
-      loadStrapiRecipes();
-    });
+function absoluteUrl(path) {
+  if (!path) return '';
+  const s = String(path);
+  if (s.startsWith('http://') || s.startsWith('https://')) {
+    return s;
   }
-
-  // Ricerca in tempo reale se presente un campo di ricerca
-  const searchInput =
-    qs('#searchStrapi') ||
-    qs('#search') ||
-    qs('input[type="search"]') ||
-    qs('input[name="search"]');
-
-  if (searchInput) {
-    searchInput.addEventListener('input', () => {
-      applyFilters();
-    });
+  const base = CONFIG.strapiBaseUrl.replace(/\/$/, '');
+  if (!s.startsWith('/')) {
+    return base + '/' + s;
   }
+  return base + s;
+}
 
-  // Primo caricamento
-  loadStrapiRecipes();
-});
+function slugify(str) {
+  return String(str || '')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}

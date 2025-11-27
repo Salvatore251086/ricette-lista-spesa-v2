@@ -1,20 +1,28 @@
 {
-  "schema": 2,
-  "updated_at": "2025-11-25T21:30:00Z",
-  "by_title": {},
-  "by_slug": {
-    "penne-all-arrabbiata": {
-      "title": "Penne all'arrabbiata",
-      "primary": "kjv-f5fSCBU",
-      "backups": [
-        "2HOnLYQ1GcQ",
-        "ALTRO_ID_SECONDA_SCELTA"
-      ]
-    },
-    "pasta-per-la-pizza-2": {
-      "title": "Pasta per la pizza",
-      "primary": "ID1",
-      "backups": []
-    }
-  }
+"schema": 2,
+"updated_at": "2025-11-25T21:30:00Z",
+"by_title": {},
+"by_slug": {
+"penne-all-arrabbiata": {
+"title": "Penne all'arrabbiata",
+"primary": "kjv-f5fSCBU",
+"backups": [
+"2HOnLYQ1GcQ",
+"ALTRO_ID_SECONDA_SCELTA"
+]
+},
+"pasta-per-la-pizza-2": {
+"title": "Pasta per la pizza",
+"primary": "ID1",
+"backups": []
+},
+"rigatoni-all-arrabbiata-d-ombrina": {
+"title": "Rigatoni all'arrabbiata d'ombrina",
+"primary": "kjv-f5fSCBU",
+"backups": [
+"2HOnLYQ1GcQ",
+"ALTRO_ID_SECONDA_SCELTA"
+]
+}
+}
 }
