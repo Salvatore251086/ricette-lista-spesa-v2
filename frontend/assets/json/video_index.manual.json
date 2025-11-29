@@ -1,28 +1,36 @@
 {
-"schema": 2,
-"updated_at": "2025-11-25T21:30:00Z",
-"by_title": {},
-"by_slug": {
-"penne-all-arrabbiata": {
-"title": "Penne all'arrabbiata",
-"primary": "kjv-f5fSCBU",
-"backups": [
-"2HOnLYQ1GcQ",
-"ALTRO_ID_SECONDA_SCELTA"
-]
-},
-"pasta-per-la-pizza-2": {
-"title": "Pasta per la pizza",
-"primary": "ID1",
-"backups": []
-},
-"rigatoni-all-arrabbiata-d-ombrina": {
-"title": "Rigatoni all'arrabbiata d'ombrina",
-"primary": "kjv-f5fSCBU",
-"backups": [
-"2HOnLYQ1GcQ",
-"ALTRO_ID_SECONDA_SCELTA"
-]
-}
-}
+  "schema": 2,
+  "updated_at": "2025-11-27T20:41:33.306Z",
+  "by_title": {},
+  "by_slug": {
+    "penne-all-arrabbiata": {
+      "title": "Penne all'arrabbiata",
+      "primary": "kjv-f5fSCBU",
+      "backups": [
+        "2HOnLYQ1GcQ",
+        "ALTRO_ID_SECONDA_SCELTA"
+      ]
+    },
+    "pasta-per-la-pizza-2": {
+      "title": "Pasta per la pizza",
+      "primary": "ID1",
+      "backups": []
+    },
+    "rigatoni-all-arrabbiata-d-ombrina": {
+      "title": "Rigatoni all'arrabbiata d'ombrina",
+      "primary": "kjv-f5fSCBU",
+      "backups": [
+        "2HOnLYQ1GcQ",
+        "ALTRO_ID_SECONDA_SCELTA"
+      ]
+    },
+    "spaghetti-alle-vongole-e-bottarga-di-tonno": {
+      "yt_id": "YOUTUBE_ID_QUI",
+      "title": "Spaghetti alle vongole e bottarga di tonno",
+      "note": "Ricetta TOP monitorata",
+      "priority": 10,
+      "added_at": "2025-11-27T20:41:33.302Z",
+      "source": "manual"
+    }
+  }
 }

@@ -1,0 +1,18 @@
+=== Report qualità Ricette Smart & Risparmio ===
+Totale ricette: 295
+
+Ricette SENZA ingredienti: 1
+ - Ricetta senza titolo | ricetta-senza-titolo
+
+Ricette TOP monitorate: 10
+Ricette TOP SENZA video: 10
+ - Spaghetti alle Vongole e Bottarga di Tonno | spaghetti-alle-vongole-e-bottarga-di-tonno
+ - Gnocchi di Zucca con Ragù di Fegatini di Pollo | gnocchi-di-zucca-con-ragu-di-fegatini-di-pollo
+ - Maccheroncini con carbonara alla majonese | maccheroncini-con-carbonara-alla-majonese
+ - Ossobuco alla Milanese in Gremolada | ossobuco-alla-milanese-in-gremolada
+ - Maccheroni alla chitarra con polpette | maccheroni-alla-chitarra-con-polpette
+ - Risotto porri, zucca, salmone, nocciole | risotto-porri-zucca-salmone-nocciole
+ - Ossibuchi di vitello alla milanese | ossibuchi-di-vitello-alla-milanese
+ - Caprese di mozzarella di bufala | caprese-di-mozzarella-di-bufala
+ - Pollo in crosta di sale | pollo-in-crosta-di-sale
+ - Ricetta Carbonara di pesce | ricetta-carbonara-di-pesce

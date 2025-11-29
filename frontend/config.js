@@ -1,6 +1,9 @@
+// config.js
+
 window.APP_CONFIG = {
-  strapiBaseUrl: 'http://localhost:1337',
+  strapiBaseUrl: '',
   strapiRecipesPath: '/api/recipes',
-  videoIndexUrl: 'assets/json/video_index.resolved.json',
-  localRecipesUrl: 'assets/json/recipes-it.json'
-}
+  // qui puoi mettere il JSON "buono" con le card pulite
+  loadRecipesUrl: 'assets/json/recipes-it.json',
+  videoIndexUrl: 'assets/json/video_index.resolved.json'
+};

@@ -2,15 +2,32 @@
 <html lang="it">
 <head>
   <meta charset="utf-8">
-  <title>Ricette & Lista Spesa</title>
+  <title>Ricette Smart &amp; Risparmio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ricette Smart &amp; Risparmio, ricette facili e spesa intelligente con lista della spesa smart e funzioni AI.">
+
+  <link rel="icon" href="assets/icons/icon-32.png?v=2" type="image/png">
+  <link rel="shortcut icon" href="assets/icons/icon-32.png?v=2" type="image/png">
+
   <link rel="manifest" href="manifest.webmanifest">
+
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="app-header">
-    <h1 class="app-title">Ricette & Lista Spesa</h1>
-    <p class="app-subtitle">Cerca, filtra per tag, guarda i video</p>
+    <div class="app-header-inner">
+      <img
+        src="assets/icons/icon-32.png"
+        alt="Logo Ricette Smart &amp; Risparmio"
+        class="app-logo">
+      <div class="app-title-block">
+        <h1 class="app-title">Ricette Smart &amp; Risparmio</h1>
+        <p class="app-subtitle">Ricette facili, spesa intelligente</p>
+      </div>
+      <button id="install-button" class="btn btn-install hidden" type="button">
+        Installa app
+      </button>
+    </div>
   </header>
 
   <main class="app-main">
@@ -21,8 +38,7 @@
           class="search-input"
           type="search"
           autocomplete="off"
-          placeholder="Cerca per titolo o ingredienti"
-        >
+          placeholder="Cerca per titolo o ingredienti">
       </div>
       <div class="toolbar-row">
         <div id="tag-chips" class="tag-chips"></div>
@@ -32,13 +48,38 @@
     <section id="recipe-list" class="recipe-list"></section>
   </main>
 
+  <!-- Modale ricetta -->
+  <div id="recipe-modal" class="modal hidden">
+    <div class="modal-backdrop" data-modal-close="true"></div>
+    <div class="modal-shell">
+      <button id="recipe-modal-close" class="modal-close" type="button" aria-label="Chiudi ricetta">
+        ×
+      </button>
+      <div class="modal-body recipe-modal-body">
+        <h2 id="recipe-modal-title" class="recipe-modal-title"></h2>
+        <p id="recipe-modal-description" class="recipe-modal-description"></p>
+
+        <div class="recipe-modal-section">
+          <h3 class="recipe-modal-subtitle">Ingredienti</h3>
+          <ul id="recipe-modal-ingredients" class="recipe-modal-list"></ul>
+        </div>
+
+        <div class="recipe-modal-section">
+          <h3 class="recipe-modal-subtitle">Preparazione</h3>
+          <ol id="recipe-modal-steps" class="recipe-modal-list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modale video -->
   <div id="video-modal" class="modal hidden">
     <div class="modal-backdrop" data-modal-close="true"></div>
     <div class="modal-shell">
       <button id="video-modal-close" class="modal-close" type="button" aria-label="Chiudi video">
         ×
       </button>
-      <div class="modal-body">
+      <div class="modal-body video-modal-body">
         <div class="video-wrapper">
           <iframe
             id="video-iframe"
@@ -47,13 +88,13 @@
             title="Video ricetta"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-          ></iframe>
+            allowfullscreen></iframe>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- Template card ricetta -->
   <template id="recipe-card-template">
     <article class="recipe-card">
       <button class="recipe-main" type="button">
@@ -65,11 +106,13 @@
         </div>
       </button>
       <div class="recipe-actions">
+        <button class="btn btn-secondary btn-details" type="button">Apri ricetta</button>
         <button class="btn btn-video" type="button">Guarda video</button>
       </div>
     </article>
   </template>
 
   <script defer src="app.v18.js"></script>
+
 </body>
 </html>

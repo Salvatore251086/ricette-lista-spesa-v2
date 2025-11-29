@@ -1,20 +1,36 @@
-// SW simple network-first
-const VERSION = "v20";
-self.addEventListener("install", e => self.skipWaiting());
-self.addEventListener("activate", e => self.clients.claim());
+const CACHE_NAME = 'rsr-static-v1';
 
-self.addEventListener("fetch", event => {
-  const req = event.request;
-  if (req.method !== "GET") return;
-  event.respondWith((async () => {
-    try {
-      const fresh = await fetch(req);
-      return fresh;
-    } catch {
-      const cache = await caches.open(VERSION);
-      const cached = await cache.match(req, { ignoreSearch: true });
-      if (cached) return cached;
-      return Response.error();
-    }
-  })());
+const OFFLINE_URLS = [
+  './',
+  './index.html',
+  './styles.css',
+  './app.v18.js',
+  './assets/icons/icon-192.png'
+];
+
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(cache => cache.addAll(OFFLINE_URLS))
+  );
+});
+
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys().then(keys =>
+      Promise.all(
+        keys
+          .filter(key => key !== CACHE_NAME)
+          .map(key => caches.delete(key))
+      )
+    )
+  );
+});
+
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request).then(resp => {
+      if (resp) return resp;
+      return fetch(event.request);
+    })
+  );
 });

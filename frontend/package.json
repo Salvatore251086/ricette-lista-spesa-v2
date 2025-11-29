@@ -8,17 +8,20 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "scripts": {
-    "lint:js": "eslint **/*.js --max-warnings=0",
-    "format": "prettier -w .",
-    "validate:html": "html-validate \"**/*.html\"",
-    "check:sw": "node script/check-sw.js",
-    "check:urls": "node script/check-urls.js",
-    "crawl": "node script/crawl_recipes.mjs",
-    "merge": "node script/merge_recipes.mjs",
-    "ci": "npm ci || npm i",
-    "resolve:yt": "node script/resolve-youtube-ids.mjs"
-  },
+ "scripts": {
+  "lint:js": "eslint **/*.js --max-warnings=0",
+  "format": "prettier -w .",
+  "validate:html": "html-validate \"**/*.html\"",
+  "check:sw": "node script/check-sw.js",
+  "check:urls": "node script/check-urls.js",
+  "crawl": "node script/crawl_recipes.mjs",
+  "merge": "node script/merge_recipes.mjs",
+  "ci": "npm ci || npm i",
+  "resolve:yt": "node script/resolve_youtube_ids.mjs",
+  "archive": "node script/archive_backups.mjs",
+  "update:videos": "node script/update_video_index.mjs",
+  "report": "node script/quality_report.mjs"
+},
   "devDependencies": {
     "@lhci/cli": "^0.13.0",
     "eslint": "^8.57.0",
