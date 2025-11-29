@@ -1,5 +1,5 @@
 // app.v18.js
-// Ricette Smart & Risparmio – v18 con modale ricette stabile
+// Ricette Smart & Risparmio – v18 con card pulite, immagini dal JSON e modali stabili
 
 ;(function () {
   'use strict';
@@ -70,7 +70,7 @@
   const FALLBACK_IMAGE = 'assets/icons/icon-192.png';
 
   // -----------------------------
-  // Utility
+  // Utility di base
   // -----------------------------
 
   function logInfo(msg, extra) {
@@ -123,6 +123,7 @@
   function getRecipeSummary(r) {
     return (
       r.summary ||
+      r.description ||
       r.descrizioneBreve ||
       r.descrizione ||
       r.subtitle ||
@@ -225,6 +226,50 @@
   }
 
   // -----------------------------
+  // Normalizzazione ricette locali
+  // -----------------------------
+
+  function mapLocalRecipe(raw, index) {
+    const rawTitle = raw.title || raw.titolo || '';
+    const normTitle = normalizeString(rawTitle);
+    if (!rawTitle) return null;
+    if (normTitle === 'ricetta senza titolo') return null;
+
+    const slug = getRecipeSlug(raw, index);
+
+    const image =
+      raw.image ||
+      raw.img ||
+      (raw.images && raw.images[0]) ||
+      (raw.cover && raw.cover.url) ||
+      FALLBACK_IMAGE;
+
+    const url = getRecipeUrl(raw);
+    const ingredients = extractIngredientsList(raw);
+    const steps = extractPreparationSteps(raw);
+    const tags = extractTagsFromRecipe(raw);
+    const description = getRecipeSummary(raw);
+
+    return {
+      id: raw.id || slug,
+      slug,
+      title: rawTitle,
+      summary: description,
+      description,
+      url,
+      image,
+      ingredients,
+      steps,
+      tags,
+      difficulty: raw.difficulty || raw.difficolta || '',
+      prepTime: raw.prepTime || raw.tempo || '',
+      servings: raw.servings || raw.persone || '',
+      cuisine: raw.cuisine || raw.cucina || '',
+      raw: raw
+    };
+  }
+
+  // -----------------------------
   // Fetch
   // -----------------------------
 
@@ -309,19 +354,17 @@
     const url = CONFIG.loadRecipesUrl || DEFAULT_CONFIG.loadRecipesUrl;
     const json = await fetchJson(url);
 
-    const arr = Array.isArray(json)
+    const arrRaw = Array.isArray(json)
       ? json
       : json.recipes || json.data || [];
 
-    logInfo('Carico ricette JSON locali da ' + url + ' totale:', arr.length);
+    logInfo('Carico ricette JSON locali da ' + url + ' totale:', arrRaw.length);
 
-    const mapped = arr.map((r, index) => {
-      const slug = getRecipeSlug(r, index);
-      const recipe = Object.assign({}, r, { slug });
-      const tags = extractTagsFromRecipe(recipe);
-      recipe.tags = tags.length ? tags : safeArray(r.tags);
-      return recipe;
-    });
+    const mapped = arrRaw
+      .map(mapLocalRecipe)
+      .filter(Boolean);
+
+    logInfo('Ricette locali dopo normalizzazione:', mapped.length);
 
     return mapped;
   }
@@ -341,7 +384,7 @@
     const allTags = new Set();
 
     recipes.forEach(r => {
-      const tags = extractTagsFromRecipe(r);
+      const tags = extractTagsFromRecipe(r.tags ? { tags: r.tags } : r);
       r.tags = tags;
       tags.forEach(t => allTags.add(t));
     });
@@ -384,10 +427,6 @@
       card.querySelector('[data-recipe-summary]') ||
       card.querySelector('.recipe-description');
 
-    const metaEl =
-      card.querySelector('[data-recipe-meta]') ||
-      null;
-
     const tagsEl =
       card.querySelector('[data-recipe-tags]') ||
       card.querySelector('.recipe-tags');
@@ -397,24 +436,39 @@
     const imgElClass = card.querySelector('.recipe-image');
     const imgTarget = imgElAttr || imgElClass;
 
+    // Titolo
     if (titleEl) {
       titleEl.textContent = getRecipeTitle(recipe);
     }
 
+    // Riga descrizione sotto al titolo
     if (summaryEl) {
-      const summary = getRecipeSummary(recipe);
-      const meta = getRecipeMeta(recipe);
-      summaryEl.textContent = summary || meta;
+      let line = (getRecipeSummary(recipe) || '').trim();
+
+      if (!line) {
+        const ingredients =
+          (recipe.ingredients && recipe.ingredients.length
+            ? recipe.ingredients
+            : extractIngredientsList(recipe.raw || recipe)) || [];
+
+        if (ingredients.length) {
+          line = String(ingredients[0]);
+        }
+      }
+
+      if (!line) {
+        line = getRecipeMeta(recipe);
+      }
+
+      summaryEl.textContent = line;
     }
 
-    if (metaEl) {
-      metaEl.textContent = getRecipeMeta(recipe);
-    }
-
+    // Tag in basso
     if (tagsEl && Array.isArray(recipe.tags) && recipe.tags.length) {
       tagsEl.textContent = recipe.tags.join(' · ');
     }
 
+    // Immagine
     const src = getRecipeImage(recipe);
     if (src) {
       if (imgTarget) {
@@ -602,9 +656,10 @@
         getRecipeSummary(recipe) || getRecipeMeta(recipe);
     }
 
-    // Ingredienti
     dom.recipeModalIngredients.innerHTML = '';
-    const ingredients = extractIngredientsList(recipe);
+    const ingredients = recipe.ingredients && recipe.ingredients.length
+      ? recipe.ingredients
+      : extractIngredientsList(recipe.raw || recipe);
 
     if (!ingredients.length) {
       const li = document.createElement('li');
@@ -619,9 +674,10 @@
       });
     }
 
-    // Preparazione
     dom.recipeModalSteps.innerHTML = '';
-    const steps = extractPreparationSteps(recipe);
+    const steps = recipe.steps && recipe.steps.length
+      ? recipe.steps
+      : extractPreparationSteps(recipe.raw || recipe);
 
     if (!steps.length && url) {
       const li = document.createElement('li');

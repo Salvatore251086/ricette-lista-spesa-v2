@@ -370,4 +370,38 @@ body.modal-open {
   .app-header-inner {
     flex-wrap: wrap;
   }
+}/* Layout card ricette: immagine rettangolare tipo screenshot "buono" */
+.recipe-main {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
+
+/* Contenitore immagine: rettangolo orizzontale, non quadrato */
+.recipe-image-wrapper {
+  width: 140px;
+  aspect-ratio: 16 / 9;    /* rettangolare, non quadrato */
+  border-radius: 16px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  flex-shrink: 0;
+}
+
+/* Testo a destra che occupa tutto lo spazio */
+.recipe-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.recipe-title {
+  margin: 0 0 4px;
+}
+
+.recipe-description {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+
