@@ -2,9 +2,8 @@ name: Auto Import Ricette
 
 on:
   schedule:
-    # Esegui ogni giorno alle 02:00 UTC (03:00 CET)
     - cron: '0 2 * * *'
-  workflow_dispatch:  # Permette esecuzione manuale
+  workflow_dispatch:
     inputs:
       max_urls:
         description: 'Numero massimo URL da processare'
@@ -33,26 +32,10 @@ jobs:
         run: |
           MAX_URLS="${{ github.event.inputs.max_urls || '50' }}"
           echo "Importando massimo $MAX_URLS ricette..."
-          
           node script/import-recipes.mjs urls.txt $MAX_URLS > new_recipes.json
-          
-          # Verifica se ci sono nuove ricette
           RECIPE_COUNT=$(cat new_recipes.json | jq 'length')
           echo "Ricette estratte: $RECIPE_COUNT"
           echo "RECIPE_COUNT=$RECIPE_COUNT" >> $GITHUB_ENV
-      
-      - name: Generate statistics
-        if: env.RECIPE_COUNT > 0
-        run: |
-          echo "## Import Report 📊" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "- **Nuove ricette**: ${{ env.RECIPE_COUNT }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Data**: $(date '+%Y-%m-%d %H:%M:%S')" >> $GITHUB_STEP_SUMMARY
-          echo "- **Data**: $(date)" >> $GITHUB_STEP_SUMMARY
-          
-          # Statistiche per sito
-          echo "### Ricette per sito" >> $GITHUB_STEP_SUMMARY
-          cat new_recipes.json | jq -r 'group_by(.source) | map({site: .[0].source, count: length}) | .[] | "- \(.site): \(.count)"' >> $GITHUB_STEP_SUMMARY
       
       - name: Upload artifacts
         if: always()
