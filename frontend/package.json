@@ -25,9 +25,10 @@
     "import": "node script/import-recipes.mjs urls.txt 50",
     "import:cucchiaio": "grep -i cucchiaio urls.txt > .cache/urls_cucchiaio.txt && node script/import-recipes.mjs .cache/urls_cucchiaio.txt 50",
     "import:gz": "grep -i giallozafferano urls.txt > .cache/urls_gz.txt && node script/import-recipes.mjs .cache/urls_gz.txt 50",
-    "import:all": "npm run import && npm run merge",
     
-    "workflow:full": "npm run crawl && npm run import:all",
+    "workflow:daily": "npm run import && npm run merge && npm run resolve:yt",
+    "workflow:full": "npm run crawl && npm run import && npm run merge && npm run resolve:yt && npm run update:videos",
+    "workflow:weekly": "npm run crawl && npm run workflow:daily && npm run archive && npm run report",
     
     "test:parser": "node script/import-recipes.mjs test_urls.txt 5",
     
