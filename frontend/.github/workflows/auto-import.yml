@@ -1,32 +1,65 @@
-name: Auto import (manual)
+name: Auto Import Ricette
 
 on:
-  workflow_dispatch: {}
+  schedule:
+    # Esegui ogni giorno alle 02:00 UTC (03:00 CET)
+    - cron: '0 2 * * *'
+  workflow_dispatch:  # Permette esecuzione manuale
+    inputs:
+      max_urls:
+        description: 'Numero massimo URL da processare'
+        required: false
+        default: '50'
 
 jobs:
-  import-data:
+  import-recipes:
     runs-on: ubuntu-latest
-
+    timeout-minutes: 20
+    
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Setup Node
+        
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: npm
-
-      - name: Install dipendenze
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
         run: npm ci
-
-      # QUI richiami SOLO script di import che usano TUOI dati
-      # Esempio: export da Strapi o da un dataset open
-      # Sostituisci la riga sotto quando avrai lo script giusto
-      - name: Import placeholder
+      
+      - name: Run import
         run: |
-          echo "Qui richiamerai il tuo script di import (es. npm run export:recipes)"
-          echo "Per ora non fa nulla, è solo un gancio pronto."
-
-      - name: Mostra cambi
-        run: git diff || true
+          MAX_URLS="${{ github.event.inputs.max_urls || '50' }}"
+          echo "Importando massimo $MAX_URLS ricette..."
+          
+          node script/import-recipes.mjs urls.txt $MAX_URLS > new_recipes.json
+          
+          # Verifica se ci sono nuove ricette
+          RECIPE_COUNT=$(cat new_recipes.json | jq 'length')
+          echo "Ricette estratte: $RECIPE_COUNT"
+          echo "RECIPE_COUNT=$RECIPE_COUNT" >> $GITHUB_ENV
+      
+      - name: Generate statistics
+        if: env.RECIPE_COUNT > 0
+        run: |
+          echo "## Import Report 📊" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Nuove ricette**: ${{ env.RECIPE_COUNT }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Data**: $(date '+%Y-%m-%d %H:%M:%S')" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Statistiche per sito
+          echo "### Ricette per sito" >> $GITHUB_STEP_SUMMARY
+          cat new_recipes.json | jq -r 'group_by(.source) | map({site: .[0].source, count: length}) | .[] | "- \(.site): \(.count)"' >> $GITHUB_STEP_SUMMARY
+      
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: import-logs
+          path: |
+            .cache/debug/
+            new_recipes.json
+          retention-days: 7
