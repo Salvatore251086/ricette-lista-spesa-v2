@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-// Importa ricette da una lista di URL estraendo JSON-LD e, se manca il video,
-// prova un fallback con YouTube Data API (titolo + "ricetta").
+// Importa ricette da più siti usando parser modulari
+// Versione multi-sito con auto-discovery dei parser
 // Uso: node script/import-recipes.mjs urls.txt 30  -> stampa JSON su stdout.
 
 import fs from "fs";
@@ -16,6 +16,67 @@ const LIMIT = Number(process.argv[3] || 30);
 const DEBUG_DIR = path.join(process.cwd(), ".cache", "debug");
 fs.mkdirSync(DEBUG_DIR, { recursive: true });
 
+// ---- Parser Registry --------------------------------------------------------
+const PARSERS = [];
+
+// Carica dinamicamente tutti i parser dalla cartella parsers/
+async function loadParsers() {
+  const parsersDir = path.join(__dirname, "parsers");
+  
+  try {
+    if (!fs.existsSync(parsersDir)) {
+      console.error(`[PARSER] Directory parsers/ non trovata. Uso fallback generico.`);
+      return;
+    }
+
+    const files = fs.readdirSync(parsersDir).filter(f => f.endsWith('.mjs'));
+    
+    for (const file of files) {
+      try {
+        const parserPath = path.join(parsersDir, file);
+        const parser = await import(pathToFileURL(parserPath).href);
+        
+        if (parser.match && parser.parse) {
+          PARSERS.push({
+            name: file.replace('.mjs', ''),
+            match: parser.match,
+            parse: parser.parse
+          });
+          console.error(`[PARSER] ✓ ${file}`);
+        }
+      } catch (e) {
+        console.error(`[PARSER] ✗ ${file}: ${e.message}`);
+      }
+    }
+  } catch (e) {
+    console.error('[PARSER] Errore caricamento parsers:', e.message);
+  }
+  
+  if (PARSERS.length === 0) {
+    console.error('[PARSER] Nessun parser caricato. Uso fallback generico JSON-LD.');
+  }
+}
+
+function pathToFileURL(p) {
+  return new URL(`file:///${p.replace(/\\/g, '/')}`);
+}
+
+// Trova il parser appropriato per un URL
+function findParser(url) {
+  for (const parser of PARSERS) {
+    try {
+      if (parser.match(url)) {
+        return parser;
+      }
+    } catch (e) {
+      console.error(`[PARSER] Errore match ${parser.name}:`, e.message);
+    }
+  }
+  return null;
+}
+
+// -----------------------------------------------------------------------------
+
 // ---- YouTube config ---------------------------------------------------------
 const YT_API_KEY = process.env.YT_API_KEY || "";
 const YT_REGION  = "IT";
@@ -28,10 +89,12 @@ function saveYtMap(){ try { fs.writeFileSync(YT_CACHE, JSON.stringify(ytMap, nul
 
 function slugify(u){
   try {
-    const { pathname } = new URL(u.trim());
-    return pathname.replace(/(^\/+|\/+$)/g,"").replace(/[^\w\-]+/g,"-").slice(0,120) || "root";
+    const { pathname, hostname } = new URL(u.trim());
+    const site = hostname.replace(/^www\./, '').split('.')[0];
+    return `${site}-${pathname.replace(/(^\/+|\/+$)/g,"").replace(/[^\w\-]+/g,"-").slice(0,100)}` || "root";
   } catch { return "invalid"; }
 }
+
 async function sleep(ms){ return new Promise(r => setTimeout(r, ms)); }
 
 async function fetchWithRetry(url, { tries=3, timeout=15000, headers={} } = {}){
@@ -65,6 +128,7 @@ async function fetchWithRetry(url, { tries=3, timeout=15000, headers={} } = {}){
   throw lastErr;
 }
 
+// ---- Fallback generico JSON-LD (se nessun parser specifico) ----------------
 function findJsonLdBlocks(html){
   const blocks = [];
   const re = /<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi;
@@ -147,7 +211,6 @@ function looksValid(rec){
 async function findYoutubeVideoUrlByTitle(title){
   if (!YT_API_KEY) return null;
 
-  // cache per titolo normalizzato
   const key = title.trim().toLowerCase();
   if (ytMap[key]) return ytMap[key];
 
@@ -171,7 +234,7 @@ async function findYoutubeVideoUrlByTitle(title){
     if (!pick) return null;
 
     const url = `https://www.youtube.com/watch?v=${pick.id.videoId}`;
-    ytMap[key] = url;   // cache
+    ytMap[key] = url;
     saveYtMap();
     return url;
   } catch {
@@ -180,6 +243,21 @@ async function findYoutubeVideoUrlByTitle(title){
 }
 // -----------------------------------------------------------------------------
 
+function extractYouTubeId(videoUrl) {
+  if (!videoUrl) return "";
+  try {
+    const url = new URL(videoUrl);
+    if (/youtu\.be$/i.test(url.hostname)) return url.pathname.slice(1);
+    if (/youtube\.com$/i.test(url.hostname)) {
+      if (url.searchParams.get("v")) return url.searchParams.get("v");
+      const m = url.pathname.match(/\/embed\/([^/]+)/);
+      if (m) return m[1];
+    }
+    return "";
+  } catch {
+    return "";
+  }
+}
 
 async function processUrl(u){
   const s = slugify(u);
@@ -187,51 +265,144 @@ async function processUrl(u){
   const dbg = msg => fs.appendFileSync(dbgPath, msg + "\n");
 
   try {
-    const html = await fetchWithRetry(u);
-    fs.writeFileSync(path.join(DEBUG_DIR, `${s}.html`), html, "utf8");
-    dbg(`[INFO] Scaricato HTML (${html.length} bytes)`);
+    // Trova il parser appropriato
+    const parser = findParser(u);
+    
+    if (parser) {
+      dbg(`[INFO] Parser: ${parser.name}`);
+      
+      // Scarica HTML
+      const html = await fetchWithRetry(u);
+      fs.writeFileSync(path.join(DEBUG_DIR, `${s}.html`), html, "utf8");
+      dbg(`[INFO] Scaricato HTML (${html.length} bytes)`);
 
-    const blocks = findJsonLdBlocks(html);
-    fs.writeFileSync(path.join(DEBUG_DIR, `${s}-jsonld.json`), JSON.stringify(blocks, null, 2));
+      const fetchHtml = async (url) => {
+        if (url === u) return html;
+        return await fetchWithRetry(url);
+      };
 
-    let recipes = [];
-    for (const b of blocks){
-      if (b && b.__invalidJson){ dbg(`[WARN] Blocco JSON-LD non parse-abile`); continue; }
-      for (const node of walk(b)){
-        const t = node?.["@type"]; if (!t) continue;
-        const list = Array.isArray(t) ? t.map(x => String(x).toLowerCase()) : [String(t).toLowerCase()];
-        if (list.includes("recipe")){
-          const rec = normalizeRecipe(node);
-          if (!rec.url) rec.url = u;
+      // Usa il parser
+      let recipe;
+      try {
+        recipe = await parser.parse({ url: u, html, fetchHtml });
+      } catch (parseErr) {
+        dbg(`[ERROR] Parser fallito: ${parseErr.message}`);
+        return { ok: false, url: u, recipes: [], error: 'parse_error' };
+      }
 
-          // Fallback YouTube: se manca video, prova via API
-          if (!rec.video && rec.title){
-            const v = await findYoutubeVideoUrlByTitle(rec.title);
-            if (v) { rec.video = v; dbg(`[YTFALLBACK] video trovato per "${rec.title}" -> ${v}`); }
-            else   { dbg(`[YTFALLBACK] nessun video per "${rec.title}"`); }
-            // piccola pausa per non stressare quota
-            await sleep(150);
+      if (!recipe) {
+        dbg(`[WARN] Parser non ha restituito dati`);
+        return { ok: false, url: u, recipes: [], error: 'no_data' };
+      }
+
+      // Normalizza formato per compatibilità
+      const normalized = {
+        source: parser.name,
+        url: recipe.sourceUrl || u,
+        title: recipe.title || "",
+        description: "",
+        image: recipe.image || "",
+        ingredients: recipe.ingredients || [],
+        instructions: recipe.steps || [],
+        totalTime: recipe.totalTime || 0,
+        cookTime: recipe.cookTime || 0,
+        prepTime: recipe.prepTime || 0,
+        yield: recipe.servings || 0,
+        category: recipe.category || [],
+        cuisine: [],
+        keywords: recipe.tags || [],
+        rating: undefined,
+        video: "",
+        youtubeId: recipe.youtubeId || "",
+        difficulty: recipe.difficulty || "easy",
+        id: recipe.id || "",
+      };
+
+      if (normalized.youtubeId) {
+        normalized.video = `https://www.youtube.com/watch?v=${normalized.youtubeId}`;
+      }
+
+      // Fallback YouTube
+      if (!normalized.video && !normalized.youtubeId && normalized.title && YT_API_KEY) {
+        dbg(`[YTFALLBACK] Cerco video per "${normalized.title}"...`);
+        const v = await findYoutubeVideoUrlByTitle(normalized.title);
+        if (v) {
+          normalized.video = v;
+          normalized.youtubeId = extractYouTubeId(v);
+          dbg(`[YTFALLBACK] Trovato: ${v}`);
+        } else {
+          dbg(`[YTFALLBACK] Nessun risultato`);
+        }
+        await sleep(150);
+      }
+
+      const isValid = !!(
+        normalized.title &&
+        normalized.ingredients?.length >= 2 &&
+        normalized.instructions?.length >= 1
+      );
+
+      if (!isValid) {
+        dbg(`[SKIP] Ricetta incompleta`);
+        return { ok: false, url: u, recipes: [], error: 'incomplete' };
+      }
+
+      fs.writeFileSync(
+        path.join(DEBUG_DIR, `${s}-parsed.json`),
+        JSON.stringify(normalized, null, 2)
+      );
+      dbg(`[SUCCESS] Ricetta estratta`);
+
+      return { ok: true, url: u, recipes: [normalized] };
+      
+    } else {
+      // FALLBACK: usa parsing generico JSON-LD
+      dbg(`[INFO] Nessun parser specifico, uso JSON-LD generico`);
+      
+      const html = await fetchWithRetry(u);
+      fs.writeFileSync(path.join(DEBUG_DIR, `${s}.html`), html, "utf8");
+      dbg(`[INFO] Scaricato HTML (${html.length} bytes)`);
+
+      const blocks = findJsonLdBlocks(html);
+      fs.writeFileSync(path.join(DEBUG_DIR, `${s}-jsonld.json`), JSON.stringify(blocks, null, 2));
+
+      let recipes = [];
+      for (const b of blocks){
+        if (b && b.__invalidJson){ dbg(`[WARN] Blocco JSON-LD non parse-abile`); continue; }
+        for (const node of walk(b)){
+          const t = node?.["@type"]; if (!t) continue;
+          const list = Array.isArray(t) ? t.map(x => String(x).toLowerCase()) : [String(t).toLowerCase()];
+          if (list.includes("recipe")){
+            const rec = normalizeRecipe(node);
+            if (!rec.url) rec.url = u;
+
+            if (!rec.video && rec.title){
+              const v = await findYoutubeVideoUrlByTitle(rec.title);
+              if (v) { rec.video = v; dbg(`[YTFALLBACK] video trovato per "${rec.title}" -> ${v}`); }
+              else   { dbg(`[YTFALLBACK] nessun video per "${rec.title}"`); }
+              await sleep(150);
+            }
+
+            if (looksValid(rec)) recipes.push(rec);
+            else dbg(`[SKIP] recipe incompleta`);
           }
-
-          if (looksValid(rec)) recipes.push(rec);
-          else dbg(`[SKIP] recipe incompleta t:${!!rec.title} ingr:${rec.ingredients?.length||0} steps:${rec.instructions?.length||0}`);
         }
       }
+
+      const seen = new Set();
+      recipes = recipes.filter(r => {
+        const k = (r.title || "").trim().toLowerCase();
+        if (seen.has(k)) return false; seen.add(k); return true;
+      });
+
+      fs.writeFileSync(path.join(DEBUG_DIR, `${s}-parsed.json`), JSON.stringify(recipes, null, 2));
+      dbg(`[RESULT] ricette valide: ${recipes.length}`);
+      return { ok: recipes.length > 0, url: u, recipes };
     }
 
-    // de-duplica per titolo
-    const seen = new Set();
-    recipes = recipes.filter(r => {
-      const k = (r.title || "").trim().toLowerCase();
-      if (seen.has(k)) return false; seen.add(k); return true;
-    });
-
-    fs.writeFileSync(path.join(DEBUG_DIR, `${s}-parsed.json`), JSON.stringify(recipes, null, 2));
-    dbg(`[RESULT] ricette valide: ${recipes.length}`);
-    return { ok:true, url:u, recipes };
   } catch (e){
     fs.appendFileSync(path.join(DEBUG_DIR, `${s}.log`), `[ERROR] ${e?.message || e}\n`);
-    return { ok:false, url:u, recipes:[] };
+    return { ok: false, url: u, recipes: [], error: e.message };
   }
 }
 
@@ -242,21 +413,50 @@ function loadUrls(){
 }
 
 (async () => {
+  console.error('[IMPORT] Caricamento parser...');
+  await loadParsers();
+  
+  if (PARSERS.length > 0) {
+    console.error(`[IMPORT] Parser attivi: ${PARSERS.map(p => p.name).join(', ')}`);
+  }
+  
   const urls = loadUrls().slice(0, LIMIT);
+  console.error(`[IMPORT] Processando ${urls.length} URL...`);
+  
   const out = [];
   const used = [];
+  const stats = {
+    total: urls.length,
+    success: 0,
+    failed: 0,
+    by_parser: {}
+  };
 
   for (let i=0; i<urls.length; i++){
     if (i>0) await sleep(300);
     const u = urls[i];
+    console.error(`[${i+1}/${urls.length}] ${u}`);
+    
     const res = await processUrl(u);
-    if (res.recipes.length){ out.push(...res.recipes); used.push(u); }
+    
+    if (res.recipes.length) {
+      const source = res.recipes[0].source || 'generic';
+      stats.by_parser[source] = (stats.by_parser[source] || 0) + 1;
+      out.push(...res.recipes);
+      used.push(u);
+      stats.success++;
+    } else {
+      stats.failed++;
+    }
   }
 
   if (used.length){
     fs.mkdirSync(path.join(process.cwd(), ".cache"), { recursive: true });
     fs.writeFileSync(path.join(process.cwd(), ".cache", "used_urls.txt"), used.join("\n"));
   }
+
+  console.error(`\n[STATS] ${JSON.stringify(stats, null, 2)}`);
+  console.error(`[RESULT] Estratte ${out.length} ricette da ${stats.success} URL`);
 
   process.stdout.write(JSON.stringify(out, null, 2));
 })();

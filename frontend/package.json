@@ -4,24 +4,35 @@
   "type": "module",
   "version": "1.0.0",
   "main": "app.v16.js",
-  "description": "",
-  "keywords": [],
+  "description": "Ricette & Lista Spesa - Sistema di gestione ricette multi-sito",
+  "keywords": ["ricette", "lista-spesa", "giallozafferano", "cucchiaio"],
   "author": "",
   "license": "ISC",
- "scripts": {
-  "lint:js": "eslint **/*.js --max-warnings=0",
-  "format": "prettier -w .",
-  "validate:html": "html-validate \"**/*.html\"",
-  "check:sw": "node script/check-sw.js",
-  "check:urls": "node script/check-urls.js",
-  "crawl": "node script/crawl_recipes.mjs",
-  "merge": "node script/merge_recipes.mjs",
-  "ci": "npm ci || npm i",
-  "resolve:yt": "node script/resolve_youtube_ids.mjs",
-  "archive": "node script/archive_backups.mjs",
-  "update:videos": "node script/update_video_index.mjs",
-  "report": "node script/quality_report.mjs"
-},
+  "scripts": {
+    "lint:js": "eslint **/*.js --max-warnings=0",
+    "format": "prettier -w .",
+    "validate:html": "html-validate \"**/*.html\"",
+    "check:sw": "node script/check-sw.js",
+    "check:urls": "node script/check-urls.js",
+    
+    "crawl": "node script/crawl_recipes.mjs",
+    "merge": "node script/merge_recipes.mjs",
+    "resolve:yt": "node script/resolve_youtube_ids.mjs",
+    "archive": "node script/archive_backups.mjs",
+    "update:videos": "node script/update_video_index.mjs",
+    "report": "node script/quality_report.mjs",
+    
+    "import": "node script/import-recipes.mjs urls.txt 50",
+    "import:cucchiaio": "grep -i cucchiaio urls.txt > .cache/urls_cucchiaio.txt && node script/import-recipes.mjs .cache/urls_cucchiaio.txt 50",
+    "import:gz": "grep -i giallozafferano urls.txt > .cache/urls_gz.txt && node script/import-recipes.mjs .cache/urls_gz.txt 50",
+    "import:all": "npm run import && npm run merge",
+    
+    "workflow:full": "npm run crawl && npm run import:all",
+    
+    "test:parser": "node script/import-recipes.mjs test_urls.txt 5",
+    
+    "ci": "npm ci || npm i"
+  },
   "devDependencies": {
     "@lhci/cli": "^0.13.0",
     "eslint": "^8.57.0",
