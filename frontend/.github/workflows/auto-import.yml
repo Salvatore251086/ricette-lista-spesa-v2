@@ -1,105 +1,32 @@
-name: Auto Import Ricette
+name: Auto import (manual)
 
 on:
-  schedule:
-    # Esegui ogni giorno alle 02:00 UTC (03:00 CET)
-    - cron: '0 2 * * *'
-  workflow_dispatch:  # Permette esecuzione manuale
-    inputs:
-      max_urls:
-        description: 'Numero massimo URL da processare'
-        required: false
-        default: '50'
-      sites:
-        description: 'Siti da importare (all/cucchiaio/giallozafferano)'
-        required: false
-        default: 'all'
+  workflow_dispatch: {}
 
 jobs:
-  import-recipes:
+  import-data:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
-    
+
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v4
-        
-      - name: Setup Node.js
+
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
-      
-      - name: Install dependencies
+          node-version: 20
+          cache: npm
+
+      - name: Install dipendenze
         run: npm ci
-      
-      - name: Prepare URL list
+
+      # QUI richiami SOLO script di import che usano TUOI dati
+      # Esempio: export da Strapi o da un dataset open
+      # Sostituisci la riga sotto quando avrai lo script giusto
+      - name: Import placeholder
         run: |
-          # Crea lista URL da processare
-          if [ "${{ github.event.inputs.sites }}" = "cucchiaio" ]; then
-            grep -i "cucchiaio" urls.txt > urls_import.txt || echo "" > urls_import.txt
-          elif [ "${{ github.event.inputs.sites }}" = "giallozafferano" ]; then
-            grep -i "giallozafferano" urls.txt > urls_import.txt || echo "" > urls_import.txt
-          else
-            cp urls.txt urls_import.txt
-          fi
-          
-          # Mostra quanti URL processare
-          echo "URL da processare: $(wc -l < urls_import.txt)"
-      
-      - name: Run import
-        env:
-          YT_API_KEY: ${{ secrets.YT_API_KEY }}
-        run: |
-          MAX_URLS="${{ github.event.inputs.max_urls || '50' }}"
-          echo "Importando massimo $MAX_URLS ricette..."
-          
-          node script/import-recipes.mjs urls_import.txt $MAX_URLS > new_recipes.json
-          
-          # Verifica se ci sono nuove ricette
-          RECIPE_COUNT=$(cat new_recipes.json | jq 'length')
-          echo "Ricette estratte: $RECIPE_COUNT"
-          echo "RECIPE_COUNT=$RECIPE_COUNT" >> $GITHUB_ENV
-      
-      - name: Merge with existing recipes
-        if: env.RECIPE_COUNT > 0
-        run: |
-          echo "Merging ricette..."
-          cp assets/json/recipes-it.json assets/json/recipes-it.backup.$(date +%Y%m%d-%H%M%S).json
-          node script/merge_recipes.mjs
-      
-      - name: Generate statistics
-        if: env.RECIPE_COUNT > 0
-        run: |
-          echo "## Import Report 📊" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "- **Nuove ricette**: ${{ env.RECIPE_COUNT }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Data**: $(date '+%Y-%m-%d %H:%M:%S')" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          
-          # Statistiche per sito
-          echo "### Ricette per sito" >> $GITHUB_STEP_SUMMARY
-          cat new_recipes.json | jq -r 'group_by(.source) | map({site: .[0].source, count: length}) | .[] | "- \(.site): \(.count)"' >> $GITHUB_STEP_SUMMARY
-      
-      - name: Commit and push changes
-        if: env.RECIPE_COUNT > 0
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          
-          git add assets/json/recipes-it.json
-          git add assets/json/recipes-it.backup.*
-          git add assets/json/merge_last.json
-          
-          git commit -m "🤖 Auto-import: ${{ env.RECIPE_COUNT }} nuove ricette [skip ci]" || exit 0
-          git push
-      
-      - name: Upload artifacts
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: import-logs
-          path: |
-            .cache/debug/
-            new_recipes.json
-          retention-days: 7
+          echo "Qui richiamerai il tuo script di import (es. npm run export:recipes)"
+          echo "Per ora non fa nulla, è solo un gancio pronto."
+
+      - name: Mostra cambi
+        run: git diff || true

@@ -1,74 +1,38 @@
-name: Auto Crawl Sitemap
+name: Auto crawl & checks
 
 on:
+  workflow_dispatch: {}
   schedule:
-    # Esegui ogni settimana la domenica alle 01:00 UTC
-    - cron: '0 1 * * 0'
-  workflow_dispatch:  # Permette esecuzione manuale
+    - cron: "0 3 * * *"  # ogni giorno alle 03:00 UTC
 
 jobs:
-  crawl-sitemap:
+  crawl-and-check:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
-    
+
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v4
-        
-      - name: Setup Node.js
+
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
-      
-      - name: Install dependencies
+          node-version: 20
+          cache: npm
+
+      - name: Install dipendenze
         run: npm ci
-      
-      - name: Run crawl
-        run: |
-          echo "Crawling sitemaps..."
-          node script/crawl_recipes.mjs
-      
-      - name: Check for new URLs
-        id: check
-        run: |
-          # Conta nuovi URL trovati
-          if [ -f assets/json/crawl_last.json ]; then
-            NEW_URLS=$(cat assets/json/crawl_last.json | jq '.added // 0')
-            TOTAL_URLS=$(cat assets/json/crawl_last.json | jq '.total_indexed // 0')
-            echo "NEW_URLS=$NEW_URLS" >> $GITHUB_ENV
-            echo "TOTAL_URLS=$TOTAL_URLS" >> $GITHUB_ENV
-            echo "found_new=true" >> $GITHUB_OUTPUT
-          else
-            echo "found_new=false" >> $GITHUB_OUTPUT
-          fi
-      
-      - name: Generate report
-        if: steps.check.outputs.found_new == 'true'
-        run: |
-          echo "## Crawl Report 🔍" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "- **Nuovi URL trovati**: ${{ env.NEW_URLS }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Totale URL indicizzati**: ${{ env.TOTAL_URLS }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Data**: $(date '+%Y-%m-%d %H:%M:%S')" >> $GITHUB_STEP_SUMMARY
-      
-      - name: Commit and push changes
-        if: steps.check.outputs.found_new == 'true' && env.NEW_URLS > 0
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          
-          git add assets/json/recipes-index.jsonl
-          git add assets/json/crawl_last.json
-          
-          git commit -m "🔍 Auto-crawl: ${{ env.NEW_URLS }} nuovi URL [skip ci]" || exit 0
-          git push
-      
-      - name: Upload crawl logs
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: crawl-logs
-          path: |
-            assets/json/crawl_last.json
-          retention-days: 30
+
+      # QUI solo script interni "safe"
+      - name: Controllo URL
+        run: npm run check:urls
+
+      - name: Aggiorna indice video
+        run: npm run update:videos
+
+      - name: Genera quality report
+        run: npm run report
+
+      - name: Mostra cambi
+        run: git diff || true
+
+      # Non facciamo commit automatici per ora
