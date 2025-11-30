@@ -48,7 +48,7 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "- **Nuove ricette**: ${{ env.RECIPE_COUNT }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Data**: $(date '+%Y-%m-%d %H:%M:%S')" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Data**: $(date)" >> $GITHUB_STEP_SUMMARY
           
           # Statistiche per sito
           echo "### Ricette per sito" >> $GITHUB_STEP_SUMMARY
