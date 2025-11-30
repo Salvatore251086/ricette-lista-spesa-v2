@@ -22,9 +22,9 @@
     "update:videos": "node script/update_video_index.mjs",
     "report": "node script/quality_report.mjs",
     
-    "import": "node script/import-recipes.mjs urls.txt 50",
-    "import:cucchiaio": "grep -i cucchiaio urls.txt > .cache/urls_cucchiaio.txt && node script/import-recipes.mjs .cache/urls_cucchiaio.txt 50",
-    "import:gz": "grep -i giallozafferano urls.txt > .cache/urls_gz.txt && node script/import-recipes.mjs .cache/urls_gz.txt 50",
+    "import": "node script/import-recipes.mjs urls.txt 300",
+    "import:cucchiaio": "grep -i cucchiaio urls.txt > .cache/urls_cucchiaio.txt && node script/import-recipes.mjs .cache/urls_cucchiaio.txt 300",
+    "import:gz": "grep -i giallozafferano urls.txt > .cache/urls_gz.txt && node script/import-recipes.mjs .cache/urls_gz.txt 300",
     
     "workflow:daily": "npm run import && npm run merge && npm run resolve:yt",
     "workflow:full": "npm run crawl && npm run import && npm run merge && npm run resolve:yt && npm run update:videos",
