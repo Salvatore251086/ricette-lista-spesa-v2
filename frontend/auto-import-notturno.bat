@@ -7,13 +7,13 @@ REM 1. Crawl sitemap per trovare nuovi URL
 echo [%date% %time%] STEP 1: Crawl sitemap... >> log-automazione.txt
 call npm run crawl >> log-automazione.txt 2>&1
 
-REM 2. Prendi i primi 300 URL dall'indice e importali
+REM 2. Prendi i primi 300 URL dall'indice e salvali in urls-auto.txt
 echo [%date% %time%] STEP 2: Preparo URL da importare (max 300)... >> log-automazione.txt
-node -e "const fs=require('fs');const lines=fs.readFileSync('recipes-index.jsonl','utf8').split('\n').filter(Boolean).slice(0,300);const urls=lines.map(l=>JSON.parse(l).url).join('\n');fs.writeFileSync('urls.txt',urls);" >> log-automazione.txt 2>&1
+node -e "const fs=require('fs');const lines=fs.readFileSync('assets/json/recipes-index.jsonl','utf8').split('\n').filter(Boolean).slice(0,300);const urls=lines.map(l=>JSON.parse(l).url).join('\n');fs.writeFileSync('urls-auto.txt',urls);" >> log-automazione.txt 2>&1
 
-REM 3. Import ricette
-echo [%date% %time%] STEP 3: Import ricette... >> log-automazione.txt
-call npm run import >> log-automazione.txt 2>&1
+REM 3. Import ricette da urls-auto.txt (300 ricette)
+echo [%date% %time%] STEP 3: Import 300 ricette... >> log-automazione.txt
+node script/import-recipes.mjs urls-auto.txt 300 >> log-automazione.txt 2>&1
 
 REM 4. Merge nel database
 echo [%date% %time%] STEP 4: Merge database... >> log-automazione.txt
