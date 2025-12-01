@@ -2160,3 +2160,47 @@ SITEMAP_FAIL https://www.cucchiaio.it/Sitemap-content-RICETTE.xml terminated
 
 Manca YT_API_KEY nelle variabili ambiente
 [01/12/2025 16:35:33,30] STEP 6: Commit e push su GitHub... 
+[main 41108c2] ­ƒñû Import automatico 01/12/2025 - Crawl + 300 ricette
+ 6 files changed, 10582 insertions(+), 6 deletions(-)
+ create mode 100644 frontend/assets/json/recipes-it.backup.2025-12-01T153532528Z.json
+ create mode 100644 frontend/urls-auto.txt
+To https://github.com/Salvatore251086/ricette-lista-spesa-v2.git
+   8fd123e..41108c2  main -> main
+[01/12/2025 16:35:36,40] Completato! 
+[01/12/2025 16:35:36,41] ============================================ 
+[01/12/2025 16:45:33,13] ============================================ 
+[01/12/2025 16:45:33,13] Inizio workflow completo 
+[01/12/2025 16:45:33,13] STEP 1: Crawl sitemap... 
+
+> ricette-lista-spesa@1.0.0 crawl
+> node script/crawl_recipes.mjs
+
+{"ts":"2025-12-01T15:45:33.389Z","processed":14,"ok":14,"skipped":23467,"failed":0,"added":0,"cache":{"fail_html":0,"fail_json":0}}
+[01/12/2025 16:45:38,23] STEP 2: Preparo URL da importare (max 300)... 
+[01/12/2025 16:45:38,27] STEP 3: Import 300 ricette... 
+[IMPORT] Caricamento parser...
+[PARSER] ✓ cucchiaio.mjs
+[PARSER] ✓ giallozafferano.mjs
+[IMPORT] Parser attivi: cucchiaio, giallozafferano
+[IMPORT] Processando 0 URL...
+
+[STATS] {
+  "total": 0,
+  "success": 0,
+  "failed": 0,
+  "by_parser": {}
+}
+[RESULT] Estratte 0 ricette da 0 URL
+[][01/12/2025 16:45:38,33] STEP 4: Merge database... 
+
+> ricette-lista-spesa@1.0.0 merge
+> node script/merge_recipes.mjs
+
+{"ts":"2025-12-01T15:45:38.625Z","added":10,"total":395}
+[01/12/2025 16:45:48,95] STEP 5: Risolvi video YouTube... 
+
+> ricette-lista-spesa@1.0.0 resolve:yt
+> node script/resolve_youtube_ids.mjs
+
+Manca YT_API_KEY nelle variabili ambiente
+[01/12/2025 16:45:49,24] STEP 6: Commit e push su GitHub... 
