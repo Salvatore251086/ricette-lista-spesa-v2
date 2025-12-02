@@ -455,8 +455,17 @@ function loadUrls(){
     fs.writeFileSync(path.join(process.cwd(), ".cache", "used_urls.txt"), used.join("\n"));
   }
 
-  console.error(`\n[STATS] ${JSON.stringify(stats, null, 2)}`);
-  console.error(`[RESULT] Estratte ${out.length} ricette da ${stats.success} URL`);
-
+   console.error`\n[STATS] ${JSON.stringify(stats, null, 2)}`;
+  console.error`[RESULT] Estratte ${out.length} ricette da ${stats.success} URL`;
+  
+  // Salva ricette in new_recipes.json
+  const output = {
+    schemaVersion: 1,
+    generatedAt: new Date().toISOString(),
+    recipes: out
+  };
+  fs.writeFileSync('new_recipes.json', JSON.stringify(output, null, 2));
+  console.error(`[SAVED] ${out.length} recipes to new_recipes.json`);
+  
   process.stdout.write(JSON.stringify(out, null, 2));
 })();

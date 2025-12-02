@@ -32,8 +32,10 @@
     
     "test:parser": "node script/import-recipes.mjs test_urls.txt 5",
     
-    "ci": "npm ci || npm i"
+    "ci": "npm ci || npm i",
+    "merge:imported": "node script/merge_imported.mjs"
   },
+  
   "devDependencies": {
     "@lhci/cli": "^0.13.0",
     "eslint": "^8.57.0",

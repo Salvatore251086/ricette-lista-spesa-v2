@@ -17,7 +17,7 @@ node script/import-recipes.mjs urls-auto.txt 1000 >> log-automazione.txt 2>&1
 
 REM 4. Merge nel database
 echo [%date% %time%] STEP 4: Merge database... >> log-automazione.txt
-call npm run merge >> log-automazione.txt 2>&1
+node script/merge_imported.mjs >> log-automazione.txt 2>&1
 
 REM 5. Risolvi video YouTube
 echo [%date% %time%] STEP 5: Risolvi video YouTube... >> log-automazione.txt
