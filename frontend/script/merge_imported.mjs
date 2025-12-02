@@ -94,8 +94,9 @@ function isDuplicate(recipe, existingMaps){
   const { byUrl, bySlug, byTitle } = existingMaps;
   
   // Check 1: URL esatto
-  if (recipe.sourceUrl){
-    const url = String(recipe.sourceUrl).toLowerCase();
+  const sourceUrl = recipe.sourceUrl || recipe.url;
+if (sourceUrl){
+    const url = String(sourceUrl).toLowerCase();
     if (byUrl.has(url)){
       return { isDup: true, reason: 'url', match: recipe.sourceUrl };
     }
@@ -126,8 +127,9 @@ function validateRecipe(recipe){
     errors.push('title too short or missing');
   }
   
-  if (!recipe.sourceUrl){
-    errors.push('sourceUrl missing');
+  const sourceUrl = recipe.sourceUrl || recipe.url;
+  if (!sourceUrl){
+    errors.push('sourceUrl and url both missing');
   }
   
   // Verifica che almeno uno tra ingredients o steps esista
