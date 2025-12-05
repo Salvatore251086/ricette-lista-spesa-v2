@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2025-12-02T15:23:26.856Z",
+  "generatedAt": "2025-12-05T15:42:18.065Z",
   "recipes": [
     {
       "source": "scraped",
@@ -96,7 +96,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Arrosto di vitello morbido con sughetto, Cappello del prete, Patate novelle, Carote, Sedano, Cipolle, Rosmarino, Acqua, Vino bianco, Vino rosso, Burro, Concentrato di pomodoro, Amido di mais (maizena), Olio extravergine d'oliva, Sale fino"
       ],
-      "rating": 4.6
+      "rating": 4.7
     },
     {
       "source": "scraped",
@@ -134,7 +134,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Christmas punch, Rum, Succo d'arancia, Scorza d'arancia, Tè nero, Acqua, Zucchero, Anice stellato, Cannella in stecche, Arance, Ribes rosso"
       ],
-      "rating": 5
+      "rating": 4.5
     },
     {
       "source": "scraped",
@@ -211,7 +211,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Pasta con crema di zucca e taleggio, Spaghetti, Cavolo nero, Olio extravergine d'oliva, Pepe nero, Zucca delica, Taleggio, Acqua, Sale fino, Porri, Olio di semi di arachide"
       ],
-      "rating": 4.4
+      "rating": 4.5
     },
     {
       "source": "scraped",
@@ -272,7 +272,7 @@
       "ingredients": [
         "Rum bianco 120 ml",
         "Succo di lime 40 ml",
-        "Zucchero Bianco superfino 20 g"
+        "Zucchero bianco superfino 20 g"
       ],
       "instructions": [
         "Per preparare il daiquiri cominciate spremendo il succo di un lime, dopo di che filtratelo 1 . Versate nel bicchiere dello shaker il rum bianco 2 e subito dopo il succo di lime filtrato 3 .",
@@ -423,7 +423,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Scaloppine all'arancia, Fettine di vitello, Arance, Burro, Farina 00, Sale fino, Pepe nero, Timo"
       ],
-      "rating": 4.5
+      "rating": 4.6
     },
     {
       "source": "scraped",
@@ -505,7 +505,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Gnocchi acqua e farina (senza patate), Farina 00, Acqua, Sale fino"
       ],
-      "rating": 3.7
+      "rating": 3.9
     },
     {
       "source": "scraped",
@@ -548,7 +548,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Gnocchi con crema alle noci, Farina 00, Acqua, Sale fino, Gherigli di noci, Parmigiano Reggiano DOP, Olio extravergine d'oliva, Aglio, Sale fino, Pepe nero, Parmigiano Reggiano DOP, Gherigli di noci"
       ],
-      "rating": 5
+      "rating": 4.6
     },
     {
       "source": "scraped",
@@ -562,7 +562,7 @@
         "Farina di riso 110 g",
         "Fecola di patate 40 g",
         "Amido di mais (maizena) 20 g",
-        "Lievito in polvere per dolci 16 g",
+        "Lievito in polvere per dolci senza glutine 16 g",
         "Xantana 1 g",
         "Zucchero 30 g",
         "Zucchero a velo 10 g"
@@ -583,7 +583,7 @@
       ],
       "cuisine": [],
       "keywords": [
-        "ricette, ricetta, cucina, cucinare, Savoiardi senza glutine, Uova, Zucchero, Farina di riso, Fecola di patate, Amido di mais (maizena), Lievito in polvere per dolci, Xantana, Zucchero, Zucchero a velo"
+        "ricette, ricetta, cucina, cucinare, Savoiardi senza glutine, Uova, Zucchero, Farina di riso, Fecola di patate, Amido di mais (maizena), Lievito in polvere per dolci senza glutine, Xantana, Zucchero, Zucchero a velo"
       ],
       "rating": 4.9
     },
@@ -635,7 +635,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Tiramisù di Natale, Uova, Zucchero, Farina 00, Fecola di patate, Mascarpone, Zucchero, Acqua, Tuorli, Panna fresca liquida, Gelatina in fogli, Caffè, Panna fresca liquida, Zucchero, Cacao amaro in polvere, Confettini colorati, Biscotti"
       ],
-      "rating": 4.1
+      "rating": 4.4
     },
     {
       "source": "scraped",
@@ -1716,7 +1716,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Raviolo ripieno di costine di manzo con spuma al limone, Manzo, Carote, Cipolle, Sedano, Concentrato di pomodoro, Vino rosso, Porto, Parmigiano Reggiano DOP, Mascarpone, Olio di semi di arachide, Sale fino, Pepe nero, Farina 00, Uova, Tuorli, Salvia, Latte intero, Panna fresca liquida, Succo di limone, Scorza di limone, Burro, Sale fino, Pepe bianco, Olio di semi di arachide, Salvia, Prezzemolo, Burro, Salvia"
       ],
-      "rating": 4.1
+      "rating": 4.2
     },
     {
       "source": "scraped",
@@ -3325,7 +3325,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Torta pere e cioccolato senza lattosio, Farina 00, Pere abate, Zucchero, Latte di soia, Uova, Cioccolato fondente, Cacao amaro in polvere, Olio di semi di girasole, Lievito in polvere per dolci, Pere abate, Cioccolato fondente"
       ],
-      "rating": 4.8
+      "rating": 4.7
     },
     {
       "source": "scraped",
@@ -3399,7 +3399,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Burger di spinaci, Spinaci, Patate, Ceci precotti, Cipolle, Olio extravergine d'oliva, Pangrattato, Curcuma in polvere, Noce moscata, Pepe nero, Sale fino"
       ],
-      "rating": 4.4
+      "rating": 4.5
     },
     {
       "source": "scraped",
@@ -3994,7 +3994,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Torta salata senza glutine spinaci e tofu, Farina di riso, Acqua, Olio extravergine d'oliva, Sale fino, Tofu, Spinaci, Uova, Cipolle, Latte di soia, Olio extravergine d'oliva, Sale fino, Pepe nero, Maggiorana, Noce moscata"
       ],
-      "rating": 5
+      "rating": 4.2
     },
     {
       "source": "scraped",
@@ -5434,7 +5434,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Risotto con broccoli e pecorino, Riso Carnaroli, Broccoli, Scalogno, Brodo vegetale, Vino bianco, Peperoncino fresco, Timo, Olio extravergine d'oliva, Sale fino, Panna fresca liquida, Succo di limone, Burro, Pecorino, Scorza di limone, Peperoncino in polvere"
       ],
-      "rating": 4.5
+      "rating": 4.8
     },
     {
       "source": "scraped",
@@ -10459,7 +10459,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Spaghetti aglio olio e peperoncino risottati, Spaghettoni, Aglio, Peperoncino fresco, Prezzemolo, Olio extravergine d'oliva"
       ],
-      "rating": 5
+      "rating": 4.8
     },
     {
       "source": "scraped",
@@ -22681,7 +22681,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Torta salata con porri e brie, Farina 00, Burro, Uova, Acqua, Sale fino, Porri, Brie, Panna fresca liquida, Uova, Olio extravergine d'oliva, Sale fino, Pepe nero"
       ],
-      "rating": 4.3
+      "rating": 4.2
     },
     {
       "source": "scraped",
@@ -25100,7 +25100,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Salsicce in friggitrice ad aria, Salsiccia, Rosmarino, Salvia, Timo, Aglio, Olio extravergine d'oliva, Sale"
       ],
-      "rating": 4.5
+      "rating": 4.3
     },
     {
       "source": "scraped",
@@ -25741,7 +25741,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Torta mele e yogurt, Mele Golden, Farina 00, Zucchero, Yogurt bianco naturale, Uova, Olio di semi di girasole, Lievito in polvere per dolci, Scorza di limone, Succo di limone, Cannella in polvere, Zucchero di canna, Zucchero a velo"
       ],
-      "rating": 4.3
+      "rating": 4.4
     },
     {
       "source": "scraped",
@@ -26508,7 +26508,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Naked cake con panettone, Panettone, Lamponi, Mirtilli, Menta, Mascarpone, Ricotta vaccina, Panna fresca liquida, Zucchero a velo, Gocce di cioccolato, Uova, Stabilizzante per panna"
       ],
-      "rating": 3.7
+      "rating": 3.9
     },
     {
       "source": "scraped",
@@ -27953,7 +27953,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Baccalà in umido con patate, Baccalà dissalato, Patate, Pomodori pelati, Cipolle, Aglio, Peperoncino fresco, Vino bianco, Rosmarino, Alloro, Prezzemolo, Olio extravergine d'oliva, Sale fino, Pepe nero"
       ],
-      "rating": 4.4
+      "rating": 4.3
     },
     {
       "source": "scraped",
@@ -29263,7 +29263,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Gamberetti in salsa rosa, Gamberetti, Erba cipollina, Lattuga romana, Uova, Olio di semi di girasole, Succo di limone, Sale, Ketchup, Salsa Worcestershire"
       ],
-      "rating": 4.8
+      "rating": 4.7
     },
     {
       "source": "scraped",
@@ -29431,7 +29431,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Mousse di prosciutto, Prosciutto cotto, Ricotta vaccina, Panna fresca liquida, Timo"
       ],
-      "rating": 4.8
+      "rating": 4.7
     },
     {
       "source": "scraped",
@@ -29824,7 +29824,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Vellutata di cavolfiore e curcuma, Cavolfiore, Patate, Cipolle dorate, Aglio, Curcuma in polvere, Rosmarino, Brodo vegetale, Sale fino, Pepe nero, Olio extravergine d'oliva, Yogurt, Pane integrale multi-cereali, Paprika, Olio extravergine d'oliva"
       ],
-      "rating": 3.5
+      "rating": 3.7
     },
     {
       "source": "scraped",
@@ -34222,7 +34222,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Pain au chocolat, Farina 0, Latte intero, Acqua, Zucchero, Lievito di birra fresco, Sale fino, Burro, Farina 0, Cioccolato fondente, Uova, Tuorli, Panna fresca liquida, Sale fino"
       ],
-      "rating": 3.9
+      "rating": 4
     },
     {
       "source": "scraped",
@@ -34452,7 +34452,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Risotto alla carbonara, Riso Carnaroli, Tuorli, Guanciale, Pecorino Romano DOP, Vino bianco, Brodo vegetale, Maggiorana, Pepe nero"
       ],
-      "rating": 4.1
+      "rating": 4.2
     },
     {
       "source": "scraped",
