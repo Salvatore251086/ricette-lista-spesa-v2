@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2025-12-05T15:42:18.065Z",
+  "generatedAt": "2025-12-06T16:46:51.004Z",
   "recipes": [
     {
       "source": "scraped",
@@ -505,7 +505,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Gnocchi acqua e farina (senza patate), Farina 00, Acqua, Sale fino"
       ],
-      "rating": 3.9
+      "rating": 4
     },
     {
       "source": "scraped",
@@ -585,7 +585,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Savoiardi senza glutine, Uova, Zucchero, Farina di riso, Fecola di patate, Amido di mais (maizena), Lievito in polvere per dolci senza glutine, Xantana, Zucchero, Zucchero a velo"
       ],
-      "rating": 4.9
+      "rating": 4.8
     },
     {
       "source": "scraped",
@@ -3211,7 +3211,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Torta rovesciata alle mele vegana, Mele Golden, Farina 00, Burro vegano, Zucchero, Gherigli di noci, Pinoli, Acqua, Cannella in polvere, Zucchero"
       ],
-      "rating": 4
+      "rating": 4.1
     },
     {
       "source": "scraped",
@@ -10810,7 +10810,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Pasta con le seppie, Paccheri, Seppie, Pomodorini ciliegino, Aglio, Olio extravergine d'oliva, Vino bianco, Prezzemolo, Peperoncino fresco, Sale fino, Pepe nero"
       ],
-      "rating": 4.5
+      "rating": 4.6
     },
     {
       "source": "scraped",
@@ -33328,7 +33328,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Zucchine al forno con bacon, Zucchine, Bacon, Panko , Parmigiano Reggiano DOP, Uova, Prezzemolo, Maggiorana, Olio extravergine d'oliva"
       ],
-      "rating": 4.1
+      "rating": 4.2
     },
     {
       "source": "scraped",
