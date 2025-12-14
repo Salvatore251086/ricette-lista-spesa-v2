@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2025-12-06T16:46:51.004Z",
+  "generatedAt": "2025-12-14T05:07:40.670Z",
   "recipes": [
     {
       "source": "scraped",
@@ -59,7 +59,6 @@
       "image": "https://www.giallozafferano.it/images/349-34915/Arrosto-di-vitello-morbido-con-sughetto_650x433_wm.jpg",
       "ingredients": [
         "Cappello del prete 1,5 kg",
-        "Patate novelle 500 g",
         "Carote 100 g",
         "Sedano 100 g",
         "Cipolle 100 g",
@@ -67,7 +66,7 @@
         "Acqua 800 g",
         "Vino bianco 250 g",
         "Vino rosso 400 g",
-        "Burro 200 g",
+        "Burro 20 g",
         "Concentrato di pomodoro 5 g",
         "Amido di mais (maizena) 5 g",
         "Olio extravergine d'oliva 20 g",
@@ -81,9 +80,10 @@
         "Unite il concentrato di pomodoro 13 , poi trasferite nuovamente l'arrosto nella casseruola 14 e coprite con l'acqua 15 .",
         "Chiudete con coperchio 16 e cuocete a fiamma dolce per 3 ore, rigirando l'arrosto ogni ora. Potete verificare la cottura con un termometro: dovrà raggiungere una temperatura di 85° al cuore 17 . Trascorso il tempo di cottura, rimuovete l'arrosto dalla casseruola 18 e tenetelo in caldo.",
         "Alzate la fiamma e lasciate ridurre il liquido di due terzi; ci vorranno circa 30 minuti 19 . Nel frattempo in un pentolino versate il vino rosso 20 e fate ridurre anch'esso di due terzi tenendo la fiamma medio-alta; ci vorranno circa 20 minuti 21 .",
-        "Quando il sugo si sarà ridotto, frullatelo con un mixer a immersione 22 e filtratelo attraverso un colino a maglie strette 23 . Versate nuovamente il composto in casseruola 24 .",
-        "Unite il vino ridotto 25 e cuocete a fiamma bassa per 20 minuti 26 . Dovrete ottenere una consistenza fluida e cremosa 27 .",
-        "Siete pronti per impiattare: tagliate l'arrosto a fette e disponetele in un piatto da portata, accompagnandole magari con delle patate al forno 28 , poi nappate generosamente con la salsa ottenuta 29 . Il vostro arrosto di vitello morbido con sughetto è pronto per essere servito 30 !"
+        "Quando il sugo si sarà ridotto, frullatelo con un mixer a immersione 22 e filtratelo attraverso un colino a maglie strette 23 . Intanto fate sciogliere il burro in una casseruola a parte 24 .",
+        "Aggiungete l'amido di mais al burro fuso 25 e mescolate velocemente con una frusta 26 , poi versate la salsa filtrata 27 .",
+        "Unite anche la riduzione di vino 28 e proseguite la cottura a fuoco dolce per 10-15 minuti 29 , fino ad ottenere una consistenza fluida e cremosa 30 .",
+        "Siete pronti per impiattare: tagliate l'arrosto a fette e disponetele in un piatto da portata, accompagnandole magari con delle patate al forno 31 , poi nappate generosamente con la salsa ottenuta 32 . Il vostro arrosto di vitello morbido con sughetto è pronto per essere servito 33 !"
       ],
       "totalTime": "PT280M",
       "cookTime": "PT250M",
@@ -94,7 +94,7 @@
       ],
       "cuisine": [],
       "keywords": [
-        "ricette, ricetta, cucina, cucinare, Arrosto di vitello morbido con sughetto, Cappello del prete, Patate novelle, Carote, Sedano, Cipolle, Rosmarino, Acqua, Vino bianco, Vino rosso, Burro, Concentrato di pomodoro, Amido di mais (maizena), Olio extravergine d'oliva, Sale fino"
+        "ricette, ricetta, cucina, cucinare, Arrosto di vitello morbido con sughetto, Cappello del prete, Carote, Sedano, Cipolle, Rosmarino, Acqua, Vino bianco, Vino rosso, Burro, Concentrato di pomodoro, Amido di mais (maizena), Olio extravergine d'oliva, Sale fino"
       ],
       "rating": 4.7
     },
@@ -423,7 +423,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Scaloppine all'arancia, Fettine di vitello, Arance, Burro, Farina 00, Sale fino, Pepe nero, Timo"
       ],
-      "rating": 4.6
+      "rating": 4.5
     },
     {
       "source": "scraped",
@@ -635,7 +635,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Tiramisù di Natale, Uova, Zucchero, Farina 00, Fecola di patate, Mascarpone, Zucchero, Acqua, Tuorli, Panna fresca liquida, Gelatina in fogli, Caffè, Panna fresca liquida, Zucchero, Cacao amaro in polvere, Confettini colorati, Biscotti"
       ],
-      "rating": 4.4
+      "rating": 4.5
     },
     {
       "source": "scraped",
@@ -949,7 +949,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Polpettone in padella, Macinato di manzo, Salsiccia, Groviera, Pangrattato rustico, Parmigiano Reggiano DOP, Uova, Erba cipollina, Prezzemolo, Sale fino, Pepe nero, Olio extravergine d'oliva, Vino bianco"
       ],
-      "rating": 4.6
+      "rating": 4.7
     },
     {
       "source": "scraped",
@@ -999,7 +999,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Struffoli in friggitrice ad aria, Farina 00, Burro, Zucchero, Uova, Tuorli, Liquore all'anice, Scorza d'arancia, Scorza di limone, Bicarbonato, Sale fino, Miele millefiori, Zucchero, Arancia candita, Ciliegie candite, Scorza di limone, Scorza d'arancia, Codette colorate, Olio di semi di girasole"
       ],
-      "rating": 5
+      "rating": 4.8
     },
     {
       "source": "scraped",
@@ -1573,7 +1573,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Torta di mele senza glutine, Mele Golden, Mix di farine senza glutine, Uova, Zucchero di canna, Scorza di limone, Miele, Cannella in polvere, Olio di semi di girasole, Yogurt greco, Fecola di patate, Lievito in polvere per dolci, Zucchero a velo"
       ],
-      "rating": 4.3
+      "rating": 4.4
     },
     {
       "source": "scraped",
@@ -2397,7 +2397,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Gingerbread latte, Latte intero, Caffè, Zucchero di canna, Acqua, Cannella in polvere, Zenzero in polvere, Cacao amaro in polvere"
       ],
-      "rating": 5
+      "rating": 4.9
     },
     {
       "source": "scraped",
@@ -2697,7 +2697,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Lasagne zucca e speck, Farina 00, Uova, Sale fino, Zucca, Speck, Cipolle, Parmigiano Reggiano DOP, Salvia, Olio extravergine d'oliva, Sale fino, Pepe nero, Latte intero, Taleggio, Farina 00, Burro, Sale, Pepe nero"
       ],
-      "rating": 5
+      "rating": 4.6
     },
     {
       "source": "scraped",
@@ -3246,7 +3246,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Tacchino in padella morbido, Fesa di tacchino, Panna light, Olio extravergine d'oliva, Vino bianco, Aglio, Rosmarino, Salvia, Sale fino"
       ],
-      "rating": 4.8
+      "rating": 4.9
     },
     {
       "source": "scraped",
@@ -5434,7 +5434,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Risotto con broccoli e pecorino, Riso Carnaroli, Broccoli, Scalogno, Brodo vegetale, Vino bianco, Peperoncino fresco, Timo, Olio extravergine d'oliva, Sale fino, Panna fresca liquida, Succo di limone, Burro, Pecorino, Scorza di limone, Peperoncino in polvere"
       ],
-      "rating": 4.8
+      "rating": 4.9
     },
     {
       "source": "scraped",
@@ -6910,7 +6910,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Pizza contemporanea salsiccia e patate, Farina 0, Acqua, Lievito di birra fresco, Acqua, Sale fino, Olio extravergine d'oliva, Semola di grano duro rimacinata, Patate, Salsiccia, Mozzarella di bufala, Mozzarella di bufala, Basilico, Olio extravergine d'oliva"
       ],
-      "rating": 5
+      "rating": 4.7
     },
     {
       "source": "scraped",
@@ -10976,7 +10976,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Spaghetti con pesto di limone e vongole, Spaghetti, Vongole, Olio extravergine d'oliva, Sale fino, Aglio, Peperoncino fresco, Vino bianco, Pepe nero, Prezzemolo, Scorza di limone, Succo di limone, Parmigiano Reggiano DOP, Mandorle pelate, Sale fino, Olio extravergine d'oliva, Menta, Basilico"
       ],
-      "rating": 4.6
+      "rating": 4.5
     },
     {
       "source": "scraped",
@@ -18080,7 +18080,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Uova ripiene di tonno della nonna, Uova, Tonno sott'olio, Capperi sotto sale, Acciughe (alici), Succo di limone, Olio extravergine d'oliva, Sale fino, Frutti di cappero , Erba cipollina"
       ],
-      "rating": 4.8
+      "rating": 4.7
     },
     {
       "source": "scraped",
@@ -19511,7 +19511,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Sovracosce di pollo in friggitrice ad aria, Sovracosce di pollo, Patate, Olio extravergine d'oliva, Paprika, Rosmarino, Sale, Pepe nero"
       ],
-      "rating": 4.4
+      "rating": 4.5
     },
     {
       "source": "scraped",
@@ -19831,7 +19831,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Gnocchi di ricotta agli spinaci, Spinaci, Ricotta vaccina, Farina 00, Parmigiano Reggiano DOP, Uova, Sale, Pepe nero, Burro, Salvia, Parmigiano Reggiano DOP"
       ],
-      "rating": 4.4
+      "rating": 4.2
     },
     {
       "source": "scraped",
@@ -20009,7 +20009,7 @@
       "description": "La guancia di manzo con carciofi è un prelibato secondo piatto con contorno: la carne cotta lentamente nel vino rosso diventa tenerissima! Qui la ricetta",
       "image": "https://www.giallozafferano.it/images/297-29709/Guancia-di-manzo-con-carciofi_650x433_wm.jpg",
       "ingredients": [
-        "Manzo guancia 800 g",
+        "Guancia di manzo 800 g",
         "Cipolle bianche 1",
         "Carote 1",
         "Sedano 1 costa",
@@ -20059,7 +20059,7 @@
       ],
       "cuisine": [],
       "keywords": [
-        "ricette, ricetta, cucina, cucinare, Guancia di manzo con carciofi, Manzo, Cipolle bianche, Carote, Sedano, Aglio, Vino rosso, Brodo di carne, Rosmarino, Alloro, Cannella in stecche, Bacche di ginepro, Chiodi di garofano, Olio extravergine d'oliva, Sale fino, Pepe nero, Sedano rapa, Olio extravergine d'oliva, Sale fino, Pepe nero, Carciofi, Olio extravergine d'oliva, Sale fino, Pepe nero, Menta"
+        "ricette, ricetta, cucina, cucinare, Guancia di manzo con carciofi, Guancia di manzo, Cipolle bianche, Carote, Sedano, Aglio, Vino rosso, Brodo di carne, Rosmarino, Alloro, Cannella in stecche, Bacche di ginepro, Chiodi di garofano, Olio extravergine d'oliva, Sale fino, Pepe nero, Sedano rapa, Olio extravergine d'oliva, Sale fino, Pepe nero, Carciofi, Olio extravergine d'oliva, Sale fino, Pepe nero, Menta"
       ],
       "rating": 4.7
     },
@@ -20269,7 +20269,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Tiramisù al caramello con Pavesini, Pavesini, Caffè, Arachidi salate tostate, Menta, Zucchero, Panna fresca liquida, Burro, Cioccolato bianco, Baccello di vaniglia, Mascarpone, Panna fresca liquida, Zucchero a velo, Gelatina in fogli, Baccello di vaniglia"
       ],
-      "rating": 4.7
+      "rating": 4.8
     },
     {
       "source": "scraped",
@@ -22997,7 +22997,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Spaghetti broccoli e gamberi, Spaghetti, Broccoli, Gamberi, Acciughe sott'olio, Aglio, Peperoncino secco, Olio extravergine d'oliva, Sale fino, Pepe nero, Pane raffermo, Limoni, Aglio, Timo, Olio extravergine d'oliva, Sale fino"
       ],
-      "rating": 4.2
+      "rating": 4.3
     },
     {
       "source": "scraped",
@@ -23149,28 +23149,34 @@
       "source": "scraped",
       "url": "https://ricette.giallozafferano.it/Zuppa-di-cavolo-nero.html",
       "title": "Zuppa di cavolo nero",
-      "description": "La zuppa di cavolo nero è un primo piatto rustico arricchito con fagioli e patate, una pietanza nutriente e genuina per l'inverno! Scopri la ricetta.",
+      "description": "La zuppa di cavolo nero è un corposo primo piatto invernale arricchito con ceci e porri. Scopri come preparare a casa questa ricetta facile e genuina!",
       "image": "https://www.giallozafferano.it/images/295-29572/Zuppa-di-cavolo-nero_650x433_wm.jpg",
       "ingredients": [
-        "Cavolo nero (da pulire) 650 g",
-        "Patate (da pulire) 320 g",
-        "Fagioli borlotti precotti (peso sgocciolato) 250 g",
-        "Porri (da pulire) 160 g",
-        "Carote 1",
-        "Acqua circa 2 l",
+        "Cavolo nero (da pulire) 400 g",
+        "Ceci precotti (peso sgocciolato) 600 g",
+        "Porri (da pulire) 200 g",
+        "Carote 70 g",
+        "Sedano 70 g",
+        "Passata di pomodoro 200 g",
+        "Brodo vegetale circa 500 g",
         "Olio extravergine d'oliva q.b.",
-        "Sale q.b.",
-        "Olio extravergine d'oliva q.b.",
-        "Crostini di pane q.b."
+        "Sale fino q.b.",
+        "Pepe nero q.b.",
+        "Pane casereccio 4 fette",
+        "Aglio 1 spicchio"
       ],
       "instructions": [
-        "Per preparare la zuppa di cavolo nero per prima cosa pulite il cavolo nero e tagliate le foglie a pezzetti 1 . Eliminate la parte più verde del porro e il primo strato, quindi affettatelo ma rondelle dello spessore di 1 cm 2 . Pelate e spuntate la carota e tagliate anch’essa a rondelle dello spessore di 1 cm 3 .",
-        "Pelate le patate e riducetele a cubetti di circa 3 cm 4 . In una pentola versate l’olio, aggiungete il porro 5 e rosolate per un minuto. Aggiungete le carote 6 e continuate a cuocere per un minuto.",
-        "Unite le patate 7 e lasciate stufare per 5 minuti a fiamma bassa. Infine unite il cavolo nero 8 e mescolate il tutto 9 .",
-        "Coprite con acqua 10 , regolate di sale e continuate la cottura, a fiamma bassa, per 30 minuti, mescolando di tanto in tanto 11 . Quando mancheranno 10 minuti alla fine della cottura aggiungete anche i fagioli borlotti, ben sgocciolati dal loro liquido di governo 12 , e portate a cottura. Impiattate e completate con un giro d’olio a crudo. La vostra zuppa di cavolo nero è pronta per essere servita, magari accompagnata con dei crostini o pane tostato!"
+        "Per preparare la zuppa di cavolo nero, per prima cosa mondate e affettate le verdure per il soffritto: mondate il porro e tagliate 100 g a rondelle 1 , poi riducete il sedano 2 e le carote a dadini 3 .",
+        "In una casseruola capiente con un giro d’olio versate le carote, il sedano 4 e metà dei porri 5 . Lasciate soffriggere a fuoco dolce per una decina di minuti finché le verdure si saranno ammorbidite 6 .",
+        "Nel frattempo pulite il cavolo nero 7 e tritate grossolanamente circa 200 g di foglie 8 . Una volta appassito il soffritto, alzate leggermente la fiamma e aggiungete il cavolo nero 9 .",
+        "Unite anche il resto del porro 10 e mescolate. Salate 11 e versate la passata di pomodoro 12 .",
+        "Mentre lasciate appassire brevemente il cavolo nero, frullate metà dei ceci con poca acqua 13 così da ottenere una crema 14 . Aggiungete i ceci interi nella casseruola 15 .",
+        "Unite anche la crema di ceci 16 e mescolate bene per amalgamare il tutto 17 . Coprite con il brodo vegetale 18 e proseguite la cottura a fuoco medio per circa 20 minuti.",
+        "Mentre la zuppa cuoce, abbrustolite le fette di pane su una griglia da entrambi i lati 19 , poi strofinatele con uno spicchio d’aglio 20 . Trascorso il tempo di cottura, la zuppa sarà densa e corposa 21 .",
+        "Completate ogni piatto con una fetta di pane abbrustolito 22 , un filo d’olio 23 e una macinata di pepe. La vostra zuppa di cavolo nero è pronta per essere gustata 24 !"
       ],
-      "totalTime": "PT60M",
-      "cookTime": "PT40M",
+      "totalTime": "PT55M",
+      "cookTime": "PT35M",
       "prepTime": "PT20M",
       "yield": 4,
       "category": [
@@ -23178,9 +23184,9 @@
       ],
       "cuisine": [],
       "keywords": [
-        "ricette, ricetta, cucina, cucinare, Zuppa di cavolo nero, Cavolo nero, Patate, Fagioli borlotti precotti, Porri, Carote, Acqua, Olio extravergine d'oliva, Sale, Olio extravergine d'oliva, Crostini di pane"
+        "ricette, ricetta, cucina, cucinare, Zuppa di cavolo nero, Cavolo nero, Ceci precotti, Porri, Carote, Sedano, Passata di pomodoro, Brodo vegetale, Olio extravergine d'oliva, Sale fino, Pepe nero, Pane casereccio, Aglio"
       ],
-      "rating": 4.6
+      "rating": 4.3
     },
     {
       "source": "scraped",
@@ -23355,7 +23361,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Anolini, Cappone, Sedano, Carote, Cipolle bianche, Chiodi di garofano, Acqua, Manzo, Sedano, Carote, Cipolle bianche, Olio extravergine d'oliva, Vino rosso, Chiodi di garofano, Pane, Parmigiano Reggiano DOP, Noce moscata, Uova, Farina 00, Uova, Sale, Parmigiano Reggiano DOP"
       ],
-      "rating": 3.3
+      "rating": 3.2
     },
     {
       "source": "scraped",
@@ -26973,7 +26979,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Crostini con baccalà mantecato, Baccalà dissalato, Olio extravergine d'oliva, Sale, Pepe nero, Pane, Olio extravergine d'oliva, Prezzemolo, Scorza di limone"
       ],
-      "rating": 4.3
+      "rating": 4.4
     },
     {
       "source": "scraped",
@@ -27180,7 +27186,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Biscotti facili di Natale, Farina 00, Burro, Zucchero grezzo di barbabietola, Uova, Scorza di limone, Sale fino, Cioccolato fondente al 70%, Zuccherini"
       ],
-      "rating": 4.5
+      "rating": 4.3
     },
     {
       "source": "scraped",
@@ -27953,7 +27959,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Baccalà in umido con patate, Baccalà dissalato, Patate, Pomodori pelati, Cipolle, Aglio, Peperoncino fresco, Vino bianco, Rosmarino, Alloro, Prezzemolo, Olio extravergine d'oliva, Sale fino, Pepe nero"
       ],
-      "rating": 4.3
+      "rating": 4.4
     },
     {
       "source": "scraped",
@@ -28566,7 +28572,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Zuccotto zuppa inglese con Pavesini, Pavesini, Pavesini, Latte intero, Panna fresca liquida, Cioccolato fondente, Zucchero, Amido di mais (maizena), Uova, Tuorli, Gelatina in fogli, Scorza di limone, Scorza d'arancia, Sale fino, Alchermes, Succo d'arancia, Acqua, Panna fresca liquida, Zucchero a velo, Ribes rosso"
       ],
-      "rating": 4.2
+      "rating": 4.3
     },
     {
       "source": "scraped",
@@ -28613,7 +28619,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Risotto al porro con ricotta di capra e alici, Riso, Porri, Brandy, Brodo vegetale, Olio extravergine d'oliva, Sale fino, Pepe nero, Parmigiano Reggiano DOP, Germogli di porri, Aglio nero, Ricotta di capra, Sale fino, Pepe nero, Olio extravergine d'oliva, Acciughe (alici)"
       ],
-      "rating": 5
+      "rating": 4.6
     },
     {
       "source": "scraped",
@@ -29984,7 +29990,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Crema per pandoro al cioccolato, Mascarpone, Cioccolato fondente, Zucchero, Tuorli, Acqua"
       ],
-      "rating": 4.4
+      "rating": 4.5
     },
     {
       "source": "scraped",
@@ -30107,7 +30113,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Mini charlotte di Pavesini con semifreddo al torrone, Pavesini, Torrone, Panna fresca liquida, Latte, Tuorli, Zucchero, Amido di mais (maizena), Zucchero, Albumi, Acqua, Torrone, Scorza d'arancia"
       ],
-      "rating": 3.9
+      "rating": 4
     },
     {
       "source": "scraped",
@@ -31104,7 +31110,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Tartine al salmone, Salmone affumicato, Pane per tramezzini, Formaggio fresco spalmabile, Erba cipollina, Scorza di lime, Semi di sesamo nero, Olio extravergine d'oliva"
       ],
-      "rating": 4.3
+      "rating": 4.4
     },
     {
       "source": "scraped",
@@ -32414,7 +32420,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Spaghetti con crema di broccoli e alici, Spaghettini, Acciughe (alici), Broccoli, Aglio, Olio extravergine d'oliva, Sale fino, Pepe nero, Pangrattato, Pomodori secchi sott'olio, Olio extravergine d'oliva, Sale fino, Acciughe (alici)"
       ],
-      "rating": 3.8
+      "rating": 3.7
     },
     {
       "source": "scraped",
@@ -33484,7 +33490,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Quadrotti di sfoglia alle mele, Mele renette, Zucchero, Lime, Burro, Mandorle in scaglie, Pasta Sfoglia, Burro, Mandorle, Zucchero, Zucchero a velo"
       ],
-      "rating": 4.3
+      "rating": 4.4
     },
     {
       "source": "scraped",
@@ -41624,7 +41630,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Dolce al cucchiaio con Pavesini, cioccolato bianco e mirtilli, Pavesini, Latte intero, Menta, Mascarpone, Panna fresca liquida, Cioccolato bianco, Scorza di limone, Sale fino, Mirtilli, Zucchero, Succo di limone"
       ],
-      "rating": 3
+      "rating": 3.4
     },
     {
       "source": "scraped",
