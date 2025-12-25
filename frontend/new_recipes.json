@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2025-12-22T18:14:21.016Z",
+  "generatedAt": "2025-12-25T18:07:05.718Z",
   "recipes": [
     {
       "source": "scraped",
@@ -387,7 +387,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Cassoeula rivisitata con polenta, Costine di maiale, Verzini, Cotenna di suino, Maiale, Maiale, Maiale, Maiale, Verza, Sedano, Carote, Cipolle, Passata di pomodoro, Acqua, Olio extravergine d'oliva, Sale fino, Pepe nero, Farina di mais, Acqua, Olio extravergine d'oliva, Sale fino, Prezzemolo"
       ],
-      "rating": 3.3
+      "rating": 3.5
     },
     {
       "source": "scraped",
@@ -907,7 +907,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Cotechino in pentola a pressione, Cotechino, Sedano, Carote, Scalogno, Prezzemolo, Salvia, Bacche di ginepro, Sale fino"
       ],
-      "rating": 5
+      "rating": 4.7
     },
     {
       "source": "scraped",
@@ -1501,7 +1501,7 @@
         "Sale fino q.b.",
         "Pepe nero q.b.",
         "Latte intero 1 l",
-        "Farina 00 180 g",
+        "Farina 00 80 g",
         "Burro 100 g",
         "Noce moscata q.b.",
         "Sale fino q.b."
@@ -2483,7 +2483,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Merluzzo al forno con patate, Filetto di merluzzo, Patate, Aglio, Vino bianco, Prezzemolo, Olio extravergine d'oliva, Sale fino"
       ],
-      "rating": 4.8
+      "rating": 4.5
     },
     {
       "source": "scraped",
@@ -8239,7 +8239,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Pizza senza lievito, Farina 0, Acqua, Sale fino, Passata di pomodoro, Mozzarella per pizza, Basilico, Olio extravergine d'oliva, Sale fino, Farina 0, Olio extravergine d'oliva"
       ],
-      "rating": 4.4
+      "rating": 4.3
     },
     {
       "source": "scraped",
@@ -8437,7 +8437,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Alici imbottite, Acciughe (alici), Mollica di pane, Uova, Pecorino, Succo di limone, Scorza di limone, Menta, Sale fino, Uova, Farina 00, Pangrattato, Sale fino, Pepe nero, Olio di semi di arachide"
       ],
-      "rating": 4.5
+      "rating": 4.4
     },
     {
       "source": "scraped",
@@ -10976,7 +10976,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Spaghetti con pesto di limone e vongole, Spaghetti, Vongole, Olio extravergine d'oliva, Sale fino, Aglio, Peperoncino fresco, Vino bianco, Pepe nero, Prezzemolo, Scorza di limone, Succo di limone, Parmigiano Reggiano DOP, Mandorle pelate, Sale fino, Olio extravergine d'oliva, Menta, Basilico"
       ],
-      "rating": 4.5
+      "rating": 4.6
     },
     {
       "source": "scraped",
@@ -19092,7 +19092,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Pasta con crema di porri brasati, nocciole e finocchietto, Spaghetti, Nocciole, Finocchietto selvatico, Olio extravergine d'oliva, Sale, Pepe nero, Porri, Olio extravergine d'oliva, Sale"
       ],
-      "rating": 3.6
+      "rating": 3.7
     },
     {
       "source": "scraped",
@@ -24413,7 +24413,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Bao al vapore con wagyu ribs, Manzo, Cipolle bianche, Carote, Sedano, Aglio, Vino rosso, Scorza d'arancia, Succo d'arancia, Olio extravergine d'oliva, Sale, Farina 0, Acqua, Zucchero, Lievito di birra secco, Olio extravergine d'oliva, Sale fino, Erba cipollina"
       ],
-      "rating": 3.8
+      "rating": 3.6
     },
     {
       "source": "scraped",
@@ -27186,7 +27186,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Biscotti facili di Natale, Farina 00, Burro, Zucchero grezzo di barbabietola, Uova, Scorza di limone, Sale fino, Cioccolato fondente al 70%, Zuccherini"
       ],
-      "rating": 4.3
+      "rating": 4.1
     },
     {
       "source": "scraped",
@@ -31075,7 +31075,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Cinghiale in umido, Cinghiale, Cipolle dorate, Vino rosso, Rosmarino, Alloro, Aglio, Brodo di carne, Passata di pomodoro, Concentrato di pomodoro, Olio extravergine d'oliva, Sale, Pepe nero"
       ],
-      "rating": 4.5
+      "rating": 4.4
     },
     {
       "source": "scraped",
@@ -31110,7 +31110,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Tartine al salmone, Salmone affumicato, Pane per tramezzini, Formaggio fresco spalmabile, Erba cipollina, Scorza di lime, Semi di sesamo nero, Olio extravergine d'oliva"
       ],
-      "rating": 4.3
+      "rating": 4.4
     },
     {
       "source": "scraped",
@@ -31545,7 +31545,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Turdilli calabresi, Farina 0, Olio extravergine d'oliva, Vermouth, Acqua, Zucchero, Scorza d'arancia, Cannella in polvere, Chiodi di garofano, Olio di semi di arachide, Miele di fichi, Zuccherini"
       ],
-      "rating": 4.1
+      "rating": 4.2
     },
     {
       "source": "scraped",
@@ -32375,7 +32375,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Tonno tataki in crosta di sesamo e alici, Tonno, Semi di sesamo nero, Senape, Acciughe (alici), Burro chiarificato, Erba cipollina, Sale di maldon, Pepe nero, Tuorli, Olio di semi di girasole, Zafferano in pistilli, Sale fino, Aceto di vino bianco"
       ],
-      "rating": 4.6
+      "rating": 4.5
     },
     {
       "source": "scraped",
@@ -38832,7 +38832,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Panino con sgombro gourmet, Panini per hamburger, Filetti di sgombro, Cetrioli, Stracchino, Olio di semi di girasole, Pisellini, Uova, Succo di limone, Sale fino, Pepe nero, Cipolle rosse, Aceto di vino rosso, Zucchero di canna, Maggiorana, Olio extravergine d'oliva, Sale fino, Pepe nero"
       ],
-      "rating": 3.8
+      "rating": 3.7
     },
     {
       "source": "scraped",
@@ -40575,7 +40575,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Bocconcini di vitello al limone, Vitello, Succo di limone, Scorza di limone, Latte, Vino bianco, Olio extravergine d'oliva, Fecola di patate, Farina 00, Prezzemolo, Sale, Pepe nero"
       ],
-      "rating": 4.6
+      "rating": 4.7
     },
     {
       "source": "scraped",
@@ -41662,7 +41662,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Biscotti di pasta frolla, Farina 00, Burro, Zucchero a velo, Uova, Scorza di limone"
       ],
-      "rating": 4.4
+      "rating": 4.3
     },
     {
       "source": "scraped",
