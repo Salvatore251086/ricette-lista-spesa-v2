@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2025-12-29T10:25:18.723Z",
+  "generatedAt": "2025-12-31T18:11:23.660Z",
   "recipes": [
     {
       "source": "scraped",
@@ -6678,7 +6678,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Calamari alla messinese, Calamari, Acciughe sotto sale, Pomodori pelati, Aglio, Vino bianco, Olio extravergine d'oliva, Sale fino, Pepe nero, Peperoncino fresco, Prezzemolo"
       ],
-      "rating": 4.6
+      "rating": 4.7
     },
     {
       "source": "scraped",
@@ -23664,7 +23664,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Scrippelle mbusse, Gallina, Biancostato di manzo, Carne bovina, Cipolle dorate, Carote, Sedano, Alloro, Bacche di ginepro, Chiodi di garofano, Acqua, Sale, Uova, Farina 00, Acqua, Pecorino, Olio extravergine d'oliva, Pecorino"
       ],
-      "rating": 4.5
+      "rating": 4.6
     },
     {
       "source": "scraped",
@@ -26363,7 +26363,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Penne alla vodka, Penne Rigate, Passata di pomodoro, Pancetta affumicata, Panna fresca liquida, Vodka, Cipolle bianche, Prezzemolo, Olio extravergine d'oliva, Sale"
       ],
-      "rating": 4.8
+      "rating": 4.9
     },
     {
       "source": "scraped",
@@ -29269,7 +29269,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Gamberetti in salsa rosa, Gamberetti, Erba cipollina, Lattuga romana, Uova, Olio di semi di girasole, Succo di limone, Sale, Ketchup, Salsa Worcestershire"
       ],
-      "rating": 4.7
+      "rating": 4.6
     },
     {
       "source": "scraped",
@@ -32420,7 +32420,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Spaghetti con crema di broccoli e alici, Spaghettini, Acciughe (alici), Broccoli, Aglio, Olio extravergine d'oliva, Sale fino, Pepe nero, Pangrattato, Pomodori secchi sott'olio, Olio extravergine d'oliva, Sale fino, Acciughe (alici)"
       ],
-      "rating": 3.7
+      "rating": 3.6
     },
     {
       "source": "scraped",
@@ -35792,17 +35792,17 @@
       "description": "I gamberi in crosta di mandorle sono un secondo croccante e raffinato, perfetto per stupire con un mix di sapori delicati e texture irresistibili.",
       "image": "https://www.giallozafferano.it/images/282-28270/Gamberi-in-crosta-di-mandorle_650x433_wm.jpg",
       "ingredients": [
-        "Yogurt greco 200 g",
-        "Lime scorza e succo 1",
-        "Coriandolo q.b.",
-        "Sale q.b.",
-        "Pepe nero q.b.",
         "Gamberi 24",
         "Farina di mandorle 100 g",
         "Mandorle lamelle 200 g",
         "Albumi 4",
         "Sale 1 pizzico",
-        "Olio di semi di arachide 1 l"
+        "Olio di semi di arachide 1 l",
+        "Yogurt greco 200 g",
+        "Lime scorza e succo 1",
+        "Coriandolo q.b.",
+        "Sale q.b.",
+        "Pepe nero q.b."
       ],
       "instructions": [
         "Per preparare i gamberi in crosta di mandorle, come prima cosa tritate finemente il coriandolo 1 . In una ciotola mettete lo yogurt greco, aggiungete la scorza 2 e il succo di lime 3 .",
@@ -35821,7 +35821,7 @@
       ],
       "cuisine": [],
       "keywords": [
-        "ricette, ricetta, cucina, cucinare, Gamberi in crosta di mandorle, Yogurt greco, Lime, Coriandolo, Sale, Pepe nero, Gamberi, Farina di mandorle, Mandorle, Albumi, Sale, Olio di semi di arachide"
+        "ricette, ricetta, cucina, cucinare, Gamberi in crosta di mandorle, Gamberi, Farina di mandorle, Mandorle, Albumi, Sale, Olio di semi di arachide, Yogurt greco, Lime, Coriandolo, Sale, Pepe nero"
       ],
       "rating": 4.3
     },
@@ -41662,7 +41662,7 @@
       "keywords": [
         "ricette, ricetta, cucina, cucinare, Biscotti di pasta frolla, Farina 00, Burro, Zucchero a velo, Uova, Scorza di limone"
       ],
-      "rating": 4.3
+      "rating": 4.2
     },
     {
       "source": "scraped",
@@ -42136,7 +42136,7 @@
         "Quando il composto arriverà a bollore unite la farina tutta in una volta 4 e mescolate velocemente con un cucchiaio di legno 5 finché si staccherà dalle pareti del pentolino, formando una patina bianca sul fondo 6 .",
         "Trasferite il composto nella ciotola di una planetaria munita di foglia 7 e azionatela per un paio di minuti in modo che si raffreddi velocemente. Una volta intiepidito versate le uova poco per volta, aspettando che vengano assorbite completamente prima di aggiungerne ancora 8 . Dopo aver incorporato tutte le uova dovrete ottenere un impasto liscio e consistente 9 .",
         "Trasferite l’impasto in un sac-à-poche con bocchetta liscia da 9 mm 10 , poi spremete dei ciuffetti su una leccarda foderata con carta forno, distanziandoli tra loro 11 . Se si dovessero formare delle punte potete premere leggermente l’impasto con le dita inumidite per eliminarle. Cuocete in forno statico preriscaldato a 200° per 20-23 minuti, avendo cura di non aprire mai lo sportello. Trascorso il tempo di cottura, sfornate i bignè e lasciateli raffreddare 12 .",
-        "Nel frattempo occupatevi della farcitura: in una ciotola unite il formaggio spalmabile, la ricotta 13 , la panna 14 e l’olio 15 .",
+        "Nel frattempo occupatevi della farcitura: in una ciotola unite il formaggio spalmabile, la robiola 13 , la panna 14 e l’olio 15 .",
         "Insaporite con il sale 16 e le foglioline di basilico spezzettate 17 . Mescolate per amalgamare bene il tutto 18 . Trasferite la crema ottenuta in un sac-à-poche con bocchetta rigata da 1 cm.",
         "Una volta raffreddati, tagliate i bignè a metà 19 e farciteli con un ciuffetto di crema 20 , poi adagiate una fetta di mortadella ripiegata 21 .",
         "Ricoprite con la parte superiore del bignè 22 . Spremete dei puntini di crema sul piatto da portata e adagiatevi sopra i bignè farciti, così non si muoveranno 23 . Guarnite con del basilico spezzettato e servite i vostri bignè salati alla mortadella 24 !"
